@@ -39,6 +39,8 @@
 
 #### 1. **신상훈** (PM)
 
+![SH](https://user-images.githubusercontent.com/58547105/76869797-2b662700-68ac-11ea-9774-96a79c6226c8.jpg)
+
 &nbsp;&nbsp;&nbsp;&#10004; &nbsp;**StudentID**&nbsp; : 20153191
 
 &nbsp;&nbsp;&nbsp;&#10004; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**E-mail**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : tlstkdgns95@gmail.com
@@ -48,6 +50,8 @@
 ---
 
 #### 2. **송성재**
+
+![SJ](https://user-images.githubusercontent.com/58547105/76869792-2a34fa00-68ac-11ea-838e-9c7a69c214cd.jpg)
 
 &nbsp;&nbsp;&nbsp;&#10004; &nbsp;**StudentID**&nbsp; : 20153189
 
@@ -59,6 +63,8 @@
 
 #### 3. **김연수**
 
+![YS](https://user-images.githubusercontent.com/58547105/76869800-2bfebd80-68ac-11ea-81dc-2133d77bd1d8.jpg)
+
 &nbsp;&nbsp;&nbsp;&#10004; &nbsp;**StudentID**&nbsp; : 20153159
 
 &nbsp;&nbsp;&nbsp;&#10004; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**E-mail**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : gjb2628@gmail.com
@@ -68,6 +74,8 @@
 ---
 
 #### 4. **박형준**
+
+![HJ](https://user-images.githubusercontent.com/58547105/76869807-2d2fea80-68ac-11ea-9e48-cd8be2c8f5c5.jpg)
 
 &nbsp;&nbsp;&nbsp;&#10004; &nbsp;**StudentID**&nbsp; : 20153182
 
@@ -79,6 +87,8 @@
 
 #### 5. **허진선**
 
+![JS](https://user-images.githubusercontent.com/58547105/76869802-2c975400-68ac-11ea-8e33-e62737fb94e3.jpg)
+
 &nbsp;&nbsp;&nbsp;&#10004; &nbsp;**StudentID**&nbsp; : 20163176
 
 &nbsp;&nbsp;&nbsp;&#10004; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**E-mail**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : wlstjs2478@gmail.com
@@ -88,6 +98,8 @@
 ---
 
 #### 6. **윤정연**
+
+![JY](https://user-images.githubusercontent.com/58547105/76869805-2c975400-68ac-11ea-8e9d-2a0bb73ff2b1.jpg)
 
 &nbsp;&nbsp;&nbsp;&#10004; &nbsp;**StudentID**&nbsp; : 20172117
 
