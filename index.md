@@ -32,9 +32,7 @@ YouTube is growing at a rapid pace. Creators and streamers have increased expone
 
 ------
 
-##### 0. Professor
-
-- 강승식 교수님
+##### 0. **강승식 교수님** (지도교수)
 
 ---
 
@@ -103,10 +101,11 @@ YouTube is growing at a rapid pace. Creators and streamers have increased expone
 
 ------
 
-
+> 수정 예정
 
 
 ### 6. 기타
 
 ------
 
+> 수정 예정
