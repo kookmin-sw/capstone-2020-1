@@ -5,7 +5,7 @@
 
 <br/><br/>
 
-### 1. 프로젝트 소개
+## 1. 프로젝트 소개
 
 ------
 
@@ -15,7 +15,7 @@
 
 <br/>
 
-### 2. Abstract
+## 2. Abstract
 
 ------
 
@@ -24,7 +24,7 @@
 
 <br/>
 
-### 3. 소개영상
+## 3. 소개영상
 
 ------
 
@@ -33,82 +33,82 @@
 
 <br/>
 
-### 4. 팀 소개
+## 4. 팀 소개
 
 ------
 
-##### 0. **강승식 교수님**
+#### 0. **강승식 교수님**
 
 ---
 
-##### 1. **신상훈** (PM)
+#### 1. **신상훈** (PM)
 
-&#10004; &nbsp;StudentID&nbsp; : 20153191
+&nbsp;&nbsp;&nbsp;&#10004; &nbsp;StudentID&nbsp; : 20153191
 
-&#10004; &nbsp;&nbsp;&nbsp;Email&nbsp;&nbsp;&nbsp; : tlstkdgns95@gmail.com
+&nbsp;&nbsp;&nbsp;&#10004; &nbsp;&nbsp;&nbsp;&nbsp;E-mail&nbsp;&nbsp;&nbsp;&nbsp; : tlstkdgns95@gmail.com
 
-&#10004; Description : 차갑지만 따뜻한 남자
-
----
-
-##### 2. **송성재**
-
-&#10004; &nbsp;StudentID&nbsp; : 20153189
-
-&#10004; &nbsp;&nbsp;&nbsp;Email&nbsp;&nbsp;&nbsp; : tjdkskgnal61@gmail.com
-
-&#10004; Description : 키 큰 남자
+&nbsp;&nbsp;&nbsp;&#10004; Description : 차갑지만 따뜻한 남자
 
 ---
 
-##### 3. **김연수**
+#### 2. **송성재**
 
-&#10004; &nbsp;StudentID&nbsp; : 20153159
+&nbsp;&nbsp;&nbsp;&#10004; &nbsp;StudentID&nbsp; : 20153189
 
-&#10004; &nbsp;&nbsp;&nbsp;Email&nbsp;&nbsp;&nbsp; : gjb2628@gmail.com
+&nbsp;&nbsp;&nbsp;&#10004; &nbsp;&nbsp;&nbsp;&nbsp;E-mail&nbsp;&nbsp;&nbsp;&nbsp; : tjdkskgnal61@gmail.com
 
-&#10004; Description : 서울 / 25 / 남
-
----
-
-##### 4. **박형준**
-
-&#10004; &nbsp;StudentID&nbsp; : 20153182
-
-&#10004; &nbsp;&nbsp;&nbsp;Email&nbsp;&nbsp;&nbsp; : asurava@naver.com 
-
-&#10004; Description : 항상 행복하세요
+&nbsp;&nbsp;&nbsp;&#10004; Description : 키 큰 남자
 
 ---
 
-##### 5. **허진선**
+#### 3. **김연수**
 
-&#10004; &nbsp;StudentID&nbsp; : 20163176
+&nbsp;&nbsp;&nbsp;&#10004; &nbsp;StudentID&nbsp; : 20153159
 
-&#10004; &nbsp;&nbsp;&nbsp;Email&nbsp;&nbsp;&nbsp; : wlstjs2478@gmail.com
+&nbsp;&nbsp;&nbsp;&#10004; &nbsp;&nbsp;&nbsp;&nbsp;E-mail&nbsp;&nbsp;&nbsp;&nbsp; : gjb2628@gmail.com
 
-&#10004; Description : 키 큰 여자 ( 1500 mm ) 
+&nbsp;&nbsp;&nbsp;&#10004; Description : 서울 / 25 / 남
 
 ---
 
-##### 6. **윤정연**
+#### 4. **박형준**
 
-&#10004; &nbsp;StudentID&nbsp; : 20172117
+&nbsp;&nbsp;&nbsp;&#10004; &nbsp;StudentID&nbsp; : 20153182
 
-&#10004; &nbsp;&nbsp;&nbsp;Email&nbsp;&nbsp;&nbsp; : yjy0yjy@gmail.com
+&nbsp;&nbsp;&nbsp;&#10004; &nbsp;&nbsp;&nbsp;&nbsp;E-mail&nbsp;&nbsp;&nbsp;&nbsp; : asurava@naver.com 
 
-&#10004; Description : 졸업하고 싶어요
+&nbsp;&nbsp;&nbsp;&#10004; Description : 항상 행복하세요
+
+---
+
+#### 5. **허진선**
+
+&nbsp;&nbsp;&nbsp;&#10004; &nbsp;StudentID&nbsp; : 20163176
+
+&nbsp;&nbsp;&nbsp;&#10004; &nbsp;&nbsp;&nbsp;&nbsp;E-mail&nbsp;&nbsp;&nbsp;&nbsp; : wlstjs2478@gmail.com
+
+&nbsp;&nbsp;&nbsp;&#10004; Description : 키 큰 여자 ( 1500 mm ) 
+
+---
+
+#### 6. **윤정연**
+
+&nbsp;&nbsp;&nbsp;&#10004; &nbsp;StudentID&nbsp; : 20172117
+
+&nbsp;&nbsp;&nbsp;&#10004; &nbsp;&nbsp;&nbsp;&nbsp;E-mail&nbsp;&nbsp;&nbsp;&nbsp; : yjy0yjy@gmail.com
+
+&nbsp;&nbsp;&nbsp;&#10004; Description : 졸업하고 싶어요
 
 <br/>
 
-### 5. 사용법
+## 5. 사용법
 
 ------
 
 > 수정 예정
 
 
-### 6. 기타
+## 6. 기타
 
 ------
 
