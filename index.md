@@ -17,7 +17,7 @@
 ## 2. Abstract
 
 
-&nbsp;&nbsp;&nbsp;&nbsp;YouTube is growing at a rapid pace. Creators and streamers have increased exponentially but, it is very difficult for new streamers who have just entered the Internet broadcasting market to find editors because the number of editors is limited. Therefore, new streamers have to record and edit their videos themselves. This project selects the highlight scene through the URL of the streaming video uploaded to various streaming sites (Twitch, Youtube, AfreecaTV), and saves time for new streamers to edit, helps to produce high-quality content, and improves the work efficiency of existing editors. It improves and helps to provide high quality video.
+&nbsp;&nbsp;&nbsp;&nbsp;YouTube is growing at a rapid pace. Accordingly creators and streamers have increased exponentially but, it is very difficult for new streamers who have just entered the Internet broadcasting market to find editors because the number of editors is limited. Therefore, new streamers have to record and edit their videos themselves. This project selects the highlight scene through the URL of the streaming video uploaded to various streaming sites (Twitch, Youtube, AfreecaTV), and saves time for new streamers to edit, helps to produce high-quality content, and improves the work efficiency of existing editors. It improves and helps to provide high quality video.
 
 
 <br/>
