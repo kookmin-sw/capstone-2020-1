@@ -38,63 +38,61 @@ YouTube is growing at a rapid pace. Creators and streamers have increased expone
 
 ##### 1. **신상훈** (PM)
 
-- StudentID : 20153191
+&#10004; StudentID : 20153191
 
-- Email : tlstkdgns95@gmail.com
+&#10004; Email : tlstkdgns95@gmail.com
 
-- Description : 차갑지만 따뜻한 남자
+&#10004; Description : 차갑지만 따뜻한 남자
 
 ---
 
 ##### 2. **송성재**
 
-```
-- StudentID : 20153189
+&#10004; StudentID : 20153189
 
-- Email : tjdkskgnal61@gmail.com
+&#10004; Email : tjdkskgnal61@gmail.com
 
-- Description : 키 큰 남자
-```
+&#10004; Description : 키 큰 남자
 
 ---
 
 ##### 3. **김연수**
 
-- StudentID : 20153159
+&#10004; StudentID : 20153159
 
-- Email : gjb2628@gmail.com
+&#10004; Email : gjb2628@gmail.com
 
-- Description : 서울 / 25 / 남
+&#10004; Description : 서울 / 25 / 남
 
 ---
 
 ##### 4. **박형준**
 
-- StudentID : 20153182
+&#10004; StudentID : 20153182
 
-- Email : asurava@naver.com 
+&#10004; Email : asurava@naver.com 
 
-- Description : 항상 행복하세요
+&#10004; Description : 항상 행복하세요
 
 ---
 
 ##### 5. **허진선**
 
-- StudentID : 20163176
+&#10004; StudentID : 20163176
 
-- Email : wlstjs2478@gmail.com
+&#10004; Email : wlstjs2478@gmail.com
 
-- Description : 키 큰 여자 ( 1500 mm ) 
+&#10004; Description : 키 큰 여자 ( 1500 mm ) 
 
 ---
 
 ##### 6. **윤정연**
 
-- StudentID : 20172117
+&#10004; StudentID : 20172117
 
-- Email : yjy0yjy@gmail.com
+&#10004; Email : yjy0yjy@gmail.com
 
-- Description : 졸업하고 싶어요
+&#10004; Description : 졸업하고 싶어요
 
 
 ### 5. 사용법
