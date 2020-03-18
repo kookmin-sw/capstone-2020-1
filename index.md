@@ -9,17 +9,13 @@
 
 
 
-&nbsp;&nbsp;&nbsp;&nbsp;유튜브가 빠른 속도로 성장하고 있다. 그에 따라 크리에이터와 스트리머도 기하급수적으로 증가했지만, 편집자의 수는 한정된 상황에서 이제 막 인터넷 방송 시장에 뛰어든 신규 스트리머들이 편집자를 구하는 것은 매우 힘들다. 따라서 신규 스트리머는 스스로 녹화와 편집까지 해야하는 실정이다. 본 프로젝트는 여러 스트리밍 사이트에(Twitch, Youtube, AfreecaTV) 업로드 된 스트리밍 영상의 URL을 통해 하이라이트 장면을 선정하여 신규 스트리머가 편집 할 시간을 아껴 양질의 컨텐츠를 생산할 수 있게 도우며, 기존 편집자들의 작업 능률을 향상시켜 퀄리티 높은 영상을 제공할 수 있게 돕는다.
-
-
+&nbsp;&nbsp;&nbsp;&nbsp;본 프로젝트는 여러 스트리밍 사이트에(Twitch, Youtube, AfreecaTV) 업로드 된 영상의 URL을 통해 하이라이트 장면을 선정한다. 이로 하여금 신규 스트리머는 편집할 시간을 아껴 양질의 컨텐츠를 생산하고, 기존 스트리머의 편집자들은 작업 능률을 향상시켜 퀄리티 높은 영상을 제공할 수 있게 돕는다. 또한 광고주들에게는 하이라이트 지점을 예측해 광고를 삽입할 수 있도록하여 광고의 효율을 극대화한다.
 <br/>
 
 ## 2. Abstract
 
 
-&nbsp;&nbsp;&nbsp;&nbsp;YouTube is growing at a rapid pace. Accordingly creators and streamers have increased exponentially but, it is very difficult for new streamers who have just entered the Internet broadcasting market to find editors because the number of editors is limited. Therefore, new streamers have to record and edit their videos themselves. This project selects the highlight scene through the URL of the streaming video uploaded to various streaming sites (Twitch, Youtube, AfreecaTV), and saves time for new streamers to edit, helps to produce high-quality content, and improves the work efficiency of existing editors. It improves and helps to provide high quality video.
-
-
+&nbsp;&nbsp;&nbsp;&nbsp;This project selects highlight scenes through URLs of videos uploaded to various streaming sites (Twitch, Youtube, AfreecaTV). This allows new streamers to save time for editing, producing high-quality content, and editors of existing streamers to help improve work efficiency and provide high-quality video. It also maximizes the efficiency of advertisements by allowing advertisers to insert advertisements by predicting highlight points.
 <br/>
 
 ## 3. 소개영상
