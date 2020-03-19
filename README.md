@@ -9,7 +9,8 @@
 
 
 
-&nbsp;&nbsp;&nbsp;&nbsp;본 프로젝트는 여러 스트리밍 사이트에(Twitch, Youtube, AfreecaTV) 업로드 된 영상의 URL을 통해 하이라이트 장면을 선정한다. 이로 하여금 신규 스트리머는 편집할 시간을 아껴 양질의 컨텐츠를 생산하고, 기존 스트리머의 편집자들은 작업 능률을 향상시켜 퀄리티 높은 영상을 제공할 수 있게 돕는다. 또한 광고주들에게는 하이라이트 지점을 예측해 광고를 삽입할 수 있도록하여 광고의 효율을 극대화한다.
+&nbsp;&nbsp;&nbsp;&nbsp;본 프로젝트는 여러 스트리밍 사이트에(Twitch, Youtube, AfreecaTV) 업로드 된 다시보기 영상의 URL을 통해 하이라이트 장면을 선정한다. 이로 하여금 편집자 없이 녹화와 편집을 혼자 하던 신규 스트리머들에게 편집할 시간을 아껴 양질의 컨텐츠를 생산할 수 있게 도우며, 기존 스트리머의 편집자들에게 작업 능률을 향상시켜 퀄리티 높은 영상을 제공할 수 있게 돕는다. 또한 크리에이터를 대상으로 한 광고주들에게는 광고의 주체가 되는 크리에이터의 영상을 분석하여 하이라이트 지점을 예측해 많은 사람들이 시청할 가능성이 높은 지점에 광고를 삽입할 수 있도록하여 광고의 효율을 극대화한다.
+
 <br/>
 
 ## II. 팀 소개
@@ -94,7 +95,7 @@
 ## III. Abstract
 
 
-&nbsp;&nbsp;&nbsp;&nbsp;This project selects highlight scenes through URLs of videos uploaded to various streaming sites (Twitch, Youtube, AfreecaTV). This allows new streamers to save time for editing, producing high-quality content, and editors of existing streamers to help improve work efficiency and provide high-quality video. It also maximizes the efficiency of advertisements by allowing advertisers to insert advertisements by predicting highlight points.
+&nbsp;&nbsp;&nbsp;&nbsp;This project selects highlight scenes through the URL of the replay video uploaded to various streaming sites (Twitch, Youtube, AfreecaTV). It helps new streamers who have recorded and edited alone without editors to save time for editing and to produce high-quality content, and to help existing streamers' editors improve work efficiency and provide high quality video. In addition, for advertisers targeting creators, it analyzes the creator's video, which is the main subject of the advertisement, and predicts highlight points, so that many people can insert advertisements at places where they are likely to watch, thereby maximizing the efficiency of advertisements.
 <br/>
 
 ## IV. 소개영상
