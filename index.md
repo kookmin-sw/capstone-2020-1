@@ -4,8 +4,6 @@
 ![LOGO](https://user-images.githubusercontent.com/58547105/77086346-ffca7480-6a44-11ea-99d4-d0056fbdd1df.png)
 
 
-**Team Page**: https://kookmin-sw.github.io/capstone-2020-1/
-
 <br/><br/>
 
 ## I. 프로젝트 개요
@@ -34,9 +32,9 @@
 
 &nbsp;&nbsp;&nbsp;&#10004; &nbsp;**StudentID**&nbsp;&nbsp; : 20153191
 
-&nbsp;&nbsp;&nbsp;&#10004; &nbsp;&nbsp;&nbsp;&nbsp;**E-mail**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : tlstkdgns95@gmail.com
+&nbsp;&nbsp;&nbsp;&#10004; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**E-mail**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : tlstkdgns95@gmail.com
 
-&nbsp;&nbsp;&nbsp;&#10004; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Role**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : Project Manager
+&nbsp;&nbsp;&nbsp;&#10004; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Role**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : Project Manager
 
 &nbsp;&nbsp;&nbsp;&#10004; **Description** : 차갑지만 따뜻한 남자
 
@@ -48,9 +46,9 @@
 
 &nbsp;&nbsp;&nbsp;&#10004; &nbsp;**StudentID**&nbsp;&nbsp; : 20153189
 
-&nbsp;&nbsp;&nbsp;&#10004; &nbsp;&nbsp;&nbsp;&nbsp;**E-mail**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : tjdkskgnal61@gmail.com
+&nbsp;&nbsp;&nbsp;&#10004; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**E-mail**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : tjdkskgnal61@gmail.com
 
-&nbsp;&nbsp;&nbsp;&#10004; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Role**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :
+&nbsp;&nbsp;&nbsp;&#10004; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Role**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :
 
 &nbsp;&nbsp;&nbsp;&#10004; **Description** : 키 큰 남자
 
@@ -63,9 +61,9 @@
 
 &nbsp;&nbsp;&nbsp;&#10004; &nbsp;**StudentID**&nbsp;&nbsp; : 20153159
 
-&nbsp;&nbsp;&nbsp;&#10004; &nbsp;&nbsp;&nbsp;&nbsp;**E-mail**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : gjb2628@gmail.com
+&nbsp;&nbsp;&nbsp;&#10004; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**E-mail**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : gjb2628@gmail.com
 
-&nbsp;&nbsp;&nbsp;&#10004; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Role**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :
+&nbsp;&nbsp;&nbsp;&#10004; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Role**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :
 
 &nbsp;&nbsp;&nbsp;&#10004; **Description** : 서울 / 25 / 남
 
@@ -78,9 +76,9 @@
 
 &nbsp;&nbsp;&nbsp;&#10004; &nbsp;**StudentID**&nbsp;&nbsp; : 20153182
 
-&nbsp;&nbsp;&nbsp;&#10004; &nbsp;&nbsp;&nbsp;&nbsp;**E-mail**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : asurava@naver.com 
+&nbsp;&nbsp;&nbsp;&#10004; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**E-mail**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : asurava@naver.com 
 
-&nbsp;&nbsp;&nbsp;&#10004; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Role**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :
+&nbsp;&nbsp;&nbsp;&#10004; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Role**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :
 
 &nbsp;&nbsp;&nbsp;&#10004; **Description** : 항상 행복하세요
 
@@ -93,9 +91,9 @@
 
 &nbsp;&nbsp;&nbsp;&#10004; &nbsp;**StudentID**&nbsp;&nbsp; : 20163176
 
-&nbsp;&nbsp;&nbsp;&#10004; &nbsp;&nbsp;&nbsp;&nbsp;**E-mail**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : wlstjs2478@gmail.com
+&nbsp;&nbsp;&nbsp;&#10004; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**E-mail**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : wlstjs2478@gmail.com
 
-&nbsp;&nbsp;&nbsp;&#10004; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Role**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :
+&nbsp;&nbsp;&nbsp;&#10004; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Role**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :
 
 &nbsp;&nbsp;&nbsp;&#10004; **Description** : 키 큰 여자 ( 1500 mm ) 
 
@@ -108,9 +106,9 @@
 
 &nbsp;&nbsp;&nbsp;&#10004; &nbsp;**StudentID**&nbsp;&nbsp; : 20172117
 
-&nbsp;&nbsp;&nbsp;&#10004; &nbsp;&nbsp;&nbsp;&nbsp;**E-mail**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : yjy0yjy@gmail.com
+&nbsp;&nbsp;&nbsp;&#10004; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**E-mail**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : yjy0yjy@gmail.com
 
-&nbsp;&nbsp;&nbsp;&#10004; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Role**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :
+&nbsp;&nbsp;&nbsp;&#10004; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Role**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :
 
 &nbsp;&nbsp;&nbsp;&#10004; **Description** : 졸업하고 싶어요
 
