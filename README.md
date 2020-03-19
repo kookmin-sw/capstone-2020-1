@@ -26,9 +26,11 @@
 
 &nbsp;&nbsp;&nbsp;&#10004; &nbsp;**StudentID**&nbsp; : 20153191
 
-&nbsp;&nbsp;&nbsp;&#10004; &nbsp;&nbsp;&nbsp;&nbsp;**E-mail**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : tlstkdgns95@gmail.com
+&nbsp;&nbsp;&nbsp;&#10004; &nbsp;&nbsp;&nbsp;&nbsp;**E-mail**&nbsp;&nbsp;&nbsp;&nbsp; : tlstkdgns95@gmail.com
 
 &nbsp;&nbsp;&nbsp;&#10004; **Description** : 차갑지만 따뜻한 남자
+
+&nbsp;&nbsp;&nbsp;&#10004; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Role**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :
 
 <br/>
 
@@ -38,9 +40,11 @@
 
 &nbsp;&nbsp;&nbsp;&#10004; &nbsp;**StudentID**&nbsp; : 20153189
 
-&nbsp;&nbsp;&nbsp;&#10004; &nbsp;&nbsp;&nbsp;&nbsp;**E-mail**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : tjdkskgnal61@gmail.com
+&nbsp;&nbsp;&nbsp;&#10004; &nbsp;&nbsp;&nbsp;&nbsp;**E-mail**&nbsp;&nbsp;&nbsp;&nbsp; : tjdkskgnal61@gmail.com
 
 &nbsp;&nbsp;&nbsp;&#10004; **Description** : 키 큰 남자
+
+&nbsp;&nbsp;&nbsp;&#10004; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Role**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :
 
 <br/>
 
@@ -50,9 +54,11 @@
 
 &nbsp;&nbsp;&nbsp;&#10004; &nbsp;**StudentID**&nbsp; : 20153159
 
-&nbsp;&nbsp;&nbsp;&#10004; &nbsp;&nbsp;&nbsp;&nbsp;**E-mail**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : gjb2628@gmail.com
+&nbsp;&nbsp;&nbsp;&#10004; &nbsp;&nbsp;&nbsp;&nbsp;**E-mail**&nbsp;&nbsp;&nbsp;&nbsp; : gjb2628@gmail.com
 
 &nbsp;&nbsp;&nbsp;&#10004; **Description** : 서울 / 25 / 남
+
+&nbsp;&nbsp;&nbsp;&#10004; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Role**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :
 
 <br/>
 
@@ -62,9 +68,11 @@
 
 &nbsp;&nbsp;&nbsp;&#10004; &nbsp;**StudentID**&nbsp; : 20153182
 
-&nbsp;&nbsp;&nbsp;&#10004; &nbsp;&nbsp;&nbsp;&nbsp;**E-mail**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : asurava@naver.com 
+&nbsp;&nbsp;&nbsp;&#10004; &nbsp;&nbsp;&nbsp;&nbsp;**E-mail**&nbsp;&nbsp;&nbsp;&nbsp; : asurava@naver.com 
 
 &nbsp;&nbsp;&nbsp;&#10004; **Description** : 항상 행복하세요
+
+&nbsp;&nbsp;&nbsp;&#10004; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Role**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :
 
 <br/>
 
@@ -74,9 +82,11 @@
 
 &nbsp;&nbsp;&nbsp;&#10004; &nbsp;**StudentID**&nbsp; : 20163176
 
-&nbsp;&nbsp;&nbsp;&#10004; &nbsp;&nbsp;&nbsp;&nbsp;**E-mail**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : wlstjs2478@gmail.com
+&nbsp;&nbsp;&nbsp;&#10004; &nbsp;&nbsp;&nbsp;&nbsp;**E-mail**&nbsp;&nbsp;&nbsp;&nbsp; : wlstjs2478@gmail.com
 
 &nbsp;&nbsp;&nbsp;&#10004; **Description** : 키 큰 여자 ( 1500 mm ) 
+
+&nbsp;&nbsp;&nbsp;&#10004; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Role**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :
 
 <br/>
 
@@ -86,9 +96,11 @@
 
 &nbsp;&nbsp;&nbsp;&#10004; &nbsp;**StudentID**&nbsp; : 20172117
 
-&nbsp;&nbsp;&nbsp;&#10004; &nbsp;&nbsp;&nbsp;&nbsp;**E-mail**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : yjy0yjy@gmail.com
+&nbsp;&nbsp;&nbsp;&#10004; &nbsp;&nbsp;&nbsp;&nbsp;**E-mail**&nbsp;&nbsp;&nbsp;&nbsp; : yjy0yjy@gmail.com
 
 &nbsp;&nbsp;&nbsp;&#10004; **Description** : 졸업하고 싶어요
+
+&nbsp;&nbsp;&nbsp;&#10004; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Role**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :
 
 <br/>
 
@@ -96,6 +108,7 @@
 
 
 &nbsp;&nbsp;&nbsp;&nbsp;This project selects highlight scenes through the URL of the replay video uploaded to various streaming sites (Twitch, Youtube, AfreecaTV). It helps new streamers who have recorded and edited alone without editors to save time for editing and to produce high-quality content, and to help existing streamers' editors improve work efficiency and provide high quality video. In addition, for advertisers targeting creators, it analyzes the creator's video, which is the main subject of the advertisement, and predicts highlight points, so that many people can insert advertisements at places where they are likely to watch, thereby maximizing the efficiency of advertisements.
+
 <br/>
 
 ## IV. 소개영상
