@@ -1,8 +1,10 @@
 # 요바 ( 요기 바바 )
 
-**2020년 캡스톤 디자인 1조**
+
 ![LOGO](https://user-images.githubusercontent.com/58547105/77086346-ffca7480-6a44-11ea-99d4-d0056fbdd1df.png)
 
+
+**Team Page**: https://kookmin-sw.github.io/capstone-2020-1/
 
 <br/><br/>
 
