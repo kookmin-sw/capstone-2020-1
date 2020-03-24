@@ -28,7 +28,7 @@
 
 #### 1. **신상훈**
 
-<img width="90" alt="SH" src="https://user-images.githubusercontent.com/58547105/77391889-2be74c00-6ddd-11ea-828f-07a6aa321721.png">
+![SH](https://user-images.githubusercontent.com/58547105/77393634-c7c68700-6de0-11ea-872c-104f6aedcff0.jpg)
 
 &nbsp;&nbsp;&nbsp;&#10004; &nbsp;**StudentID**&nbsp;&nbsp; : 20153191
 
@@ -42,7 +42,7 @@
 
 #### 2. **송성재**
 
-![SJ](https://user-images.githubusercontent.com/58547105/77391886-2b4eb580-6ddd-11ea-84c9-e9a7b3645485.jpg)
+![SJ](https://user-images.githubusercontent.com/58547105/77393636-c85f1d80-6de0-11ea-90b9-e3698baa8075.jpg)
 
 &nbsp;&nbsp;&nbsp;&#10004; &nbsp;**StudentID**&nbsp;&nbsp; : 20153189
 
@@ -57,7 +57,7 @@
 
 #### 3. **김연수**
 
-![YS](https://user-images.githubusercontent.com/58547105/77391885-2ab61f00-6ddd-11ea-846b-6a2c4d0f386c.jpg)
+![YS](https://user-images.githubusercontent.com/58547105/77393637-c8f7b400-6de0-11ea-8963-63e9acd0c86b.jpg)
 
 &nbsp;&nbsp;&nbsp;&#10004; &nbsp;**StudentID**&nbsp;&nbsp; : 20153159
 
@@ -72,7 +72,7 @@
 
 #### 4. **박형준**
 
-![HJ](https://user-images.githubusercontent.com/58547105/76870405-01f9cb00-68ad-11ea-961b-62cfd31ec7b1.jpg)
+![HJ](https://user-images.githubusercontent.com/58547105/77393629-c6955a00-6de0-11ea-85f9-c282856d87a1.jpg)
 
 &nbsp;&nbsp;&nbsp;&#10004; &nbsp;**StudentID**&nbsp;&nbsp; : 20153182
 
@@ -87,7 +87,7 @@
 
 #### 5. **허진선**
 
-![JS](https://user-images.githubusercontent.com/58547105/76870407-01f9cb00-68ad-11ea-87b4-79156a39f177.jpg)
+![JS](https://user-images.githubusercontent.com/58547105/77393631-c72df080-6de0-11ea-85c3-394aa2627d99.jpg)
 
 &nbsp;&nbsp;&nbsp;&#10004; &nbsp;**StudentID**&nbsp;&nbsp; : 20163176
 
@@ -102,7 +102,7 @@
 
 #### 6. **윤정연**
 
-![JY](https://user-images.githubusercontent.com/58547105/76870395-00300780-68ad-11ea-8160-976aff959691.jpg)
+![JY](https://user-images.githubusercontent.com/58547105/77393633-c7c68700-6de0-11ea-9a49-6cba008fa17f.jpg)
 
 &nbsp;&nbsp;&nbsp;&#10004; &nbsp;**StudentID**&nbsp;&nbsp; : 20172117
 
