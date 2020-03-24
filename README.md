@@ -28,7 +28,7 @@
 
 #### 0. **강승식 교수님**
 
-![SS](https://user-images.githubusercontent.com/58547105/77402988-dd44ac80-6df2-11ea-818d-fcc82957fc9e.jpg)
+![SS](https://user-images.githubusercontent.com/58547105/77403157-2694fc00-6df3-11ea-8c0c-bde1c12e99de.jpg)
 
 #### 1. **신상훈**
 
