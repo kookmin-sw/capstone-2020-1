@@ -30,13 +30,13 @@
 
 #### 1. **신상훈**
 
-![SH](https://user-images.githubusercontent.com/58547105/76870400-00c89e00-68ad-11ea-9d6d-ccde41f6a6eb.jpg)
+<img width="90" alt="SH" src="https://user-images.githubusercontent.com/58547105/77391889-2be74c00-6ddd-11ea-828f-07a6aa321721.png">
 
 &nbsp;&nbsp;&nbsp;&#10004; &nbsp;**StudentID**&nbsp;&nbsp; : 20153191
 
 &nbsp;&nbsp;&nbsp;&#10004; &nbsp;&nbsp;&nbsp;&nbsp;**E-mail**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : tlstkdgns95@gmail.com
 
-&nbsp;&nbsp;&nbsp;&#10004; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Role**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : Project Manager
+&nbsp;&nbsp;&nbsp;&#10004; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Role**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 프로젝트매니저, 피쳐추출(영상), 프론트엔드, 데이터라벨링
 
 &nbsp;&nbsp;&nbsp;&#10004; **Description** : 차갑지만 따뜻한 남자
 
@@ -44,13 +44,13 @@
 
 #### 2. **송성재**
 
-![SJ](https://user-images.githubusercontent.com/58547105/76870402-01613480-68ad-11ea-80fc-5f883c1014e4.jpg)
+![SJ](https://user-images.githubusercontent.com/58547105/77391886-2b4eb580-6ddd-11ea-84c9-e9a7b3645485.jpg)
 
 &nbsp;&nbsp;&nbsp;&#10004; &nbsp;**StudentID**&nbsp;&nbsp; : 20153189
 
 &nbsp;&nbsp;&nbsp;&#10004; &nbsp;&nbsp;&nbsp;&nbsp;**E-mail**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : tjdkskgnal61@gmail.com
 
-&nbsp;&nbsp;&nbsp;&#10004; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Role**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :
+&nbsp;&nbsp;&nbsp;&#10004; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Role**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 피쳐추출(영상), ML모델링, 백엔드, 데이터라벨링, UI/UX
 
 &nbsp;&nbsp;&nbsp;&#10004; **Description** : 키 큰 남자
 
@@ -59,13 +59,13 @@
 
 #### 3. **김연수**
 
-![YS](https://user-images.githubusercontent.com/58547105/76870403-01613480-68ad-11ea-9370-47cf0df7ef2e.jpg)
+![YS](https://user-images.githubusercontent.com/58547105/77391885-2ab61f00-6ddd-11ea-846b-6a2c4d0f386c.jpg)
 
 &nbsp;&nbsp;&nbsp;&#10004; &nbsp;**StudentID**&nbsp;&nbsp; : 20153159
 
 &nbsp;&nbsp;&nbsp;&#10004; &nbsp;&nbsp;&nbsp;&nbsp;**E-mail**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : gjb2628@gmail.com
 
-&nbsp;&nbsp;&nbsp;&#10004; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Role**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :
+&nbsp;&nbsp;&nbsp;&#10004; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Role**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 피쳐추출(영상), 백엔드, 데이터라벨링
 
 &nbsp;&nbsp;&nbsp;&#10004; **Description** : 서울 / 25 / 남
 
@@ -80,7 +80,7 @@
 
 &nbsp;&nbsp;&nbsp;&#10004; &nbsp;&nbsp;&nbsp;&nbsp;**E-mail**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : asurava@naver.com 
 
-&nbsp;&nbsp;&nbsp;&#10004; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Role**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :
+&nbsp;&nbsp;&nbsp;&#10004; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Role**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 피쳐추출(소리), ML모델링, 데이터라벨링
 
 &nbsp;&nbsp;&nbsp;&#10004; **Description** : 항상 행복하세요
 
@@ -95,7 +95,7 @@
 
 &nbsp;&nbsp;&nbsp;&#10004; &nbsp;&nbsp;&nbsp;&nbsp;**E-mail**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : wlstjs2478@gmail.com
 
-&nbsp;&nbsp;&nbsp;&#10004; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Role**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :
+&nbsp;&nbsp;&nbsp;&#10004; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Role**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 피쳐추출(채팅), 데이터수집, 데이터라벨링
 
 &nbsp;&nbsp;&nbsp;&#10004; **Description** : 키 큰 여자 ( 1500 mm ) 
 
@@ -110,7 +110,7 @@
 
 &nbsp;&nbsp;&nbsp;&#10004; &nbsp;&nbsp;&nbsp;&nbsp;**E-mail**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : yjy0yjy@gmail.com
 
-&nbsp;&nbsp;&nbsp;&#10004; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Role**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :
+&nbsp;&nbsp;&nbsp;&#10004; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Role**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 피쳐추출(채팅), 데이터수집, 데이터라벨링
 
 &nbsp;&nbsp;&nbsp;&#10004; **Description** : 졸업하고 싶어요
 
