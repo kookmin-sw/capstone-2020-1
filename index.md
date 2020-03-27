@@ -121,7 +121,7 @@
 ## IV. 소개영상
 
 
-> 수정 예정
+> https://youtu.be/BWgxucTPGgc
 
 <br/>
 
