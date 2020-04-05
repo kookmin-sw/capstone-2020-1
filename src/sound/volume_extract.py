@@ -15,13 +15,17 @@ def sound_extract(filename):
     cut = lambda x: audio.subclip(x, x+1).to_soundarray(fps=sr)#time series
     volume = lambda array: np.sqrt(((1.0*array)**2).mean())
     volumes = [volume(cut(i)) for i in range(0, int(audio.duration-2))]
-            
+    
+    """
     fig, ax1 = plt.subplots() # plot
     ax1.plot(np.linspace(0, len(volumes), len(volumes)), volumes, color = 'b')
     ax1.set_ylabel("Volume") # y 축
     ax1.set_xlabel("Second") # x 축
     plt.title("Volumes of each second") # 제목
     plt.show()
+    """
+    
+    video.close()
     
     return volumes
 
@@ -48,8 +52,25 @@ def get_peak_point(mag_s, time):
         cut += 600
                 
     return Highlight
+    
+def get_peak_point2(mag_s, time):
+    #전체를 살펴보고 1~10순위 출력
+    arr=[]
+    for i in range(len(mag_s)):
+        arr.append((time[i],mag_s[i]))
+    
+    arr.sort(key = lambda ele : ele[1],reverse=True)
+    
+    Highlight = arr[0:100]
+    Highlight.sort(key = lambda ele : ele[0])
+                
+    return Highlight
                 
 def print_highlight(Highlight_arr):
         for i in Highlight_arr:
             Highlight = int(i[0])
-            print(i[1], str(Highlight // 60) + ":" + str(Highlight % 60))  # 분:초 로 표기
+            minute = Highlight // 60
+            hour = minute // 60
+            minute = minute % 60
+            second = Highlight % 60
+            print(str(hour) + ":" + str(minute) + ":" + str(second))  # 시:분:초 로 표기
