@@ -27,6 +27,7 @@ def sound_extract(filename):
     # plt.title("Volumes of each second") # 제목
     # plt.show()
     
+    video.close()
     return volumesPerMinute
 
 def get_peak_point(mag_s, time):

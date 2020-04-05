@@ -1,12 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-
-
-def double_digit(num):
-    if num < 10:
-        return '0' + str(num)
-    else:
-        return str(num)
+import download
 
 
 def print_point(second):
@@ -17,7 +11,7 @@ def print_point(second):
     else:
         hour = int(minute / 60)
     second = int(second % 60)
-    print(double_digit(hour) + ':' + double_digit(minute) + ':' + double_digit(second))
+    print(download.double_digit(hour) + ':' + download.double_digit(minute) + ':' + download.double_digit(second))
 
 
 def analyze1(data, comment=None):  # 초당 채팅 수 계산
@@ -145,12 +139,27 @@ def analyze1_minute(data, comment=None):#분단위로 쪼개고 해당 단위시
     while True:
         try:
             arr = count[cut:cut+60]
-            minute.append( (arr.index(max(arr)),max(arr)) )#(시간(초),채팅량) 튜플로 저장
+            minute.append( (arr.index(max(arr)) + cut,max(arr)) )#(시간(초),채팅량) 튜플로 저장
             cut += 60
         except:
             break
+            
+    minute.sort(key = lambda ele : ele[1],reverse=True)
+    highlight = minute[0:10]
+    highlight.sort(key = lambda ele : ele[0])
     
-    for i in range(len(minute)):
-        print_point( 60*i + minute[i][0] )
+    for i in range(len(highlight)):
+        print_point( highlight[i][0] )
     
     return minute
+    
+def analyze1_sound(volume):
+    arr = []
+    for i in range(len(volume)):
+        arr.append( (i,volume[i])  )
+        
+    arr.sort(key = lambda ele : ele[1],reverse=True)
+    highlight = arr[0:10]
+    highlight.sort(key = lambda ele : ele[0])
+    for i in highlight:
+        print(i[0])
