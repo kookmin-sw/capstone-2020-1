@@ -53,6 +53,8 @@ def array_to_file(flatform, arr, filename): # 배열을 텍스트 파일로 저�
 
 
 def afreeca(videoID): # 아프리카 채팅기록을 튜플로 추출하는 함수
+    if not os.path.exists("./chatlog"):
+        os.makedirs("./chatlog")
     flatform = "AfreecaTV"
     data = []
     if flatform+"_"+videoID+".txt" not in os.listdir("./chatlog"):
@@ -83,6 +85,8 @@ def afreeca(videoID): # 아프리카 채팅기록을 튜플로 추출하는 함�
 
 
 def twitch(videoID): # 트위치 채팅기록을 리스트로 추출하는 함수
+    if not os.path.exists("./chatlog"):
+        os.makedirs("./chatlog")
     flatform = "Twitch"
     data = []
     if flatform+"_"+videoID+".txt" not in os.listdir("./chatlog"):
@@ -115,6 +119,8 @@ def twitch(videoID): # 트위치 채팅기록을 리스트로 추출하는 함�
 
 
 def youtube(videoID):
+    if not os.path.exists("./chatlog"):
+        os.makedirs("./chatlog")
     flatform = "Youtube"
     data = []
     if flatform+"_"+videoID+".txt" not in os.listdir("./chatlog"):
