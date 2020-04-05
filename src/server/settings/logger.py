@@ -38,8 +38,9 @@ logger = create_logger()
 
 
 def after_request(response):  # 정상적으로 처리시 로그를 남김
-    logger.info(f'{request.remote_addr} {time.strftime("%Y-%m-%d  %X", time.localtime(time.time()))}  '
-                f'{request.method} {request.url} {response.status_code} - {request.user_agent}')
+    if not request.url.endswith('/favicon.ico'):  # favicon 무시
+        logger.info(f'{request.remote_addr} {time.strftime("%Y-%m-%d  %X", time.localtime(time.time()))}  '
+                    f'{request.method} {request.url} {response.status_code} - {request.user_agent}')
     return response
 
 
