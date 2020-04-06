@@ -145,7 +145,7 @@ def analyze1_minute(data, comment=None):#분단위로 쪼개고 해당 단위시
             break
             
     minute.sort(key = lambda ele : ele[1],reverse=True)
-    highlight = minute[0:10]
+    highlight = minute[0:3]
     highlight.sort(key = lambda ele : ele[0])
     
     for i in range(len(highlight)):
@@ -159,7 +159,7 @@ def analyze1_sound(volume):
         arr.append( (i,volume[i])  )
         
     arr.sort(key = lambda ele : ele[1],reverse=True)
-    highlight = arr[0:10]
+    highlight = arr[0:3]
     highlight.sort(key = lambda ele : ele[0])
     for i in highlight:
         print(i[0])
