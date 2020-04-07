@@ -201,7 +201,7 @@ def youtube(videoID):
         array_to_file(flatform, data, videoID)
 
 
-if __name__ == '__main__':
+def main():
 
     url_list_a = []
     url_list_y = []
