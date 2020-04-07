@@ -6,10 +6,13 @@ import numpy as np
 import matplotlib.pyplot as plt
 import time
 
-def sound_extract(filename):
+def sound_extract(filename,filetype="audio"):
     start = time.time()
-    video = VideoFileClip(filename)
-    audio = video.audio
+    if(filetype == "video"):
+        video = VideoFileClip(filename)
+        audio = video.audio
+    elif(filetype == "audio"):
+        audio = AudioFileClip(filename)
 
     sr = audio.fps # 샘플링 레이트
     cut = lambda x: audio.subclip(x, x+1).to_soundarray(fps=sr)#time series
@@ -27,7 +30,10 @@ def sound_extract(filename):
     # plt.title("Volumes of each second") # 제목
     # plt.show()
     
-    video.close()
+    if(filetype == "video"):
+        video.close()
+    elif(filetype == "audio"):
+        audio.close()
     return volumesPerMinute
 
 def get_peak_point(mag_s, time):
