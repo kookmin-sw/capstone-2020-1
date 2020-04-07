@@ -1,17 +1,62 @@
-from . import video
-from . import audio
-from . import chatlog
+import os
+import re
+import video
+import audio
+import chatlog
 
-while True:
-    opt = input("채팅다운: 'c', 비디오다운: 'v', 오디오다운: 'a'")
-    if opt == 'c':
-        chatlog.main()
-        break
-    elif opt == 'v':
-        video.main()
-        break
-    elif opt == 'c':
-        audio.main()
-        break
+
+url = input("stream url : ")
+platform = ""
+videoID = ""
+
+if "afree" in url:
+    # AfreecaTV 주소형식
+    # http://vod.afreecatv.com/PLAYER/STATION/videoID
+    # http://v.afree.ca/ST/videoID
+    platform = "AfreecaTV"
+    if "afreecatv" in url:
+        url = re.search(r"http://vod.afreecatv.com/PLAYER/STATION/[0-9]+", url).group()
     else:
-        continue
+        url = re.search(r"http://v.afree.ca/ST/[0-9]+", url).group()
+    videoID = url.split('/')
+    videoID = videoID[-1]
+elif "twitch" in url:
+    # Twitch 주소형식
+    # https://www.twitch.tv/videos/videoID
+    platform = "Twitch"
+    url = re.search(r"https://www.twitch.tv/videos/[0-9]+", url).group()
+    videoID = url.split('/')
+    videoID = videoID[-1]
+elif "youtu" in url:
+    # Youtube 주소형식
+    # https://www.youtube.com/watch?v=videoID
+    # https://youtu.be/videoID
+    platform = "Youtube"
+    if 'youtube' in url:
+        url = re.search(r"https://www.youtube.com/watch\?v=[a-zA-Z0-_]+", url).group()
+        videoID = url.split('=')
+    else:
+        url = re.search(r"https://youtu.be/[a-zA-Z0-_]+", url).group()
+        videoID = url.split('/')
+    videoID = videoID[-1]
+
+if not os.path.exists("./video"):
+    os.makedirs("./video")
+if platform+"_"+videoID+".mp4" in os.listdir("./video"):
+    print('This video file has already been requested.')
+else:
+    video.download(platform, videoID, url)
+
+if not os.path.exists("./audio"):
+    os.makedirs("./audio")
+if platform+"_"+videoID+".mp3" in os.listdir("./audio"):
+    print('This audio file has already been requested.')
+else:
+    audio.download(platform, videoID, url)
+
+if not os.path.exists("./chatlog"):
+    os.makedirs("./chatlog")
+if platform+"_"+videoID+".txt" in os.listdir("./chatlog"):
+    print('This chatlog file has already been requested.')
+else:
+    chat_data = chatlog.download(platform, videoID)
