@@ -67,7 +67,7 @@ def download_audio_youtube(video_list):
         except Exception as e:
             print('error', e)
 
-
+def main():
     url_list_a = []
     url_list_y = []
     url_list_t = []

@@ -60,7 +60,7 @@ def download_video_youtube(video_list):
         except Exception as e:
             print('error', e)
 
-if __name__ == '__main__':
+def main():
 
     url_list_a = []
     url_list_y = []
