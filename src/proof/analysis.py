@@ -1,17 +1,28 @@
 import numpy as np
 import matplotlib.pyplot as plt
-import download
 
 
-def print_point(second):
-    minute = int(second / 60)
-    if minute >= 60:
-        hour = int(minute / 60)
-        minute %= 60
-    else:
-        hour = int(minute / 60)
-    second = int(second % 60)
-    print(download.double_digit(hour) + ':' + download.double_digit(minute) + ':' + download.double_digit(second))
+def visualization(chatlist):
+    plt.bar(range(len(chatlist)), chatlist)
+    plt.show()
+
+
+def print_point_hhmmss(point):
+    for i in range(len(point)):
+        seconds = point[i][0]
+        hours = seconds // (60 * 60)
+        seconds %= (60 * 60)
+        minutes = seconds // 60
+        seconds %= 60
+        print("%02i:%02i:%02i" % (hours, minutes, seconds), point[i][1])
+
+
+def print_point_hhmm(point):
+    for i in range(len(point)):
+        minutes = point[i][0]
+        hours = minutes // 60
+        minutes %= 60
+        print("%02i:%02i" % (hours, minutes), point[i][1])
 
 
 def analyze1(data, comment=None):  # 초당 채팅 수 계산
@@ -35,28 +46,17 @@ def analyze1(data, comment=None):  # 초당 채팅 수 계산
 
     average = np.mean(np.array(count))
 
-    chk = []
-    for x in range(len(count)):
-        chk.append(average)
-
     # 오름차순으로 정렬한 후 10 번째로 많은 채팅 수를 구함
-    max10th = sorted(count)[-100]
+    sorted_list = sorted(count)
+    max10th = sorted_list[-10]
 
     point = []
-    print("편집점:")
     for i in range(len(count)):
         if count[i] >= max10th:
-            point.append(i)
-            print_point(i)
+            point.append((i, count[i]))
 
-    """
-    plt.bar(range(len(count)), count)  # 채팅 수
-    # plt.twinx()
-    # plt.plot(range(len(count)), chk, 'r--')  # 평균
-    plt.xlabel("second")
-    plt.ylabel("chat / second")
-    plt.show()
-    """
+    #visualization(count)
+    print_point_hhmmss(point)
     return point
 
 
@@ -87,32 +87,23 @@ def analyze2(data):  # 초당 채팅 참가자 수 계산
         user = list(set(user))
         base += x
         temp = []
-    total_user = len(user)
-    del user
-    print("총 채팅 참여자 수:", total_user)
+    #total_user = len(user)
+    #print("총 채팅 참여자 수:", total_user)
 
     average = np.mean(np.array(count_u))
 
-    chk = []
-    for x in range(len(count_u)):
-        chk.append(average)
-
     # 오름차순으로 정렬한 후 10 번째로 많은 채팅 참여자 수를 구함
-    max10th = sorted(count_u)[-10]
+    sorted_list = sorted(count_u)
+    max10th = sorted_list[-10]
 
     point = []
-    print("편집점:")
     for i in range(len(count_u)):
         if count_u[i] >= max10th:
-            point.append(i)
-            print_point(i)
+            point.append((i, count_u[i]))
+
+    #visualization(count_u)
+    print_point_hhmmss(point)
     return point
-    plt.bar(range(len(count_u)), count_u)  # 채팅 참여자 수
-    # plt.twinx()
-    # plt.plot(range(len(count)), chk, 'r--')  # 평균
-    plt.xlabel("second")
-    plt.ylabel("chat / second")
-    plt.show()
 
 
 def analyze1_minute(data, comment=None):#분단위로 쪼개고 해당 단위시간(분) 내에 가장 채팅이 많은 지점(초)을 리턴
@@ -133,33 +124,33 @@ def analyze1_minute(data, comment=None):#분단위로 쪼개고 해당 단위시
 
     for x in second:
         count[x] += 1
-    
+
     minute = []
-    cut = 0#60초 단위로 쪼개기 위한 변수
+    cut = 0  # 60초 단위로 쪼개기 위한 변수
     while True:
         try:
-            arr = count[cut:cut+60]
-            minute.append( (arr.index(max(arr)) + cut,max(arr)) )#(시간(초),채팅량) 튜플로 저장
+            arr = count[cut:cut + 60]
+            minute.append((arr.index(max(arr)) + cut, max(arr)))  # (시간(초),채팅량) 튜플로 저장
             cut += 60
         except:
             break
-            
-    minute.sort(key = lambda ele : ele[1],reverse=True)
-    highlight = minute[0:3]
-    highlight.sort(key = lambda ele : ele[0])
-    
-    for i in range(len(highlight)):
-        print_point( highlight[i][0] )
-    
-    return minute
-    
+
+    minute.sort(key=lambda ele: ele[1], reverse=True)
+    point = minute[0:3]
+    point.sort(key=lambda ele: ele[0])
+
+    print_point_hhmmss(point)
+    return point
+
+
 def analyze1_sound(volume):
-    arr = []
+    minute = []
     for i in range(len(volume)):
-        arr.append( (i,volume[i])  )
-        
-    arr.sort(key = lambda ele : ele[1],reverse=True)
-    highlight = arr[0:3]
-    highlight.sort(key = lambda ele : ele[0])
-    for i in highlight:
-        print(i[0])
+        minute.append((i,volume[i]))
+
+    minute.sort(key=lambda ele: ele[1], reverse=True)
+    point = minute[0:3]
+    point.sort(key=lambda ele: ele[0])
+
+    print_point_hhmm(point)
+    return point
