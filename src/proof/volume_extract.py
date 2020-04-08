@@ -9,11 +9,11 @@ import time
 def sound_extract(platform, videoID, filetype="audio"):
     start = time.time()
     if(filetype == "video"):
-        filname = "video/"+platform+"_"+videoID+".mp4"
+        filname = "video/"+platform+"_"+videoID+"_"+"1"+".mp4"
         video = VideoFileClip(filname)
         audio = video.audio
     elif(filetype == "audio"):
-        filname = "audio/" + platform + "_" + videoID + ".mp3"
+        filname = "audio/"+platform+"_"+videoID+"_"+"1"+".mp3"
         audio = AudioFileClip(filname)
 
     sr = audio.fps # 샘플링 레이트

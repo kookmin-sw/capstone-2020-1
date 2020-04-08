@@ -56,7 +56,7 @@ for i in range(n):
     """
     if not os.path.exists("./video"):
         os.makedirs("./video")
-    if platform+"_"+videoID+".mp4" in os.listdir("./video"):
+    if platform + '_' + videoID + '_' + '1' + ".mp4" in os.listdir("./video"):
         print('This video file has already been requested.')
         volume = sound.sound_extract(platform, videoID, "video")
     else:
@@ -66,7 +66,7 @@ for i in range(n):
 
     if not os.path.exists("./audio"):
         os.makedirs("./audio")
-    if platform + "_" + videoID + ".mp3" in os.listdir("./audio"):
+    if platform + '_' + videoID + '_' + '1' + ".mp3" in os.listdir("./audio"):
         print('This audio file has already been requested.')
         volume = sound.sound_extract(platform, videoID)
         print("< audio point >")
@@ -79,7 +79,7 @@ for i in range(n):
 
     if not os.path.exists("./chatlog"):
         os.makedirs("./chatlog")
-    if platform + "_" + videoID + ".txt" in os.listdir("./chatlog"):
+    if platform + '_' + videoID + ".txt" in os.listdir("./chatlog"):
         print('This chatlog file has already been requested.')
         chat_data = chatlog.download(platform, videoID)
         print("< chatlog point >")
