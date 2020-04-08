@@ -6,13 +6,15 @@ import numpy as np
 import matplotlib.pyplot as plt
 import time
 
-def sound_extract(filename,filetype="audio"):
+def sound_extract(platform, videoID, filetype="audio"):
     start = time.time()
     if(filetype == "video"):
-        video = VideoFileClip(filename)
+        filname = "video/"+platform+"_"+videoID+".mp4"
+        video = VideoFileClip(filname)
         audio = video.audio
     elif(filetype == "audio"):
-        audio = AudioFileClip(filename)
+        filname = "audio/" + platform + "_" + videoID + ".mp3"
+        audio = AudioFileClip(filname)
 
     sr = audio.fps # 샘플링 레이트
     cut = lambda x: audio.subclip(x, x+1).to_soundarray(fps=sr)#time series
