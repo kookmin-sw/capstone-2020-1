@@ -237,7 +237,7 @@ if __name__ == '__main__':
 
     if not os.path.exists("./chatlog"):
         os.makedirs("./chatlog")
-    if platform+"_"+videoID+".txt" in os.listdir("./chatlog"):
+    if platform + '_' + videoID + ".txt" in os.listdir("./chatlog"):
         print('This chatlog file has already been requested.')
     else:
         chat_data = download(platform, videoID)
