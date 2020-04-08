@@ -6,39 +6,27 @@ import numpy as np
 import matplotlib.pyplot as plt
 import time
 
-def merge_audio(filename_arr):
-    audio_arr = []
-    for filename in filename_arr:
-        audio_arr.append(AudioFileClip(filename))
-    audio = concatenate_audioclips(audio_arr)
-    
-    sr = audio.fps # 샘플링 레이트
-    cut = lambda x: audio.subclip(x, x+1).to_soundarray(fps=sr)#time series
-    volume = lambda array: np.sqrt(((1.0*array)**2).mean())
-    volumes = [volume(cut(i)) for i in range(0, int(audio.duration-2))]
-    volumesPerMinute=[]
-    for i in range(0, len(volumes), 60):
-        if(len(volumes) - i < 60 ):
-            volumesPerMinute.append(max(volumes[i:len(volumes)]))
-        volumesPerMinute.append(max(volumes[i:i+60]))    
-    # fig, ax1 = plt.subplots() # plot
-    # ax1.plot(np.linspace(0, len(volumes), len(volumes)), volumes, color = 'b')
-    # ax1.set_ylabel("Volume") # y 축
-    # ax1.set_xlabel("Second") # x 축
-    # plt.title("Volumes of each second") # 제목
-    # plt.show()
-    
-    return volumesPerMinute
-
 def sound_extract(platform, videoID, filetype="audio"):
     start = time.time()
     if(filetype == "video"):
-        filname = "video/"+platform+"_"+videoID+"_"+"1"+".mp4"
-        video = VideoFileClip(filname)
+        files = []
+        for i in os.listdir('./video/'):
+            if platform+'_'+videoID in i:
+                files.append(i)
+        video_arr = []
+        for filename in files:
+            video_arr.append(VideoFileClip("video/"+filename))
+        video = concatenate_videoclips(video_arr)
         audio = video.audio
     elif(filetype == "audio"):
-        filname = "audio/"+platform+"_"+videoID+"_"+"1"+".mp3"
-        audio = AudioFileClip(filname)
+        files = []
+        for i in os.listdir('./audio/'):
+            if platform+'_'+videoID in i:
+                files.append(i)
+        audio_arr = []
+        for filename in files:
+            audio_arr.append(AudioFileClip("audio/"+filename))
+        audio = concatenate_audioclips(audio_arr)
 
     sr = audio.fps # 샘플링 레이트
     cut = lambda x: audio.subclip(x, x+1).to_soundarray(fps=sr)#time series
