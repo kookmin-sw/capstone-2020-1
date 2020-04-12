@@ -9,12 +9,24 @@ import time
 def sound_extract(platform, videoID, filetype="audio"):
     start = time.time()
     if(filetype == "video"):
-        filname = "video/"+platform+"_"+videoID+".mp4"
-        video = VideoFileClip(filname)
+        files = []
+        for i in os.listdir('./video/'):
+            if platform+'_'+videoID in i:
+                files.append(i)
+        video_arr = []
+        for filename in files:
+            video_arr.append(VideoFileClip("video/"+filename))
+        video = concatenate_videoclips(video_arr)
         audio = video.audio
     elif(filetype == "audio"):
-        filname = "audio/" + platform + "_" + videoID + ".mp3"
-        audio = AudioFileClip(filname)
+        files = []
+        for i in os.listdir('./audio/'):
+            if platform+'_'+videoID in i:
+                files.append(i)
+        audio_arr = []
+        for filename in files:
+            audio_arr.append(AudioFileClip("audio/"+filename))
+        audio = concatenate_audioclips(audio_arr)
 
     sr = audio.fps # 샘플링 레이트
     cut = lambda x: audio.subclip(x, x+1).to_soundarray(fps=sr)#time series
@@ -25,13 +37,7 @@ def sound_extract(platform, videoID, filetype="audio"):
         if(len(volumes) - i < 60 ):
             volumesPerMinute.append(max(volumes[i:len(volumes)]))
         volumesPerMinute.append(max(volumes[i:i+60]))    
-    # fig, ax1 = plt.subplots() # plot
-    # ax1.plot(np.linspace(0, len(volumes), len(volumes)), volumes, color = 'b')
-    # ax1.set_ylabel("Volume") # y 축
-    # ax1.set_xlabel("Second") # x 축
-    # plt.title("Volumes of each second") # 제목
-    # plt.show()
-    
+
     if(filetype == "video"):
         video.close()
     elif(filetype == "audio"):

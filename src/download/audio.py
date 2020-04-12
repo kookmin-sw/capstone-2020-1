@@ -5,7 +5,8 @@ import youtube_dl
 
 
 def download(platform, videoID, url):
-    dw_opts = {'format': 'worstaudio/worst', 'extractaudio': True, 'audioformat': "mp3", 'outtmpl': "audio/" + platform + '_' + videoID + ".mp3"}
+    dw_opts = {'format': 'worstaudio/worst', 'extractaudio': True, 'audioformat': "mp3",
+               'outtmpl': "audio/" + platform + '_' + videoID + '_' + '%(playlist_index)s' + ".mp3"}
     try:
         with youtube_dl.YoutubeDL(dw_opts) as ydl:
             ydl.download([url])
@@ -40,7 +41,8 @@ if __name__ == '__main__':
 
     if not os.path.exists("./audio"):
         os.makedirs("./audio")
-    if platform+"_"+videoID+".mp3" in os.listdir("./audio"):
+    print(id)
+    if platform + '_' + videoID + '_' + '1' + ".mp3" in os.listdir("./audio"):
         print ('This audio file has already been requested.')
     else:
         download(platform, videoID, url)
