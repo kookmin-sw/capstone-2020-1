@@ -72,8 +72,6 @@ def afreeca(platform, videoID): # 아프리카 채팅기록을 튜플로 추출�
                         map(lambda x: x.text, xmltree.findall('chat/m'))))
         i += 1
     array_to_file(platform, data, videoID)
-    #chatlist = count_chat_each_second(platform, videoID)
-    #visualization(chatlist)
     return data
 
 
@@ -102,8 +100,6 @@ def twitch(platform, videoID): # 트위치 채팅기록을 리스트로 추출�
 
         param = {"cursor": j["_next"]}
     array_to_file(platform, data, videoID)
-    #chatlist = count_chat_each_second(platform, videoID)
-    #visualization(chatlist)
     return data
 
 
@@ -197,8 +193,6 @@ def youtube(platform, videoID):
         except:
             break
     array_to_file(platform, data, videoID)
-    #chatlist = count_chat_each_second(platform, videoID)
-    #visualization(chatlist)
     return data
 
 

@@ -37,13 +37,7 @@ def sound_extract(platform, videoID, filetype="audio"):
         if(len(volumes) - i < 60 ):
             volumesPerMinute.append(max(volumes[i:len(volumes)]))
         volumesPerMinute.append(max(volumes[i:i+60]))    
-    # fig, ax1 = plt.subplots() # plot
-    # ax1.plot(np.linspace(0, len(volumes), len(volumes)), volumes, color = 'b')
-    # ax1.set_ylabel("Volume") # y 축
-    # ax1.set_xlabel("Second") # x 축
-    # plt.title("Volumes of each second") # 제목
-    # plt.show()
-    
+
     if(filetype == "video"):
         video.close()
     elif(filetype == "audio"):
