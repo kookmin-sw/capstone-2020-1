@@ -1,28 +1,39 @@
+import os
+import sys
 from logging.config import fileConfig
 
-from sqlalchemy import engine_from_config
+from alembic import context
+from sqlalchemy import create_engine
 from sqlalchemy import pool
 
-from alembic import context
+# 참고 : https://www.hides.kr/1045
+parent_dir = os.path.abspath(os.path.join(os.getcwd(), ".."))
+sys.path.append(parent_dir)
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
 config = context.config
+fileConfig(config.config_file_name)
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
 
 # Interpret the config file for Python logging.
 # This line sets up loggers basically.
 fileConfig(config.config_file_name)
+from run import db  # SQLAlchemy Base변수
+from api.models import user_info  # SQLAlchemy로 정의한 모델 파일
 
 # add your model's MetaData object here
 # for 'autogenerate' support
 # from myapp import mymodel
 # target_metadata = mymodel.Base.metadata
-target_metadata = None
+target_metadata = db.metadata
 
 # other values from the config, defined by the needs of env.py,
 # can be acquired:
 # my_important_option = config.get_main_option("my_important_option")
 # ... etc.
+
+from settings.settings import POSTGRESQL
 
 
 def run_migrations_offline():
@@ -39,7 +50,7 @@ def run_migrations_offline():
     """
     url = config.get_main_option("sqlalchemy.url")
     context.configure(
-        url=url,
+        url=POSTGRESQL,
         target_metadata=target_metadata,
         literal_binds=True,
         dialect_opts={"paramstyle": "named"},
@@ -56,9 +67,10 @@ def run_migrations_online():
     and associate a connection with the context.
 
     """
-    connectable = engine_from_config(
-        config.get_section(config.config_ini_section),
-        prefix="sqlalchemy.",
+    connectable = create_engine(
+        POSTGRESQL,
+        # config.get_section(config.config_ini_section),
+        # prefix="sqlalchemy.",
         poolclass=pool.NullPool,
     )
 
