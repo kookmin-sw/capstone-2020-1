@@ -13,7 +13,7 @@ MODE = os.environ.get('MODE')
 USER = 'postgres'  # username
 PASSWOLRD = 'root'  # postgresql pw
 DB_PORT = '5432'  # postgresql port
-NAME = 'test'  # db name
+NAME = 'yoba'  # db name
 POSTGRESQL = f'postgresql://{USER}:{PASSWOLRD}@{HOST_ADDR}:{DB_PORT}/{NAME}'  # postgresql uri
 
 # select operation mode
