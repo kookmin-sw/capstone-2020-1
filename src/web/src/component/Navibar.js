@@ -1,8 +1,9 @@
 import { AppBar, Grid, Typography } from "@material-ui/core";
-import React from "react";
+import React, { useState } from "react";
 import YobaLogo from "../yoba_logo.png";
 
-const NaviBar = () => {
+const NaviBar = (props) => {
+    console.log(props.email)
   return (
     <AppBar position="sticky" color="default">
       <Grid
@@ -12,7 +13,7 @@ const NaviBar = () => {
         justify="space-between"
         style={{ paddingTop: 10, paddingBottom: 10 }}
       >
-        <Grid xs={2}>
+        <Grid>
           <Typography
             variant="h6"
             style={{
@@ -25,13 +26,13 @@ const NaviBar = () => {
             YOBA
           </Typography>
         </Grid>
-        <Grid xs={8}>
+        <Grid>
           <img alt="logo" src={YobaLogo} height="80px" />
         </Grid>
-        <Grid xs={2}>
+        <Grid>
           <Grid container direction="row">
             <Typography
-              variant="h8"
+              variant="h6"
               style={{
                 textTransform: "none",
                 color: "black",
@@ -42,7 +43,7 @@ const NaviBar = () => {
               About
             </Typography>
             <Typography
-              variant="h8"
+              variant="h6"
               style={{
                 textTransform: "none",
                 color: "black",
@@ -50,7 +51,7 @@ const NaviBar = () => {
                 marginRight: 30,
               }}
             >
-              Sign In
+              {props.login ? props.email + "님 환영합니다." : "Log In"}
             </Typography>
           </Grid>
         </Grid>
