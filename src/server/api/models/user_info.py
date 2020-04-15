@@ -1,8 +1,8 @@
-from run import db
+from db import Database
 from sqlalchemy import Column, Integer, String, Unicode
 
 
-class Example(db.Model):
+class UserInfo(Database):
     __tablename__ = 'user_info'
 
     id = Column(Integer, primary_key=True, autoincrement=True)
