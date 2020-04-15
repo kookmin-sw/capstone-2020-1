@@ -19,23 +19,24 @@ function Copyright() {
 }
 
 const MainPage = () => {
-  
-
-
+  const [email, setEmail] = useState();
+  const [login, togleLogin] = useState(false);
+  console.log(email)
   return (
     <div>
       <Grid>
-        <Navibar />
+        <Navibar email={email} login={login}/>
       </Grid>
       <Grid>
         <Description />
       </Grid>
-      <Grid>
-        <Login />
+      {/* <Grid>
+        <Login setEmail={setEmail} togleLogin={togleLogin}/>
       </Grid>
       <Grid>
         <InputUrl></InputUrl>
-      </Grid>
+      </Grid> */}
+      {login?  <InputUrl></InputUrl>:<Login setEmail={setEmail} togleLogin={togleLogin}/>}
       <Box mt={8}>
         <Copyright />
       </Box>
