@@ -1,5 +1,6 @@
 from api.server import app as api_server
 from api.test import app as api_test
+from api.login import app as api_login
 from flask import Flask
 from flask_cors import CORS
 from settings.logger import after_request, error_handler
@@ -19,6 +20,7 @@ def create_wsgi():
     # app connections
     app.register_blueprint(api_server)
     app.register_blueprint(api_test)
+    app.register_blueprint(api_login)
 
     CORS(app)
     return app
