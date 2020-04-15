@@ -1,40 +1,37 @@
-import {
-  Grid,
-  Link,
-  Typography,
-  Box
- } from '@material-ui/core';
-import React, {useState} from 'react';
-import Navibar from '../component/Navibar';
-import Description from '../component/Description'
-import InputUrl from '../component/InputUrl'
-import Login from '../component/Login';
+import { Grid, Link, Typography, Box } from "@material-ui/core";
+import React, { useState } from "react";
+import Navibar from "../component/Navibar";
+import Description from "../component/Description";
+import InputUrl from "../component/InputUrl";
+import Login from "../component/Login";
 
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
+      {"Copyright © "}
       <Link color="inherit" href="https://material-ui.com/">
         Yoba
-      </Link>{' '}
+      </Link>{" "}
       {new Date().getFullYear()}
-      {'.'}
+      {"."}
     </Typography>
   );
 }
 
-const MainPage =()=> {
+const MainPage = () => {
+  
+
 
   return (
     <div>
       <Grid>
-        <Navibar/>
+        <Navibar />
       </Grid>
       <Grid>
-        <Description/>
+        <Description />
       </Grid>
       <Grid>
-        <Login/>
+        <Login />
       </Grid>
       <Grid>
         <InputUrl></InputUrl>
@@ -43,8 +40,7 @@ const MainPage =()=> {
         <Copyright />
       </Box>
     </div>
-  ) 
-}
-
+  );
+};
 
 export default MainPage;
