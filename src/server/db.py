@@ -1,11 +1,10 @@
 from settings.settings import POSTGRESQL
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, MetaData
 from sqlalchemy.orm import sessionmaker
 
 engine = create_engine(POSTGRESQL, connect_args={'connect_timeout': 10})
 Session = sessionmaker(bind=engine)
-
-import api.models.user_info
+metadata = MetaData()
 
 
 class Database:
