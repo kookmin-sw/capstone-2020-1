@@ -1,6 +1,7 @@
 import functools
 
 from flask import request
+from db import Database
 
 
 def api(f):
@@ -12,6 +13,7 @@ def api(f):
             data = request.form
         else:
             data = {}
-        return f(data, *args, **kwargs)
+        with Database() as db:
+            return f(data, db, *args, **kwargs)
 
     return deco
