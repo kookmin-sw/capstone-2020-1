@@ -1,5 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
+from konlpy.tag import Okt
+import operator
 
 
 def visualization(chatlist):
@@ -23,6 +25,30 @@ def print_point_hhmm(point):
         hours = minutes // 60
         minutes %= 60
         print("%02i:%02i" % (hours, minutes), point[i][1])
+
+
+def print_section_hhmmss(section):
+    i = 1
+    for key in section.keys():
+        print("{:<3}".format(i), end='\t')
+        print("{:<15}".format(key), end='\t')
+        j = 0
+        while (j < len(section[key])):
+            seconds = section[key][j][0]
+            hours = seconds // (60 * 60)
+            seconds %= (60 * 60)
+            minutes = seconds // 60
+            seconds %= 60
+            print("%02i:%02i:%02i" % (hours, minutes, seconds), end='-')
+            seconds = section[key][j][1]
+            hours = seconds // (60 * 60)
+            seconds %= (60 * 60)
+            minutes = seconds // 60
+            seconds %= 60
+            print("%02i:%02i:%02i" % (hours, minutes, seconds), end='\t')
+            j += 2
+        print()
+        i += 1
 
 
 def analyze1(data, comment=None):  # 초당 채팅 수 계산
@@ -154,3 +180,48 @@ def analyze1_sound(volume):
 
     print_point_hhmm(point)
     return point
+
+
+def find_high_frequency_words(data):
+    okt = Okt()
+    freq = {}
+    time = {}
+    for i in range(len(data)):
+        nouns = okt.nouns(data[i][2])
+        nouns = set(nouns)
+        for key in nouns:
+            if len(key) < 2:
+                continue
+            elif key in freq.keys():
+                freq[key] += 1
+                time[key].append(data[i][0])
+            else:
+                freq[key] = 1
+                time[key] = [data[i][0]]
+
+    sorted_freq = sorted(freq.items(), key=operator.itemgetter(1), reverse=True)
+
+    average = round(np.mean(np.array(list(zip(*sorted_freq))[1])), 0)
+    standard_deviation = round(np.std(np.array(list(zip(*sorted_freq))[1])), 0)
+
+    section = {}
+    for i in range(len(sorted_freq)):
+        if sorted_freq[i][1] < average+standard_deviation:
+            break
+        key = sorted_freq[i][0]
+        start_time = time[key][0]
+        count = 1
+        for j in range(1, len(time[key])):
+            if time[key][j] - time[key][j-1] > 15:
+                if count >= 10:
+                    end_time = time[key][j-1]
+                    if key in section.keys():
+                        section[key].append([start_time, end_time])
+                    else:
+                        section[key] = [[start_time, end_time]]
+                start_time = time[key][j]
+                count = 1
+            else:
+                count += 1
+    print_section_hhmmss(section)
+    return section
