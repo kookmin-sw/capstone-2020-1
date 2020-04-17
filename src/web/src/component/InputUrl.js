@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
@@ -7,7 +7,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import { Grid } from "@material-ui/core";
 
-const InputUrl = () => {
+const InputUrl = (props) => {
+  const [url, setUrl] = useState();
+
   return (
     <Grid>
       <Grid
@@ -27,11 +29,18 @@ const InputUrl = () => {
             type="url"
             id="url"
             fullWidth
+            onChange = {(e)=> {setUrl(e.target.value)}}
           />
         </Grid>
         <Grid>
-          <Button type="submit" variant="contained" color="secondary">
-            URL 입력 완료
+          <Button
+            variant="contained"
+            color="secondary"
+            onClick={() => {
+              props.toggleInput(true); props.setUrl(url);
+            }}
+          >
+            Input URL
           </Button>
         </Grid>
       </Grid>
