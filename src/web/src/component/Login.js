@@ -5,6 +5,7 @@ import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
+import SignUp from "./SignUp"
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -38,8 +39,8 @@ const Login = (props) => {
       <CssBaseline />
       <div className={classes.paper}>
         <Typography component="h1" variant="h5">
-          If you want using YOBA service <br />
-          Plz, Login
+          If you want to use YOBA service <br />
+          Please, Sign in
         </Typography>
         <form className={classes.form} noValidate>
           <TextField
@@ -78,8 +79,10 @@ const Login = (props) => {
             className={classes.submit}
             onClick={onClick}
           >
-            로그인
+            Sign In
           </Button>
+          First visiting? please, sign up.
+          <SignUp></SignUp>
         </form>
       </div>
     </Container>
