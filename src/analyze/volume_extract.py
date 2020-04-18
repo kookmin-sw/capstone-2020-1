@@ -8,13 +8,16 @@ from moviepy.editor import *
 
 # 여러 영상들과 비교해서 평준화 함수
 def global_normalize(audio, volumesPerMinute, avg_list): # 인자 : AudioFileClip으로 읽은 audio 데이터, sound_extract의 리턴값, 여러 영상들의 소리 평균값이 저장된 list
-    global_avg = np.mean(avg_list)
+    global_avg = np.mean(avg_list) # 여러 영상들 평균값
     
-    avg = np.mean(volumesPerMinute)
+    volumesPerMinute.sort(reverse=True) 
+    upper_volume = volumesPerMinute[0:int(len(volumesPerMinute)/3)] # 분 단위로 저장되어 있는 max값들 중 상위 1/3 추출 (작은 소리도 평균에 집계되면 소리가 너무 커질 수 있으므로)
     
-    audio = audio.volumex(global_avg / avg)
+    avg = np.mean(upper_volume) # 본 영상 평균값
     
-    audio.write_audiofile("global_tmp.wav")
+    audio = audio.volumex(global_avg / avg) # 평균값으로 맞춤
+    
+    audio.write_audiofile("global_tmp.wav") # file write
     
     return audio, avg
 
