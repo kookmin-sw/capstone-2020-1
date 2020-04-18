@@ -123,7 +123,7 @@ AfreecaTV 킹기훈의 채팅로그(http://vod.afreecatv.com/PLAYER/STATION/5377
     
 <br/>
 
-###IV. 정리
+### IV. 정리
 
 |형태소 분석기|장점|단점|
 |---|---|---|
@@ -134,6 +134,6 @@ AfreecaTV 킹기훈의 채팅로그(http://vod.afreecatv.com/PLAYER/STATION/5377
   
 <br/>
 
-###V. 결론
+### V. 결론
 
 매우 긴 실행시간이 소요되지 않고 띄어쓰기가 정확하지 않은 문장에서 명사를 추출하는 성능이 좋은 Okt 형태소 분서기가 채팅에서 많이 출연한 명사를 추출하는 기능을 구현하는데 사용하기 가장 적합하다.
