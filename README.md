@@ -52,7 +52,7 @@
 
 &nbsp;&nbsp;&nbsp;&#10004; &nbsp;&nbsp;&nbsp;&nbsp;**E-mail**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : tjdkskgnal61@gmail.com
 
-&nbsp;&nbsp;&nbsp;&#10004; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Role**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 오디오 분석, ML모델링, 백엔드, 데이터라벨링
+&nbsp;&nbsp;&nbsp;&#10004; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Role**&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 오디오 분석, ML모델 설계 및 학습, 데이터라벨링
 
 &nbsp;&nbsp;&nbsp;&#10004; **Description** : 키 큰 남자
 
