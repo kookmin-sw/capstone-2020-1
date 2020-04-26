@@ -1,7 +1,9 @@
-from flask import Blueprint
-from settings.utils import api
+from flask import Blueprint, jsonify
+from werkzeug.exceptions import NotFound, BadRequest
+
 from api.models.user_info import UserInfo
-from werkzeug.exceptions import NotFound, BadRequest, Conflict
+from settings.serialize import serialize
+from settings.utils import api
 
 app = Blueprint('login', __name__, url_prefix='/api')
 
@@ -13,7 +15,9 @@ def get_login(data, db):  # 회원정보 불러옴
         UserInfo.email == data['email'],
         UserInfo.pw == data['pw'],
     ).first()
-    return user_info.name
+    if not user_info:
+        raise NotFound
+    return jsonify(serialize(user_info))
 
 
 @app.route('/login', methods=['POST'])
