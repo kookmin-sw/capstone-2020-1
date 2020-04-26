@@ -7,23 +7,23 @@ app = Blueprint('test', __name__, url_prefix='/api')
 
 @app.route('/test', methods=['GET'])
 @api
-def get_test(data):
+def get_test(data, db):
     return data
 
 
 @app.route('/test', methods=['POST'])
 @api
-def post_test(data):
+def post_test(data, db):
     return data
 
 
 @app.route('/test', methods=['PUT'])
 @api
-def put_test(data):
+def put_test(data, db):
     return data
 
 
 @app.route('/test', methods=['DELETE'])
 @api
-def delete_test(data):
+def delete_test(data, db):
     return data
