@@ -26,5 +26,7 @@ elif MODE == 'DEV':  # mode - development
 elif MODE == 'RUN':  # mode - release
     HOST_ADDR = '0.0.0.0'
     DEBUG = False
+    PASSWOLRD = 'root2628!'
+    POSTGRESQL = f'postgresql://{USER}:{PASSWOLRD}@capstone.cebsh5dyebyf.ap-northeast-2.rds.amazonaws.com:{DB_PORT}/{NAME}'  # postgresql uri
 else:  # select not permission mode
     raise KeyError
