@@ -20,6 +20,8 @@ POSTGRESQL = f'postgresql://{USER}:{PASSWOLRD}@{HOST_ADDR}:{DB_PORT}/{NAME}'  # 
 if MODE == 'TEST' or sys.argv[0].endswith('test'):  # use only pytest
     HOST_ADDR = '127.0.0.1'
     DEBUG = False
+    POSTGRESQL = f'postgresql://{USER}:{PASSWOLRD}@{HOST_ADDR}:{DB_PORT}/yoba_test'  # postgresql uri
+
 elif MODE == 'DEV':  # mode - development
     HOST_ADDR = '127.0.0.1'
     DEBUG = True
