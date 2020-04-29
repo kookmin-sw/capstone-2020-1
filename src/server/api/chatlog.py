@@ -12,7 +12,7 @@ app = Blueprint('chatlog', __name__, url_prefix='/api')
 
 @app.route('/chatlog', methods=['GET'])
 @api
-def get_chatlog(data, DB):
+def get_chatlog(data, db):
     platform = data["platform"]
     videoid = data["videoid"]
     log = download(platform, videoid)
