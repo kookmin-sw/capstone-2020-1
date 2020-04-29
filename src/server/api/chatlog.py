@@ -1,3 +1,6 @@
+import sys
+sys.path.append('../')
+
 from flask import Blueprint, jsonify
 from settings.utils import api
 from download.chatlog import *
