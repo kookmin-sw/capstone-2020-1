@@ -1,4 +1,3 @@
-from flask_sqlalchemy import SQLAlchemy
 from gevent.pywsgi import WSGIServer
 
 from settings.settings import HOST_ADDR, SERVER_PORT, MODE
@@ -6,8 +5,6 @@ from settings.wsgi import create_wsgi
 
 app = create_wsgi()
 
-# manager
-db = SQLAlchemy(app)  # connect db
 if __name__ == '__main__':
     if MODE == 'DEV':
         app.run(host=HOST_ADDR, port=SERVER_PORT)
