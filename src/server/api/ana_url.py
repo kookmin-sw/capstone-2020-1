@@ -10,7 +10,7 @@ def split_url(url):
     if res.status != 200:
         return False
 
-    el = []
+    url_code = []
 
     # afree, twitch, youtu에서 오타나는 경우를 생각해서 수정필요
 
@@ -20,10 +20,12 @@ def split_url(url):
         videoID = url.split('/')
         videoID = videoID[-1]
 
+        # videoID길이가 8이 아니면 invalid
         if len(videoID) == 8:
-            if Non_url.non_url_afreeca(url) > 2:
-                platform = Platform(url)
-                el = [platform, videoID]
+            # 오류시 길이 2, 오류 안나면 2초과
+            if Non_url.non_url_afreeca(videoID) > 2:
+                platform = 'afreecatv'
+                url_code = [platform, videoID]
             else:
                 return False
         else:
@@ -34,17 +36,18 @@ def split_url(url):
         videoID = url.split('/')
         videoID = videoID[-1]
 
+        # videoID길이가 9가 아니면 invalid
         if len(videoID) == 9:
+            # 없는 영상이면 http 에러코드, 아니면 recorded
             if Non_url.non_url_twitch(videoID) != 'recorded':
                 return False
             else:
-                platform = Platform(url)
-                el = [platform, videoID]
+                platform = 'twitch'
+                url_code = [platform, videoID]
         else:
             return False
 
     elif "youtu" in url:
-        platform = "Youtube"
         if 'youtube' in url:
             url = re.search(r"https://www.youtube.com/watch\?v=[a-zA-Z0-_-]+", url).group()
             videoID = url.split('=')
@@ -53,10 +56,12 @@ def split_url(url):
             videoID = url.split('/')
         videoID = videoID[-1]
 
+        # videoID길이가 11이 아니면 invalid
         if len(videoID) == 11:
-            if Non_url.non_url_youtube(url) == 'OK':
-                platform = Platform(url)
-                el = [platform, videoID]
+            # 오류나면 Error, 아니면 OK
+            if Non_url.non_url_youtube(videoID) == 'OK':
+                platform = 'Youtube'
+                url_code = [platform, videoID]
             else:
                 return False
         else:
@@ -65,20 +70,9 @@ def split_url(url):
     else:
         return False
 
-    return el
+    return url_code
 
-def Platform(url):
-    headers = {
-        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.132 Safari/537.36'}
-    html = requests.get(url, headers = headers)
-    soup = BeautifulSoup(html.content, 'html.parser')
-    metatag = soup.find('meta', {'property': 'og:site_name'}).get('content')
-
-    # 입력된 url에서 platform 확인
-    metatag = metatag.lower()
-
-    return metatag
-
-#url = input("url입력:")
-#t = split_url(url)
-#print(t)
+def main():
+    url = input("url입력:")
+    result = split_url(url)
+    return result
