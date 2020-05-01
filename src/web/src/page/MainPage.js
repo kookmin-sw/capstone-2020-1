@@ -4,6 +4,7 @@ import Navibar from "../component/Navibar";
 import Description from "../component/Description";
 import InputUrl from "../component/InputUrl";
 import Login from "../component/Login";
+import Result from "../component/Result";
 
 function Copyright() {
   return (
@@ -21,11 +22,14 @@ function Copyright() {
 const MainPage = () => {
   const [email, setEmail] = useState();
   const [login, togleLogin] = useState(false);
-  console.log(email)
+  const [input, toggleInput] = useState(false);
+  const [url, setUrl] = useState();
+
+  console.log(email);
   return (
     <div>
       <Grid>
-        <Navibar email={email} login={login}/>
+        <Navibar email={email} login={login} />
       </Grid>
       <Grid>
         <Description />
@@ -36,7 +40,13 @@ const MainPage = () => {
       <Grid>
         <InputUrl></InputUrl>
       </Grid> */}
-      {login?  <InputUrl></InputUrl>:<Login setEmail={setEmail} togleLogin={togleLogin}/>}
+      {login ? (
+        <InputUrl toggleInput={toggleInput} setUrl={setUrl}></InputUrl>
+      ) : (
+        <Login setEmail={setEmail} togleLogin={togleLogin} />
+      )}
+
+      {input ? <Result url={url}></Result> : <></>}
       <Box mt={8}>
         <Copyright />
       </Box>
