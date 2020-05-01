@@ -30,3 +30,5 @@ TypeQuery==0.1.5
 wcwidth==0.1.9
 Werkzeug==1.0.1
 zipp==3.1.0
+moviepy==1.0.0
+numpy==1.18.3
