@@ -12,7 +12,8 @@ def non_url_twitch(videoID):
     j = json.loads(response.text)
     return j['status']
 
-def non_url_afreeca(url):
+def non_url_afreeca(videoID):
+    url = 'http://vod.afreecatv.com/PLAYER/STATION/' + videoID
     headers = {
         'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.132 Safari/537.36'}
     html = requests.get(url, headers = headers)
@@ -23,7 +24,8 @@ def non_url_afreeca(url):
 
     return len_soup
 
-def non_url_youtube(url):
+def non_url_youtube(videoID):
+    url = "https://www.youtube.com/watch\?v=" + videoID
     dict_str = ""
 
     headers = {
@@ -49,7 +51,7 @@ def non_url_youtube(url):
 
     # 사전 형식으로 변환
     dics = literal_eval(dict_str)
-    dics2 = dics["playabilityStatus"]["status"]
+    new_dics = dics["playabilityStatus"]["status"]
 
     # 오류나면 Error, 아니면 OK
-    return dics2
+    return new_dics
