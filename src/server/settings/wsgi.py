@@ -1,6 +1,8 @@
 from api.server import app as api_server
 from api.test import app as api_test
 from api.login import app as api_login
+from api.chatlog import app as api_chatlog
+from api.SNDnormalize import app as api_sndnormalize
 from flask import Flask
 from flask_cors import CORS
 from settings.logger import after_request, error_handler
@@ -21,6 +23,8 @@ def create_wsgi():
     app.register_blueprint(api_server)
     app.register_blueprint(api_test)
     app.register_blueprint(api_login)
+    app.register_blueprint(api_chatlog)
+    app.register_blueprint(api_sndnormalize)
 
     CORS(app)
     return app
