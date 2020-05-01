@@ -4,3 +4,5 @@ __pycache__
 *.log
 README
 chatlog/
+audio/
+local_tmp.wav
