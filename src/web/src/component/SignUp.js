@@ -34,6 +34,7 @@ const SignUp = () => {
   const [check, setCheck] = useState();
   const [name, setName] = useState();
   const [age, setAge] = useState();
+  const [success, setSuccess] = useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -41,6 +42,15 @@ const SignUp = () => {
 
   const handleClose = () => {
     setOpen(false);
+  };
+
+  const closeAlert = () => {
+    if (success) {
+      setOpen(false);
+      setAlertOpen(false);
+    } else {
+      setAlertOpen(false);
+    }
   };
 
   const singUp = () => {
@@ -54,7 +64,33 @@ const SignUp = () => {
       setAlertMessage("wrong age");
       setAlertOpen(true);
     } else {
-      console.log("complete sign up");
+      try {
+        let frd = new FormData();
+        frd.append("email", email);
+        frd.append("pw", password);
+        frd.append("name", name);
+        frd.append("age", age);
+        axios
+          .post("http://13.209.112.92:8000/api/login", frd, {
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          })
+          .then((response) => {
+            if (response.status === 200) {
+              setAlertMessage("success");
+              setSuccess(true);
+              setAlertOpen(true);
+            }
+            return true;
+          })
+          .catch(function (error) {
+            if (error.response.status === 409) {
+              setAlertMessage("You can't use this Email");
+              setAlertOpen(true);
+            }
+          });
+      } catch (e) {
+        console.log(e.response.status);
+      }
     }
   };
 
@@ -150,23 +186,23 @@ const SignUp = () => {
       </Dialog>
       {alertOpen ? (
         <Dialog
-          open={open}
-          onClose={handleClose}
+          open={alertOpen}
+          onClose={() => {
+            setAlertOpen(false);
+          }}
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
         >
-          <DialogTitle id="alert-dialog-title">{"Check your info"}</DialogTitle>
+          <DialogTitle id="alert-dialog-title">
+            {"Check your sing up info"}
+          </DialogTitle>
           <DialogContent>
             <DialogContentText id="alert-dialog-description">
               {alertMessage}
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button
-              onClick={() => setAlertOpen(false)}
-              color="primary"
-              autoFocus
-            >
+            <Button onClick={closeAlert} color="primary" autoFocus>
               Check
             </Button>
           </DialogActions>
