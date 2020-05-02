@@ -25,7 +25,8 @@ def non_url_afreeca(videoID):
     return len_soup
 
 def non_url_youtube(videoID):
-    url = "https://www.youtube.com/watch\?v=" + videoID
+    url = "https://www.youtube.com/watch?v=" + videoID
+    print(url)
     dict_str = ""
 
     headers = {

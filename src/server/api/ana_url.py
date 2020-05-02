@@ -2,7 +2,10 @@ import urllib.request
 import re
 import requests
 from bs4 import BeautifulSoup
-from . import Non_url
+from api import Non_url
+from flask import Blueprint, jsonify
+from werkzeug.exceptions import BadRequest
+from settings.utils import api
 
 def split_url(url):
     res = urllib.request.urlopen(url)
@@ -71,8 +74,23 @@ def split_url(url):
         return False
 
     return url_code
-
+'''
 def main():
     url = input("url입력:")
     result = split_url(url)
     return result
+'''
+
+app = Blueprint('analysis_url', __name__, url_prefix='/api')
+
+
+@app.route('/analysis_url', methods=['GET'])
+@api
+def get_analysis_url(data, db):
+    req_list = ['url']
+    for i in req_list:  # 필수 요소 들어있는지 검사
+        if i not in data:
+            raise BadRequest
+    url = data['url']
+    result = split_url(url)
+    return jsonify({'result':result})
