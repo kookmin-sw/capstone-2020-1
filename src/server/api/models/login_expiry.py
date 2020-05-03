@@ -13,7 +13,7 @@ class LoginExpiry(Base):
     id = Column(Integer, primary_key=True, autoincrement=True)
     uuid = Column(UUIDType, primary_key=True, default=uuid.uuid4, nullable=False)
     email = Column(String, nullable=False, unique=False)
-    expiry = Column(DateTime, default=datetime.datetime.utcnow)
+    expiry = Column(DateTime, default=datetime.datetime.now)
 
     __table_args__ = (
         UniqueConstraint('uuid', 'email'),
