@@ -3,8 +3,8 @@ import datetime
 from flask import Blueprint, jsonify
 from werkzeug.exceptions import NotFound, BadRequest, Unauthorized
 
-from api.models.login_expiry import LoginExpiry
-from api.models.user_info import UserInfo
+from models.login_expiry import LoginExpiry
+from models.user_info import UserInfo
 from settings.serialize import serialize
 from settings.utils import api
 
