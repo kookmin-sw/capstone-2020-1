@@ -20,8 +20,6 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
 # This line sets up loggers basically.
 fileConfig(config.config_file_name)
 from db import metadata
-from api.models import user_info  # SQLAlchemy로 정의한 모델 파일
-from api.models import login_expiry
 
 # add your model's MetaData object here
 # for 'autogenerate' support
