@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify
 from werkzeug.exceptions import BadRequest, Conflict
 
-from api.models.user_info import UserInfo
+from models.user_info import UserInfo
 from settings.serialize import serialize
 from settings.utils import api
 
