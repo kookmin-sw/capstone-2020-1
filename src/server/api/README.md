@@ -91,3 +91,24 @@ ping
 400 요청 형식이 맞지 않음
 404 email or pw 오류. 검색결과가 존재하지 않음.
 ```
+### sound normalize
+[GET] /api/SNDnormalize
+소리 평준화 요청
+
+요청
+```
+{
+    "platform": "Twitch",
+    "videoid": 562644795,
+    "url": "https://www.twitch.tv/videos/562644795https://www.twitch.tv/videos/562644795"
+}
+```
+응답
+```
+{
+    "average":~.~~~
+    local_tmp.wav (server 폴더에 생성)
+}
+200 ok
+400 요청 형식이 맞지 않음
+```
