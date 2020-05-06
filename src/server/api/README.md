@@ -135,3 +135,21 @@ ping
 200 ok
 400 요청 형식이 맞지 않음
 ```
+### URL Validation
+[GET] /api/ana_url  
+영상정보를 얻어올 수 있는 URL인지 확인
+
+요청
+```
+{
+    "url" : "https://www.youtube.com/watch?v=N73yXoFzcLk"
+}
+```
+응답
+```
+{
+    "Platfrom, VideoID " : ['Youtube', 'N73yXoFzcLk']
+}
+200 ok
+400 요청 형식이 맞지 않음
+```
