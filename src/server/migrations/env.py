@@ -20,6 +20,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
 # This line sets up loggers basically.
 fileConfig(config.config_file_name)
 from db import metadata
+from models import login_expiry, user_info, file
 
 # add your model's MetaData object here
 # for 'autogenerate' support
