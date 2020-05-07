@@ -135,3 +135,60 @@ ping
 200 ok
 400 요청 형식이 맞지 않음
 ```
+### URL Validation
+[GET] /api/ana_url  
+영상정보를 얻어올 수 있는 URL인지 확인
+
+요청
+```
+{
+    "url" : "https://www.youtube.com/watch?v=N73yXoFzcLk"
+}
+```
+응답
+```
+{
+    "Platfrom, VideoID " : ['Youtube', 'N73yXoFzcLk']
+}
+200 ok
+400 요청 형식이 맞지 않음
+```
+### file upload and download
+[POST] api/upload_wav  
+데이터베이스에 파일 업로드(form-data)
+
+요청
+```
+{
+    "name": "sample.mp3"
+    "url": "http://www.sample.sample"(영상 url)
+    "file": sample.mp3
+}
+```
+응답
+```
+{
+    "result": "success"
+}
+200 ok
+400 요청 형식이 맞지 않음
+409 이미 존재하는 url
+```
+[GET] /api/download_wav  
+오디오파일 다운로드
+
+요청
+```
+{
+    "url": "http://www.sample.sample"
+}
+```
+응답
+```
+{
+    file 
+}
+200 ok
+400 요청 형식이 맞지 않음
+404 해당 url과 연관된 파일이 없음
+```
