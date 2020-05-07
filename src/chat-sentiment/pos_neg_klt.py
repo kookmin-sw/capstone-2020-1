@@ -47,15 +47,15 @@ else:
         with open('temp.txt', 'wt', encoding='euc-kr') as f:
             f.write(row[0])
         temp = []
-        temp = os.popen('kma.exe -sw1i+p temp.txt').read().replace('> + (', '>\n(').replace('\t', '').split('\n')
-        train_docs += [(temp, row[1])]
+        temp = os.popen('kma.exe -sw1i+p temp.txt').read().replace('> + (', '>\n(').replace('\t', '').replace(') (', ')\n(').split('\n')
+        train_docs += [(temp[0:-1], row[1])]
     test_docs = []
     for row in test_data:
         with open('temp.txt', 'wt', encoding='cp949') as f:
             f.write(row[0])
         temp = []
-        temp = os.popen('kma.exe -sw1i+p temp.txt').read().replace('> + (', '>\n(').replace('\t', '').split('\n')
-        test_docs += [(temp, row[1])]
+        temp = os.popen('kma.exe -sw1i+p temp.txt').read().replace('> + (', '>\n(').replace('\t', '').replace(') (', ')\n(').split('\n')
+        test_docs += [(temp[0:-1], row[1])]
     os.remove('temp.txt')
     # JSON 파일로 저장
 
@@ -109,7 +109,8 @@ else:
 def predict_pos_neg(review):
     with open('temp.txt', 'w', encoding='cp949') as f:
         f.write(review)
-    token = os.popen('kma.exe -sw1i+p temp.txt').read().replace('> + (', '>\n(').replace('\t', '').split('\n')
+    token = os.popen('kma.exe -sw1i+p temp.txt').read().replace('> + (', '>\n(').replace('\t', '').replace(') (', ')\n(').split('\n')
+    token = token[0:-1]
     os.remove('temp.txt')
     tf = term_frequency(token)
     data = np.expand_dims(np.asarray(tf).astype('float32'), axis=0)
@@ -120,11 +121,11 @@ def predict_pos_neg(review):
         else:
             f.write("[{}]는 부정\n".format(review))
 
-print('Real data inference')
+# print('Real data inference')
 
-start = time.time()
-with open(chatlogFolder+chatlogFileName, 'r', encoding='cp949') as f:
-    chatlog = [line.split('\t') for line in f.read().splitlines()]
-for c in chatlog:
-    predict_pos_neg(c[2])
-print("소요시간: ", time.time()-start)
+# start = time.time()
+# with open(chatlogFolder+chatlogFileName, 'r', encoding='cp949') as f:
+#     chatlog = [line.split('\t') for line in f.read().splitlines()]
+# for c in chatlog:
+#     predict_pos_neg(c[2])
+# print("소요시간: ", time.time()-start)
