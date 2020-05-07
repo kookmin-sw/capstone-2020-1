@@ -31,23 +31,14 @@ def read_data(filename, flag=False):
 path = './'
 train_data = read_data(path + 'train.txt', True)
 train_data += read_data(path + 'chat_train.txt')
-for i in train_data:
-    if len(i) != 2:
-        print(i)
 test_data = read_data(path + 'chat_test.txt')
 
 print('Preprocessing')
 
 # SPM Tokenizer
 templates= '--input={} \
---pad_id={} \
---bos_id={} \
---eos_id={} \
---unk_id={} \
 --model_prefix={} \
---vocab_size={} \
---character_coverage={} \
---model_type={}'
+--vocab_size={}'
 spm_train=''
 for row in train_data:
     spm_train += row[0]+'\n'
@@ -55,24 +46,13 @@ with open('./spm_train.txt', 'w', encoding='utf-8') as f:
     f.write(spm_train)
 if not os.path.isfile('spm_tokenizer.model'):
     train_input_file = "./spm_train.txt"
-    pad_id=0  #<pad> token을 0으로 설정
     vocab_size = 10000 # vocab 사이즈
     prefix = 'spm_tokenizer' # 저장될 tokenizer 모델에 붙는 이름
-    bos_id=1 #<start> token을 1으로 설정
-    eos_id=2 #<end> token을 2으로 설정
-    unk_id=3 #<unknown> token을 3으로 설정
-    character_coverage = 1.0 # to reduce character set 
-    model_type ='word' # Choose from unigram (default), bpe, char, or word
+
 
     cmd = templates.format(train_input_file,
-                    pad_id,
-                    bos_id,
-                    eos_id,
-                    unk_id,
                     prefix,
-                    vocab_size,
-                    character_coverage,
-                    model_type)
+                    vocab_size,)
 
     spm.SentencePieceTrainer.Train(cmd)
 
