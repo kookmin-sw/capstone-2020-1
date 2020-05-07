@@ -6,8 +6,8 @@ def test_get_test(client):
     res = client.get('/api/SNDnormalize', query_string=data)
     assert res.status_code == 400
 
-    data = {"platform": "Twitch",
-            "videoid": 562644795,
-            "url": "https://www.twitch.tv/videos/562644795https://www.twitch.tv/videos/562644795"}
+    data = {"platform": "youtube",
+            "videoid": 0,
+            "url": "https://youtu.be/rOFRZ-zBAbs"}
     res = client.get('/api/SNDnormalize', query_string=data)
     assert res.status_code == 200
