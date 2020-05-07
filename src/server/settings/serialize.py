@@ -1,7 +1,7 @@
 from typequery import GenericMethod
 
-from api.models.login_expiry import LoginExpiry
-from api.models.user_info import UserInfo
+from models.login_expiry import LoginExpiry
+from models.user_info import UserInfo
 
 serialize = GenericMethod('serialize')
 
