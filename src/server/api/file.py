@@ -16,7 +16,7 @@ def post_upload_file(data, db):
     for i in req_list:  # 필수 요소 들어있는지 검사
         if i not in data:
             raise BadRequest
-    if 'file' in request.files:  # 파일 존재하는지 검사
+    if 'file' not in request.files:  # 파일 존재하는지 검사
         raise BadRequest
 
     query = db.query(File).filter(
