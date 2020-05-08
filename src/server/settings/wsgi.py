@@ -7,6 +7,7 @@ from api.SNDnormalize import app as api_sndnormalize
 from api.account import app as api_account
 from api.ana_url import app as api_analysis
 from api.chatlog import app as api_chatlog
+from api.file import app as api_file
 from api.login import app as api_login
 from api.server import app as api_server
 from api.test import app as api_test
@@ -32,6 +33,7 @@ def create_wsgi():
     app.register_blueprint(api_analysis)
     app.register_blueprint(api_account)
     app.register_blueprint(api_predict)
+    app.register_blueprint(api_file)
 
     CORS(app)
     return app
