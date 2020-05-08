@@ -53,11 +53,51 @@ const SignUp = () => {
     }
   };
 
+  // const singUp = () => {
+  //   if (!checkEmail(email)) {
+  //     setAlertMessage("wrong email");
+  //     setAlertOpen(true);
+  //   } else if (password !== check && password !== undefined) {
+  //     setAlertMessage("wrong checkPassword");
+  //     setAlertOpen(true);
+  //   } else if (isNaN(age)) {
+  //     setAlertMessage("wrong age");
+  //     setAlertOpen(true);
+  //   } else {
+  //     try {
+  //       let frd = new FormData();
+  //       frd.append("email", email);
+  //       frd.append("pw", password);
+  //       frd.append("name", name);
+  //       frd.append("age", age);
+  //       axios
+  //         .post("http://13.209.112.92:8000/api/signup", frd, {
+  //           headers: { "Content-Type": "application/x-www-form-urlencoded" },
+  //         })
+  //         .then((response) => {
+  //           if (response.status === 200) {
+  //             setAlertMessage("success");
+  //             setSuccess(true);
+  //             setAlertOpen(true);
+  //           }
+  //           return true;
+  //         })
+  //         .catch(function (error) {
+  //           if (error.response.status === 409) {
+  //             setAlertMessage("You can't use this Email");
+  //             setAlertOpen(true);
+  //           }
+  //         });
+  //     } catch (e) {
+  //       console.log(e.response.status);
+  //     }
+  //   }
+  // };
   const singUp = () => {
     if (!checkEmail(email)) {
       setAlertMessage("wrong email");
       setAlertOpen(true);
-    } else if (password !== check) {
+    } else if (password !== check && password !== undefined) {
       setAlertMessage("wrong checkPassword");
       setAlertOpen(true);
     } else if (isNaN(age)) {
@@ -71,7 +111,7 @@ const SignUp = () => {
         frd.append("name", name);
         frd.append("age", age);
         axios
-          .post("http://13.209.112.92:8000/api/login", frd, {
+          .post("http://localhost:8000/api/signup", frd, {
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
           })
           .then((response) => {
