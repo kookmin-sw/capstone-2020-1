@@ -1,0 +1,8 @@
+vocab_size = 15000, model_type = unigram
+	=> 82%
+
+vocab_size = 10000, model_type = word
+	=> 86%
+
+Okt
+	=> 71%
