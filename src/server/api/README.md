@@ -98,9 +98,7 @@ ping
 요청
 ```
 {
-    "platform": "Twitch",
-    "videoid": 562644795,
-    "url": "https://www.twitch.tv/videos/562644795https://www.twitch.tv/videos/562644795"
+    "url": "https://www.youtube.com/watch?v=91crnvnV8f4"
 }
 ```
 응답
