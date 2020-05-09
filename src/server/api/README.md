@@ -136,7 +136,7 @@ ping
 400 요청 형식이 맞지 않음
 ```
 ### URL Validation
-[GET] /api/analysis_url 
+[GET] /api/analysis_url
 영상정보를 얻어올 수 있는 URL인지 확인
 
 요청
