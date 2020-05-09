@@ -105,10 +105,11 @@ ping
 ```
 {
     "average":~.~~~
-    local_tmp.wav (server 폴더에 생성)
+    platform_videoID.wav (audio/normalizeAudio 폴더에 생성)
 }
 200 ok
 400 요청 형식이 맞지 않음
+406 유효하지 않은 URL
 ```
 ### Find the top 10 keywords
 [GET] /api/chatlog  
