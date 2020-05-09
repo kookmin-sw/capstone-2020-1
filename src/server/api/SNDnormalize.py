@@ -38,10 +38,9 @@ def get_sound_normalize(data, db):
 
     if isValid == True:
         download(platform, videoid, url)
-        audio = AudioFileClip(f"audio/{platform}_{videoid}_NA.mp3")
-        volumesPerMinute = sound_extract(platform, videoid)
 
-        audio_arr, avg = local_normalize(audio, volumesPerMinute)
+        volumesPerMinute = sound_extract(platform, videoid)
+        audio_arr, avg = local_normalize(platform, videoid, volumesPerMinute)
 
         # arr = audio_arr.to_soundarray()
 
