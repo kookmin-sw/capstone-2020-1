@@ -15,15 +15,14 @@ app = Blueprint('SNDnormalize', __name__, url_prefix='/api')
 @app.route('/SNDnormalize', methods=['GET'])
 @api
 def get_sound_normalize(data, db):
-    req_list = ['platform', 'videoid', 'url']
+    req_list = ['url']
     for i in req_list:  # 필수 요소 들어있는지 검사
         if i not in data:
             raise BadRequest
 
-    platform = data['platform']
-    videoid = data['videoid']
     url = data['url']
 
+    platform, videoid = extractInfoFromURL(url)
     download(platform, videoid, url)
     audio = AudioFileClip(f"audio/{platform}_{videoid}_NA.mp3")
     volumesPerMinute = sound_extract(platform, videoid)
