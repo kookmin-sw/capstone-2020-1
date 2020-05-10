@@ -125,10 +125,10 @@ ping
 응답
 ```
 {
-    "keyword": [["keyword1", [[start_time1, end_time1], ... , [stat_timeN, end_timeN]]], 
-                ["keyword2", [[start_time1, end_time1], ... , [stat_timeM, end_timeM]]],
+    "keyword": [["keyword1", keyword1_freq, [[start_time1, end_time1], ... , [stat_timeN, end_timeN]]], 
+                ["keyword2", keyword2_freq, [[start_time1, end_time1], ... , [stat_timeM, end_timeM]]],
                 ...
-                ["keyword10", [[start_time1, end_time1], ... , [stat_timeK, end_timeK]]],]
+                ["keyword10", keyword10_freq, [[start_time1, end_time1], ... , [stat_timeK, end_timeK]]]]
     AfreecaTV_53773494.txt (chatlog 폴더에 생성)
 }
 200 ok
