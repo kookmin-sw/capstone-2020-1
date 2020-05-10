@@ -98,19 +98,18 @@ ping
 요청
 ```
 {
-    "platform": "Twitch",
-    "videoid": 562644795,
-    "url": "https://www.twitch.tv/videos/562644795https://www.twitch.tv/videos/562644795"
+    "url": "https://www.youtube.com/watch?v=91crnvnV8f4"
 }
 ```
 응답
 ```
 {
     "average":~.~~~
-    local_tmp.wav (server 폴더에 생성)
+    platform_videoID.wav (audio/normalizeAudio 폴더에 생성)
 }
 200 ok
 400 요청 형식이 맞지 않음
+406 유효하지 않은 URL
 ```
 ### Find the top 10 keywords
 [GET] /api/chatlog  
@@ -191,4 +190,30 @@ ping
 200 ok
 400 요청 형식이 맞지 않음
 404 해당 url과 연관된 파일이 없음
+```
+### Predict
+채팅 긍정부정 분류
+
+요청
+```
+Query string: second=[1]&second=[2]&second=[3]&content=content1&content=content2&content=content3
+```
+응답
+```
+{
+  "predict": {
+    "neg": [
+      1, 
+      1, 
+      0
+    ], 
+    "pos": [
+      0, 
+      0, 
+      1
+    ]
+  }
+}
+200 OK
+400 요청 형식이 맞지 않음
 ```
