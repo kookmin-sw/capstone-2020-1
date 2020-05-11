@@ -16,7 +16,8 @@ app = Blueprint('predict', __name__, url_prefix='/api')
 
 @app.route('/predict', methods=['GET'])
 @api
-def get_predict(url):
+def get_predict(data):
+    url = data['url']
     platform, videoID = split_url(url)
     download(platform, videoID)
     with open('../../download/chatlog/{}_{}.txt'.format(platform, videoID)) as f:
