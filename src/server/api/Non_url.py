@@ -22,11 +22,18 @@ def non_url_afreeca(videoID):
     # 오류시 길이 2, 오류 안나면 2초과
     len_soup = len(soup)
 
-    return len_soup
+    # 오류, 다시보기 채팅이 없다면 False, 아니면 비디오 아이디와 플랫폼 반환
+    if len_soup > 2:
+        find_body = soup.find_all("body", class_='replay')
+        if len(find_body) == 0:
+            return False
+        else:
+            return ['afreecatv', videoID]
+    else:
+        return False
 
 def non_url_youtube(videoID):
     url = "https://www.youtube.com/watch?v=" + videoID
-    print(url)
     dict_str = ""
 
     headers = {
@@ -54,5 +61,12 @@ def non_url_youtube(videoID):
     dics = literal_eval(dict_str)
     new_dics = dics["playabilityStatus"]["status"]
 
-    # 오류나면 Error, 아니면 OK
-    return new_dics
+    # 오류, 다시보기 채팅이 없다면 False, 아니면 비디오 아이디와 플랫폼 반환
+    if new_dics == 'Error':
+        return False
+    else:
+        is_live = dics['videoDetails']['isLiveContent']
+        if is_live != True:
+            return False
+        else:
+            return ['Youtube', videoID]

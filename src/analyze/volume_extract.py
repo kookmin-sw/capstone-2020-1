@@ -7,9 +7,22 @@ from moviepy.audio.fx.all import *
 from moviepy.editor import *
 
 
+def load_audio(platform, videoID):
+    files = []
+    for i in os.listdir('./audio/'):
+        if platform + '_' + videoID in i:
+            files.append(i)
+    audio_arr = []
+    for filename in files:
+        audio_arr.append(AudioFileClip("audio/" + filename))
+    return concatenate_audioclips(audio_arr)
+
+
 # 여러 영상들과 비교해서 평준화 함수
-def global_normalize(audio, volumesPerMinute,
+def global_normalize(platform, videoID, volumesPerMinute,
                      avg_list):  # 인자 : AudioFileClip으로 읽은 audio 데이터, sound_extract의 리턴값, 여러 영상들의 소리 평균값이 저장된 list
+    audio = load_audio(platform, videoID)
+
     global_avg = np.mean(avg_list)  # 여러 영상들 평균값
 
     volumesPerMinute.sort(reverse=True)
@@ -20,13 +33,20 @@ def global_normalize(audio, volumesPerMinute,
 
     audio = audio.volumex(global_avg / avg)  # 평균값으로 맞춤
 
-    audio.write_audiofile("global_tmp.wav")  # file write
+    path = "./audio/normalizeAudio/"
+
+    if not os.path.exists(path):
+        os.makedirs(path)
+
+    audio.write_audiofile(path + f"{platform}_{videoID}.wav")  # file write
 
     return audio, avg
 
 
 # 영상 내 소리 평준화 함수
-def local_normalize(audio, volumesPerMinute):  # 인자 : AudioFileClip으로 읽은 audio 데이터, sound_extract의 리턴값
+def local_normalize(platform, videoID, volumesPerMinute):  # 인자 : AudioFileClip으로 읽은 audio 데이터, sound_extract의 리턴값
+    audio = load_audio(platform, videoID)
+
     fragment = []  # 1분 단위로 분할
     for i in range(0, int(audio.duration), 60):
         if int(audio.duration) - i < 60:
@@ -42,13 +62,17 @@ def local_normalize(audio, volumesPerMinute):  # 인자 : AudioFileClip으로 �
 
     merged = concatenate_audioclips(fragment)
 
-    merged.write_audiofile("local_tmp.wav")  # file write
+    path = "./audio/normalizeAudio/"
+
+    if not os.path.exists(path):
+        os.makedirs(path)
+
+    merged.write_audiofile(path + f"{platform}_{videoID}.wav")  # file write
 
     return merged, avg
 
 
 def sound_extract(platform, videoID, filetype="audio"):
-    start = time.time()
     if filetype == "video":
         files = []
         for i in os.listdir('./video/'):
@@ -60,14 +84,7 @@ def sound_extract(platform, videoID, filetype="audio"):
         video = concatenate_videoclips(video_arr)
         audio = video.audio
     elif filetype == "audio":
-        files = []
-        for i in os.listdir('./audio/'):
-            if platform + '_' + videoID in i:
-                files.append(i)
-        audio_arr = []
-        for filename in files:
-            audio_arr.append(AudioFileClip("audio/" + filename))
-        audio = concatenate_audioclips(audio_arr)
+        audio = load_audio(platform, videoID)
 
     sr = audio.fps  # 샘플링 레이트
     cut = lambda x: audio.subclip(x, x + 1).to_soundarray(fps=sr)  # time series
