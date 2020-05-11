@@ -4,11 +4,11 @@ sys.path.append('../')
 
 from flask import Blueprint, jsonify, request
 from settings.utils import api
-from chatsentiment.pos_neg_spm import *
+from chatsentiment.pos_neg_spm import predict_pos_neg
 from werkzeug.exceptions import BadRequest
 from urllib.parse import urlencode
 from ana_url import split_url
-from download.chatlog import *
+from download.chatlog import download
 import math
 
 app = Blueprint('predict', __name__, url_prefix='/api')
@@ -31,12 +31,8 @@ def get_predict(url):
     if len(second) < 1 or len(content) < 1:
         raise BadRequest
     
-    print(second)
-    print(content)
     endSecond = int(second[-1][1:-1])
-    print(endSecond)
     predict = predict_pos_neg(content)
-    print(predict)
     if endSecond >= 100:
         x = math.ceil(endSecond/100)
     else:
