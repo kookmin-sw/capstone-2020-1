@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 from konlpy.tag import Okt
 import operator
 
+okt = Okt()
 
 def visualization(chatlist):
     plt.bar(range(len(chatlist)), chatlist)
@@ -181,7 +182,6 @@ def analyze1_sound(volume):
 
 
 def find_high_frequency_words(data, n=10.0, m=10.0):
-    okt = Okt()
     freq = {}
     time = {}
     for i in range(len(data)):
@@ -199,12 +199,9 @@ def find_high_frequency_words(data, n=10.0, m=10.0):
 
     sorted_freq = sorted(freq.items(), key=operator.itemgetter(1), reverse=True)
 
-    average = np.mean(np.array(list(zip(*sorted_freq))[1]))
-    standard_deviation = np.std(np.array(list(zip(*sorted_freq))[1]))
-
     section = {}
     for i in range(len(sorted_freq)):
-        if sorted_freq[i][1] < average+standard_deviation:
+        if len(section) == 10 or sorted_freq[i][1] < m:
             break
         key = sorted_freq[i][0]
         start_time = time[key][0]
@@ -223,14 +220,18 @@ def find_high_frequency_words(data, n=10.0, m=10.0):
                 count += 1
 
     top_10 = []
-    if len(section) >= 10:
+    if len(section) == 10:
         i = 0
         for key in section.keys():
             if i == 10:
                 break
             else:
-                top_10.append([key, section[key]])
+                top_10.append([key, freq[key], section[key]])
                 i += 1
+        print_section_hhmmss(top_10)
+    elif m < 5:
+        for i in range(10):
+            top_10.append([sorted_freq[i][0], sorted_freq[i][1], []])
         print_section_hhmmss(top_10)
     else:
         top_10 = find_high_frequency_words(data, n+1.0, m-0.5)
