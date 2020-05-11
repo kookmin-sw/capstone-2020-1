@@ -3,6 +3,10 @@ import re
 import requests
 from bs4 import BeautifulSoup
 from TP2.back_api import Non_url
+from api import Non_url
+from flask import Blueprint, jsonify
+from werkzeug.exceptions import BadRequest
+from settings.utils import api
 
 def split_url(url):
     try:
@@ -70,9 +74,24 @@ def split_url(url):
     except ValueError:
         return False
 
+'''
 def main():
     url = input("url입력:")
     result = split_url(url)
-    print(result)
+    return result
 
-main()
+'''
+
+app = Blueprint('analysis_url', __name__, url_prefix='/api')
+
+
+@app.route('/analysis_url', methods=['GET'])
+@api
+def get_analysis_url(data, db):
+    req_list = ['url']
+    for i in req_list:  # 필수 요소 들어있는지 검사
+        if i not in data:
+            raise BadRequest
+    url = data['url']
+    result = split_url(url)
+    return jsonify({'result':result})
