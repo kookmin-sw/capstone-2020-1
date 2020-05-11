@@ -39,7 +39,7 @@ def split_url(url):
                 if Non_url.non_url_twitch(videoID) != 'recorded':
                     return False
                 else:
-                    platform = 'twitch'
+                    platform = 'Twitch'
                     url_code = [platform, videoID]
             else:
                 return False
