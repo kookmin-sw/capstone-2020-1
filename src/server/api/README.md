@@ -125,17 +125,17 @@ ping
 응답
 ```
 {
-    "keyword": [["keyword1", [[start_time1, end_time1], ... , [stat_timeN, end_timeN]]], 
-                ["keyword2", [[start_time1, end_time1], ... , [stat_timeM, end_timeM]]],
+    "keyword": [["keyword1", keyword1_freq, [[start_time1, end_time1], ... , [stat_timeN, end_timeN]]], 
+                ["keyword2", keyword2_freq, [[start_time1, end_time1], ... , [stat_timeM, end_timeM]]],
                 ...
-                ["keyword10", [[start_time1, end_time1], ... , [stat_timeK, end_timeK]]],]
+                ["keyword10", keyword10_freq, [[start_time1, end_time1], ... , [stat_timeK, end_timeK]]]]
     AfreecaTV_53773494.txt (chatlog 폴더에 생성)
 }
 200 ok
 400 요청 형식이 맞지 않음
 ```
 ### URL Validation
-[GET] /api/ana_url  
+[GET] /api/analysis_url
 영상정보를 얻어올 수 있는 URL인지 확인
 
 요청
@@ -191,6 +191,7 @@ ping
 400 요청 형식이 맞지 않음
 404 해당 url과 연관된 파일이 없음
 ```
+
 ### Predict
 채팅 긍정부정 분류
 
