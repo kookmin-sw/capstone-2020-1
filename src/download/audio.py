@@ -15,8 +15,8 @@ def download(platform, videoID, url):
     print('Finish!')
 
 
-if __name__ == '__main__':
-    url = input("stream url : ")
+def extractInfoFromURL(url):
+    #url = input("stream url : ")
 
     if "afree" in url:
         platform = "AfreecaTV"
@@ -41,8 +41,13 @@ if __name__ == '__main__':
 
     if not os.path.exists("./audio"):
         os.makedirs("./audio")
+
+    """
     print(id)
     if platform + '_' + videoID + '_' + '1' + ".mp3" in os.listdir("./audio"):
         print ('This audio file has already been requested.')
     else:
         download(platform, videoID, url)
+    """
+
+    return platform, videoID
