@@ -226,8 +226,12 @@ def find_high_frequency_words(data, n=10.0, m=10.0):
             if i == 10:
                 break
             else:
-                top_10.append([key, section[key]])
+                top_10.append([key, freq[key], section[key]])
                 i += 1
+        print_section_hhmmss(top_10)
+    elif m < 5:
+        for i in range(10):
+            top_10.append([sorted_freq[i][0], sorted_freq[i][1], []])
         print_section_hhmmss(top_10)
     else:
         top_10 = find_high_frequency_words(data, n+1.0, m-0.5)
