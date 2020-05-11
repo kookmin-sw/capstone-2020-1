@@ -32,15 +32,16 @@ def print_section_hhmmss(section):
     for i in range(len(section)):
         print("{:<3}".format(i+1), end='\t')
         print("{:<15}".format(section[i][0]), end='\t')
+        print("{:<15}".format(section[i][1]), end='\t')
         j = 0
-        while j < len(section[i][1]):
-            seconds = section[i][1][j][0]
+        while j < len(section[i][2]):
+            seconds = section[i][2][j][0]
             hours = seconds // (60 * 60)
             seconds %= (60 * 60)
             minutes = seconds // 60
             seconds %= 60
             print("%02i:%02i:%02i" % (hours, minutes, seconds), end='-')
-            seconds = section[i][1][j][1]
+            seconds = section[i][2][j][1]
             hours = seconds // (60 * 60)
             seconds %= (60 * 60)
             minutes = seconds // 60
