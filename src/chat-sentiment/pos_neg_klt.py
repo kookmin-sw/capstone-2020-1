@@ -43,22 +43,44 @@ if os.path.isfile('train_docs_klt.json'):
         test_docs = json.load(f)
 else:
     train_docs = []
+    temp = []
     for row in train_data:
-        with open('temp.txt', 'wt', encoding='euc-kr') as f:
-            f.write(row[0])
-        temp = []
-        temp = os.popen('kma.exe -sw1i+p temp.txt').read().replace('> + (', '>\n(').replace('\t', '').replace(') (', ')\n(').split('\n')
-        train_docs += [(temp[0:-1], row[1])]
-    test_docs = []
-    for row in test_data:
-        with open('temp.txt', 'wt', encoding='cp949') as f:
-            f.write(row[0])
-        temp = []
-        temp = os.popen('kma.exe -sw1i+p temp.txt').read().replace('> + (', '>\n(').replace('\t', '').replace(') (', ')\n(').split('\n')
-        test_docs += [(temp[0:-1], row[1])]
-    os.remove('temp.txt')
-    # JSON 파일로 저장
+        with open('temp.txt', 'a', encoding='euc-kr') as f:
+            f.write(row[0]+'\t'+row[1]+'\n')
+    os.system('index2018.exe -sw temp.txt output.txt')
+    with open('output.txt', 'r', encoding='euc-kr') as f:
+        temp = f.read().split('\n')
 
+    for i in range(0, len(temp)-1):
+        if len(temp[i]) == 1: continue
+        splited = temp[i].split('\t')
+        try:
+             int(splited[-1])
+        except:
+            continue
+        train_docs += [(splited[0:-1], splited[-1])]
+
+    os.remove('temp.txt')
+    os.remove('output.txt')
+
+    test_docs = []
+    temp = []
+    for row in test_data:
+        with open('temp.txt', 'a', encoding='euc-kr') as f:
+            f.write(row[0]+'\t'+row[1]+'\n')
+    os.system('index2018.exe -sw temp.txt output.txt')
+    with open('output.txt', 'r', encoding='euc-kr') as f:
+        temp = f.read().split('\n')
+
+    for i in range(0, len(temp)-1):
+        if len(temp[i]) == 1: continue
+        splited=temp[i].split('\t')
+        test_docs += [(splited[0:-1], splited[-1])]
+
+    os.remove('temp.txt')
+    os.remove('output.txt')
+    
+    # JSON 파일로 저장
     with open(path+'train_docs_klt.json', 'wt', encoding="utf-8") as make_file:
         json.dump(train_docs, make_file, ensure_ascii=False, indent="\t")
     with open(path+'test_docs_klt.json', 'wt', encoding="utf-8") as make_file:
@@ -109,7 +131,7 @@ else:
 def predict_pos_neg(review):
     with open('temp.txt', 'w', encoding='cp949') as f:
         f.write(review)
-    token = os.popen('kma.exe -sw1i+p temp.txt').read().replace('> + (', '>\n(').replace('\t', '').replace(') (', ')\n(').split('\n')
+    token = os.popen('index2018.exe -sw temp.txt').read().split('\t')
     token = token[0:-1]
     os.remove('temp.txt')
     tf = term_frequency(token)
