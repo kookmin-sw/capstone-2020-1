@@ -30,7 +30,6 @@ def array_to_file(platform, arr, videoID): # 배열을 텍스트 파일로 저�
     data = "./chatlog/" + platform + "_" + videoID + ".txt"
     with open(data, 'w', encoding="utf-8") as f:
         for x in range(0, len(arr)):
-            if arr[x][0] == "0": continue
             f.write('[')
             f.write(str(arr[x][0]))
             f.write(']')
@@ -201,9 +200,10 @@ def youtube(videoID):
                         chat_id = de_chat["addChatItemAction"]["item"]["liveChatTextMessageRenderer"]["authorName"][
                             "simpleText"]
 
-                # 리스트에 추출 항목들 저장
-                el = [de_time, str(chat_id), str(chat)]
-                data.append(el)
+                # 리스트에 추출 항목들 저장 (0초 채팅기록은 저장하지 않음)
+                if de_time > 0:
+                    el = [de_time, str(chat_id), str(chat)]
+                    data.append(el)
 
         # next_url를 사용할 수 없게되면 while문 종료
         except:
