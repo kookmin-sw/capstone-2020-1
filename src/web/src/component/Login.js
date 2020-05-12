@@ -36,7 +36,7 @@ const Login = (props) => {
 
     try {
       axios
-        .post("http://13.209.112.92:8000/api/login", frd, {
+        .post("http://localhost:8000/api/login", frd, {
           headers: { "Content-Type": "application/x-www-form-urlencoded" },
         })
         .then((response) => {
@@ -61,38 +61,6 @@ const Login = (props) => {
       console.log(e);
     }
   };
-  // const onClick = () => {
-  //   let frd = new FormData();
-  //   frd.append("email", email);
-  //   frd.append("pw", password);
-
-  //   try {
-  //     axios
-  //       .post("http://localhost:8000/api/login", frd, {
-  //         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-  //       })
-  //       .then((response) => {
-  //         const data = response.data;
-  //         // console.log(data);
-
-  //         localStorage.setItem("loginStorage", JSON.stringify(data));
-  //         props.toggleLogin(true);
-  //         return true;
-  //       })
-  //       .catch(function (error) {
-  //         if (error.response.status === 400) {
-  //           props.toggleLogin(false);
-  //           alert("wrong information");
-  //         }
-  //         if (error.response.status === 404) {
-  //           props.toggleLogin(false);
-  //           alert("wrong id or pw");
-  //         }
-  //       });
-  //   } catch (e) {
-  //     console.log(e);
-  //   }
-  // };
 
   return (
     <Container component="main" maxWidth="xs">
