@@ -112,7 +112,7 @@ ping
 406 유효하지 않은 URL
 409 이미 들어왔던 데이터
 ```
-### Find the top 10 keywords
+### The top 10 keywords
 [GET] /api/chatlog  
 상위 10개 키워드와 출연구간 추출 요청
 
@@ -237,4 +237,24 @@ Query string: second=[1]&second=[2]&second=[3]&content=content1&content=content2
 200 ok
 400 요청 형식이 맞지 않음
 406 유효하지 않은 URL
+```
+### chatlog highlight
+[GET] /api/chatlog_highlight  
+채팅로그 하이라이트 지점 추출
+
+요청
+```
+{
+    "platform": "AfreecaTV",
+    "videoid": "53773494"
+}
+```
+응답
+```
+{
+    "highlight": [ [1702, 12], [2896, 19], [3365, 12] ] (하이라이트 지점(초), 해당 지점의 채팅량)
+    AfreecaTV_53773494.txt (chatlog 폴더에 생성)
+}
+200 ok
+400 요청 형식이 맞지 않음
 ```
