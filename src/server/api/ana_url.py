@@ -1,11 +1,5 @@
 import urllib.request
 import re
-<<<<<<< Updated upstream
-import requests
-from bs4 import BeautifulSoup
-from TP2.back_api import Non_url
-=======
->>>>>>> Stashed changes
 from api import Non_url
 from flask import Blueprint, jsonify
 from werkzeug.exceptions import BadRequest
@@ -45,7 +39,7 @@ def split_url(url):
                 if Non_url.non_url_twitch(videoID) != 'recorded':
                     return False
                 else:
-                    platform = 'twitch'
+                    platform = 'Twitch'
                     url_code = [platform, videoID]
             else:
                 return False
@@ -75,21 +69,8 @@ def split_url(url):
     except ValueError:
         return False
 
-<<<<<<< Updated upstream
-'''
-def main():
-    url = input("url입력:")
-    result = split_url(url)
-    return result
-
-'''
-
 app = Blueprint('analysis_url', __name__, url_prefix='/api')
 
-=======
-app = Blueprint('analysis_url', __name__, url_prefix='/api')
-
->>>>>>> Stashed changes
 
 @app.route('/analysis_url', methods=['GET'])
 @api
