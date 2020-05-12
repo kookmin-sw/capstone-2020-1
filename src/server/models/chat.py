@@ -8,7 +8,7 @@ class Keyword(Base):
     id = Column(Integer, primary_key=True, autoincrement=True)
     platform = Column(String, nullable=False)
     videoid = Column(String, nullable=False)
-    keyword = Column(ARRAY(String, dimensions=4), nullable=False)
+    keyword = Column(ARRAY(String, dimensions=3), nullable=False)
 
     __table_args__ = (
         UniqueConstraint('platform', 'videoid'),
