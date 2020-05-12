@@ -28,7 +28,7 @@ def non_url_afreeca(videoID):
         if len(find_body) == 0:
             return False
         else:
-            return ['afreecatv', videoID]
+            return ['AfreecaTV', videoID]
     else:
         return False
 
