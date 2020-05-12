@@ -16,7 +16,7 @@ const InputUrl = (props) => {
   const checkUrl = () => {
     try {
       axios
-        .get("http://13.209.112.92:8000/api/analysis_url", {
+        .get("http://localhost:8000/api/analysis_url", {
           headers: { "Content-Type": "multipart/form-data" },
           params: {
             url: url,
@@ -24,15 +24,18 @@ const InputUrl = (props) => {
         })
         .then((response) => {
           const data = response.data;
+          console.log(data);
           props.setPlatform(data.result[0]);
           props.setVideoid(data.result[1]);
-          props.toggleInput(true);
           props.setUrl(url);
+          props.toggleInput(true);
         })
         .catch(function (error) {
           if (error.response.status === 400) {
             alert("wrong url. please, check url.");
           }
+          console.log(error);
+          
         });
     } catch (e) {
       console.log(e);
@@ -42,7 +45,7 @@ const InputUrl = (props) => {
   const onClick = () => {
     try {
       axios
-        .get("http://13.209.112.92:8000/api/login", {
+        .get("http://localhost:8000/api/login", {
           headers: { "Content-Type": "multipart/form-data" },
           params: {
             email: JSON.parse(temp).email,
@@ -51,13 +54,14 @@ const InputUrl = (props) => {
         })
         .then((response) => {
           const data = response.data;
-          console.log(data);
+          // console.log(data);
           // props.toggleInput(true);
           // props.setUrl(url);
           checkUrl();
         })
         .catch(function (error) {
           if (error.response.status === 401) {
+            localStorage.removeItem("loginStorage");
             props.toggleLogin(false);
             alert("please, you need sign in again.");
           }
