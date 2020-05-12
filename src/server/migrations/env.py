@@ -19,8 +19,8 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
 # Interpret the config file for Python logging.
 # This line sets up loggers basically.
 fileConfig(config.config_file_name)
-from db import metadata
-from models import login_expiry, user_info, file
+from db import metadata  # noqa
+from models import login_expiry, user_info, file, chat  # noqa
 
 # add your model's MetaData object here
 # for 'autogenerate' support
@@ -33,7 +33,7 @@ target_metadata = metadata
 # my_important_option = config.get_main_option("my_important_option")
 # ... etc.
 
-from settings.settings import POSTGRESQL
+from settings.settings import POSTGRESQL  # noqa
 
 
 def run_migrations_offline():
