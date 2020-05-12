@@ -15,24 +15,30 @@ app = Blueprint('predict', __name__, url_prefix='/api')
 
 @app.route('/predict', methods=['GET'])
 @api
-def get_predict(data):
+def get_predict(data, db):
     url = data['url']
-    platform, videoID = split_url(url)
-    download(platform, videoID)
-    with open('../../download/chatlog/{}_{}.txt'.format(platform, videoID)) as f:
+    isURLValid = split_url(url)
+    if not isURLValid:
+        raise BadRequest
+    download(isURLValid[0], isURLValid[1])
+    with open('./chatlog/{}_{}.txt'.format(isURLValid[0], isURLValid[1]), encoding='utf-8') as f:
         content = f.read().split('\n')
     second = []
-    content = []
-    for i in content:
-        splited_chat = i.split('\t')
+    comment = []
+    for i in range(0, len(content)-1):
+        splited_chat = content[i].split('\t')
+        print(splited_chat)
+        if len(splited_chat) < 3:
+            continue
         second.append(splited_chat[0])
-        content.append(splited_chat[2])
-
-    if len(second) < 1 or len(content) < 1:
+        comment.append(splited_chat[2])
+    print(second)
+    print(comment)
+    if len(second) < 1 or len(comment) < 1:
         raise BadRequest
 
     endSecond = int(second[-1][1:-1])
-    predict = predict_pos_neg(content)
+    predict = predict_pos_neg(comment)
     if endSecond >= 100:
         x = math.ceil(endSecond / 100)
     else:
