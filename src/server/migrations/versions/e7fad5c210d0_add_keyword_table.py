@@ -22,7 +22,7 @@ def upgrade():
     sa.Column('id', sa.Integer(), autoincrement=True, nullable=False),
     sa.Column('platform', sa.String(), nullable=False),
     sa.Column('videoid', sa.String(), nullable=False),
-    sa.Column('keyword', sa.ARRAY(sa.String(), dimensions=4), nullable=False),
+    sa.Column('keyword', sa.ARRAY(sa.String(), dimensions=3), nullable=False),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('platform', 'videoid')
     )
