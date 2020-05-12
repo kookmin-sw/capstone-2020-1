@@ -1,7 +1,6 @@
 import requests
 import json
 from bs4 import BeautifulSoup
-from requests.compat import urlparse
 from xml.etree import ElementTree
 from ast import literal_eval
 import math
@@ -15,8 +14,8 @@ def visualization(chatlist):
     plt.show()
 
 
-def count_chat_each_second(flatform, videoID):
-    filename = "./chatlog/"+flatform+"_"+videoID+".txt"
+def count_chat_each_second(platform, videoID):
+    filename = "./chatlog/"+platform+"_"+videoID+".txt"
     with open(filename, 'r', encoding='utf-8') as f:
         data = f.readlines()
         chats=[0 for _ in range(int(data[-1].split(' ')[0][1:-1])+1)]
@@ -27,13 +26,10 @@ def count_chat_each_second(flatform, videoID):
     return chats
 
 
-def array_to_file(platform, arr, filename): # 배열을 텍스트 파일로 저장하는 함수
-    if not os.path.exists("./chatlog"):
-        os.makedirs("./chatlog")
-    data = "./chatlog/"+platform + "_" + filename + ".txt"
+def array_to_file(platform, arr, videoID): # 배열을 텍스트 파일로 저장하는 함수
+    data = "./chatlog/" + platform + "_" + videoID + ".txt"
     with open(data, 'w', encoding="utf-8") as f:
         for x in range(0, len(arr)):
-            if arr[x][0] == "0": continue
             f.write('[')
             f.write(str(arr[x][0]))
             f.write(']')
@@ -47,7 +43,7 @@ def array_to_file(platform, arr, filename): # 배열을 텍스트 파일로 저�
     f.close()
 
 
-def afreeca(platform, videoID): # 아프리카 채팅기록을 튜플로 추출하는 함수
+def afreeca(videoID): # 아프리카 채팅기록을 튜플로 추출하는 함수
     data = []
     url = "http://vod.afreecatv.com/PLAYER/STATION/" + videoID
     info_url = "http://afbbs.afreecatv.com:8080/api/video/get_video_info.php?"
@@ -90,11 +86,11 @@ def afreeca(platform, videoID): # 아프리카 채팅기록을 튜플로 추출�
                             map(lambda x: x.text, xmltree.findall('chat/u')),
                             map(lambda x: x.text, xmltree.findall('chat/m'))))
             i += 1
-    array_to_file(platform, data, videoID)
+    array_to_file("AfreecaTV", data, videoID)
     return data
 
 
-def twitch(platform, videoID): # 트위치 채팅기록을 리스트로 추출하는 함수
+def twitch(videoID): # 트위치 채팅기록을 리스트로 추출하는 함수
     data = []
     url = 'https://api.twitch.tv/v5/videos/' + videoID + '/comments'
     client_id = "x7cy2lvfh9aob9oyset31dhbfng1tc"
@@ -118,11 +114,11 @@ def twitch(platform, videoID): # 트위치 채팅기록을 리스트로 추출�
             break
 
         param = {"cursor": j["_next"]}
-    array_to_file(platform, data, videoID)
+    array_to_file("Twitch", data, videoID)
     return data
 
 
-def youtube(platform, videoID):
+def youtube(videoID):
     data = []
     url = "https://www.youtube.com/watch?v=" + videoID
 
@@ -204,53 +200,27 @@ def youtube(platform, videoID):
                         chat_id = de_chat["addChatItemAction"]["item"]["liveChatTextMessageRenderer"]["authorName"][
                             "simpleText"]
 
-                # 리스트에 추출 항목들 저장
-                el = [str(de_time), str(chat_id), str(chat)]
-                data.append(el)
+                # 리스트에 추출 항목들 저장 (0초 채팅기록은 저장하지 않음)
+                if de_time > 0:
+                    el = [de_time, str(chat_id), str(chat)]
+                    data.append(el)
 
         # next_url를 사용할 수 없게되면 while문 종료
         except:
             break
-    array_to_file(platform, data, videoID)
+    array_to_file("Youtube", data, videoID)
     return data
 
 
 def download(platform, videoID):
-    if platform == "AfreecaTV":
-        return afreeca(platform, videoID)
-    elif platform == "Twitch":
-        return twitch(platform, videoID)
-    elif platform == "Youtube":
-        return youtube(platform, videoID)
-
-
-if __name__ == '__main__':
-    url = input("stream url : ")
-
-    if "afree" in url:
-        platform = "AfreecaTV"
-        if "afreecatv" in url:
-            url = re.search(r"http://vod.afreecatv.com/PLAYER/STATION/[0-9]+", url).group()
-        videoID = url.split('/')
-        videoID = videoID[-1]
-    elif "twitch" in url:
-        platform = "Twitch"
-        url = re.search(r"https://www.twitch.tv/videos/[0-9]+", url).group()
-        videoID = url.split('/')
-        videoID = videoID[-1]
-    elif "youtu" in url:
-        platform = "Youtube"
-        if 'youtube' in url:
-            url = re.search(r"https://www.youtube.com/watch\?v=[a-zA-Z0-9_-]+", url).group()
-            videoID = url.split('=')
-        else:
-            url = re.search(r"https://youtu.be/[a-zA-Z0-9_-]+", url).group()
-            videoID = url.split('/')
-        videoID = videoID[-1]
-
     if not os.path.exists("./chatlog"):
         os.makedirs("./chatlog")
     if platform + '_' + videoID + ".txt" in os.listdir("./chatlog"):
         print('This chatlog file has already been requested.')
-    else:
-        chat_data = download(platform, videoID)
+
+    if platform == "AfreecaTV":
+        return afreeca(videoID)
+    elif platform == "Twitch":
+        return twitch(videoID)
+    elif platform == "Youtube":
+        return youtube(videoID)
