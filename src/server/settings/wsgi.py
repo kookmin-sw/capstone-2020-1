@@ -2,6 +2,7 @@ from flask import Flask
 from flask_cors import CORS
 from werkzeug.exceptions import *
 
+from api.sound_highlight import app as api_sndhighlight
 from api.predict import app as api_predict
 from api.SNDnormalize import app as api_sndnormalize
 from api.account import app as api_account
@@ -34,6 +35,7 @@ def create_wsgi():
     app.register_blueprint(api_account)
     app.register_blueprint(api_predict)
     app.register_blueprint(api_file)
+    app.register_blueprint(api_sndhighlight)
 
     CORS(app)
     return app
