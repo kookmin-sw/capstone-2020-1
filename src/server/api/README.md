@@ -105,11 +105,12 @@ ping
 ```
 {
     "average":~.~~~
-    platform_videoID.wav (audio/normalizeAudio 폴더에 생성)
+    platform_videoID.png (audio/normalizeAudio 폴더에 생성 및 db에 저장)
 }
 200 ok
 400 요청 형식이 맞지 않음
 406 유효하지 않은 URL
+409 이미 들어왔던 데이터
 ```
 ### Find the top 10 keywords
 [GET] /api/chatlog  
@@ -217,4 +218,23 @@ Query string: second=[1]&second=[2]&second=[3]&content=content1&content=content2
 }
 200 OK
 400 요청 형식이 맞지 않음
+```
+### sound highlight
+[GET] /api/SNDhighlight
+소리 하이라이트 지점 추출
+
+요청
+```
+{
+    "url": "https://www.youtube.com/watch?v=91crnvnV8f4"
+}
+```
+응답
+```
+{
+    "highlight": [ [7, 0.22350525808284777], [26, 0.3252495816137475], [53, 0.21840620858731044] ] (하이라이트 지점(분), 해당 지점의 소리 크기)
+}
+200 ok
+400 요청 형식이 맞지 않음
+406 유효하지 않은 URL
 ```
