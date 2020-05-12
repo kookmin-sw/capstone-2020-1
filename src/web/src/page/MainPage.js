@@ -33,7 +33,7 @@ const MainPage = () => {
   const test = () => {
     try {
       axios
-        .get("http://13.209.112.92:8000/api/login", {
+        .get("http://localhost:8000/api/login", {
           headers: { "Content-Type": "multipart/form-data" },
           params: {
             email: JSON.parse(temp).email,
@@ -42,7 +42,7 @@ const MainPage = () => {
         })
         .then((response) => {
           const data = response.data;
-          console.log(data);
+          // console.log(data);
           setEmail(JSON.parse(temp).email);
           toggleLogin(true);
         })
@@ -78,7 +78,11 @@ const MainPage = () => {
         <Login setEmail={setEmail} toggleLogin={toggleLogin} />
       )}
 
-      {input ? <Result url={url}></Result> : <></>}
+      {input ? (
+        <Result url={url} platform={platform} videoid={videoid}></Result>
+      ) : (
+        <></>
+      )}
       <Box mt={8}>
         <Copyright />
       </Box>
