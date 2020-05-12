@@ -2,8 +2,10 @@ import sys
 
 sys.path.append('../')
 
-from flask import Blueprint, jsonify
-from werkzeug.exceptions import BadRequest, NotAcceptable
+from flask import Blueprint, jsonify, request, send_file
+from werkzeug.exceptions import BadRequest, NotAcceptable, Conflict
+
+from models.file import File
 
 from server.api.Non_url import *
 from settings.utils import api
@@ -12,6 +14,27 @@ from analyze.volume_extract import *
 from moviepy.editor import *
 
 app = Blueprint('SNDnormalize', __name__, url_prefix='/api')
+
+
+def upload_image(data, db):
+    query = db.query(File).filter(
+        File.url == data['url'],
+        File.name == data['name'],
+    ).first()
+    if query:  # 이미 존재하는 데이터
+        raise Conflict
+
+    file = open(data['name'], 'rb')
+    img = file.read()
+    file.close()
+
+    new_file = File(
+        name=data['name'],
+        file=img,
+        url=data['url'],
+    )
+    db.add(new_file)
+    db.commit()
 
 
 @app.route('/SNDnormalize', methods=['GET'])
@@ -26,6 +49,7 @@ def get_sound_normalize(data, db):
 
     platform, videoid = extractInfoFromURL(url)
 
+    """
     if platform == "Twitch":
         check = non_url_twitch(videoid)
         isValid = True if check == "recorded" else False
@@ -35,15 +59,18 @@ def get_sound_normalize(data, db):
     elif platform == "AfreecaTV":
         check = non_url_afreeca(videoid)
         isValid = True if check > 2 else False
+    """
+    isValid = True
 
     if isValid == True:
         download(platform, videoid, url)
 
         volumesPerMinute = sound_extract(platform, videoid)
-        audio_arr, avg = local_normalize(platform, videoid, volumesPerMinute)
+        avg = local_normalize(platform, videoid, volumesPerMinute)
 
-        # arr = audio_arr.to_soundarray()
+        image = {'url': url, 'name': f"./audio/normalizeAudio/{platform}_{videoid}.png"}
+        upload_image(image, db)
 
         return jsonify({"average": avg})
     else:
-        raise NotAcceptable # 유효하지 않은 URL
+        raise NotAcceptable  # 유효하지 않은 URL
