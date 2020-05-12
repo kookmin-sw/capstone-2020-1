@@ -1,7 +1,6 @@
 import requests
 import json
 from bs4 import BeautifulSoup
-from requests.compat import urlparse
 from xml.etree import ElementTree
 from ast import literal_eval
 import math
@@ -216,41 +215,14 @@ def youtube(platform, videoID):
 
 
 def download(platform, videoID):
+    if not os.path.exists("./chatlog"):
+        os.makedirs("./chatlog")
+    if platform + '_' + videoID + ".txt" in os.listdir("./chatlog"):
+        print('This chatlog file has already been requested.')
+
     if platform == "AfreecaTV":
         return afreeca(platform, videoID)
     elif platform == "Twitch":
         return twitch(platform, videoID)
     elif platform == "Youtube":
         return youtube(platform, videoID)
-
-
-if __name__ == '__main__':
-    url = input("stream url : ")
-
-    if "afree" in url:
-        platform = "AfreecaTV"
-        if "afreecatv" in url:
-            url = re.search(r"http://vod.afreecatv.com/PLAYER/STATION/[0-9]+", url).group()
-        videoID = url.split('/')
-        videoID = videoID[-1]
-    elif "twitch" in url:
-        platform = "Twitch"
-        url = re.search(r"https://www.twitch.tv/videos/[0-9]+", url).group()
-        videoID = url.split('/')
-        videoID = videoID[-1]
-    elif "youtu" in url:
-        platform = "Youtube"
-        if 'youtube' in url:
-            url = re.search(r"https://www.youtube.com/watch\?v=[a-zA-Z0-9_-]+", url).group()
-            videoID = url.split('=')
-        else:
-            url = re.search(r"https://youtu.be/[a-zA-Z0-9_-]+", url).group()
-            videoID = url.split('/')
-        videoID = videoID[-1]
-
-    if not os.path.exists("./chatlog"):
-        os.makedirs("./chatlog")
-    if platform + '_' + videoID + ".txt" in os.listdir("./chatlog"):
-        print('This chatlog file has already been requested.')
-    else:
-        chat_data = download(platform, videoID)
