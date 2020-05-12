@@ -24,4 +24,4 @@ def get_chatlog_highlight(data, db):
 
     point = analyze1_minute(log)
 
-    return jsonify({'point': point})
+    return jsonify({'highlight': point})
