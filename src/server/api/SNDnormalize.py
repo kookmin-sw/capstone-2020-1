@@ -49,18 +49,12 @@ def get_sound_normalize(data, db):
 
     platform, videoid = extractInfoFromURL(url)
 
-    """
     if platform == "Twitch":
-        check = non_url_twitch(videoid)
-        isValid = True if check == "recorded" else False
+        isValid = non_url_twitch(videoid)
     elif platform == "Youtube":
-        check = non_url_youtube(videoid)
-        isValid = True if check == "OK" else False
+        isValid = non_url_youtube(videoid)
     elif platform == "AfreecaTV":
-        check = non_url_afreeca(videoid)
-        isValid = True if check > 2 else False
-    """
-    isValid = True
+        isValid = non_url_afreeca(videoid)
 
     if isValid == True:
         download(platform, videoid, url)
