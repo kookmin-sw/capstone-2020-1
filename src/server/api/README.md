@@ -66,7 +66,7 @@ ping
 }
 200 ok
 400 요청 형식이 맞지 않음
-403 이미 만료돼서 재로그인 필요
+401 이미 만료돼서 재로그인 필요
 404 검색 결과가 존재하지 않음
 ```
 [POST] /api/login  
@@ -154,7 +154,7 @@ ping
 400 요청 형식이 맞지 않음
 ```
 ### file upload and download
-[POST] api/upload_wav  
+[POST] api/upload_file  
 데이터베이스에 파일 업로드(form-data)
 
 요청
@@ -174,7 +174,7 @@ ping
 400 요청 형식이 맞지 않음
 409 이미 존재하는 url
 ```
-[GET] /api/download_wav  
+[GET] /api/download_file  
 오디오파일 다운로드
 
 요청
