@@ -9,7 +9,7 @@ from settings.utils import api
 app = Blueprint('file', __name__, url_prefix='/api')
 
 
-@app.route('/upload_wav', methods=['POST'])
+@app.route('/upload_file', methods=['POST'])
 @api
 def post_upload_file(data, db):
     req_list = ['name', 'url']
@@ -20,9 +20,10 @@ def post_upload_file(data, db):
         raise BadRequest
 
     query = db.query(File).filter(
-        File.url == data['url']
+        File.url == data['url'],
+        File.name == data['name'],
     ).first()
-    if query:  # 이미 존재하는 url
+    if query:  # 이미 존재하는 데이터
         raise Conflict
 
     new_file = File(
@@ -36,7 +37,7 @@ def post_upload_file(data, db):
     return jsonify({'result': 'success'})
 
 
-@app.route('/download_wav', methods=['GET'])
+@app.route('/download_file', methods=['GET'])
 @api
 def get_download_file(data, db):
     if 'url' not in data:  # 필수 요소 들어있는지 검사
@@ -48,7 +49,7 @@ def get_download_file(data, db):
     if not file:  # 해당 url로 저장된 파일 없음
         raise NotFound
     return send_file(io.BytesIO(file.file),
-                     attachment_filename='test_sample.mp3',
+                     attachment_filename=file.name,
                      as_attachment=True,
-                     mimetype='audio/wav',
+                     mimetype='image/png',
                      )
