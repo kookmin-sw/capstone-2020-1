@@ -23,16 +23,26 @@ def get_chatlog(data, db):
             raise BadRequest
     platform = data['platform']
     videoid = data['videoid']
+
+    query = db.query(Keyword).filter(
+        Keyword.platform == platform,
+        Keyword.videoid == videoid,
+    ).first()
+    if query:
+        return jsonify(query.keyword_json)
+
     log = download(platform, videoid)
 
     keyword = find_high_frequency_words(log)
 
+    result = {'keyword': keyword}
+
     keyword = Keyword(
         platform=platform,
         videoid=videoid,
-        keyword=keyword
+        keyword_json=result
     )
     db.add(keyword)
     db.commit()
 
-    return jsonify({'keyword': keyword})
+    return jsonify(result)
