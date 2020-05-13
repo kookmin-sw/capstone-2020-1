@@ -29,20 +29,20 @@ def split_url(url):
                 return False
 
         elif "twitch" in url:
-            url = re.search(r"https://www.twitch.tv/videos/[0-9]+", url).group()
-            videoID = url.split('/')
-            videoID = videoID[-1]
-
-            # videoID길이가 9가 아니면 invalid
-            if len(videoID) == 9:
-                # 없는 영상이면 http 에러코드, 아니면 recorded
-                if Non_url.non_url_twitch(videoID) != 'recorded':
-                    return False
-                else:
-                    platform = 'Twitch'
-                    url_code = [platform, videoID]
-            else:
+            if 'clip' in url:
                 return False
+            else:
+                url = re.search(r"https://www.twitch.tv/videos/[0-9]+", url).group()
+                videoID = url.split('/')
+                videoID = videoID[-1]
+
+                # videoID길이가 9가 아니면 invalid
+                if len(videoID) == 9:
+                    # 없는 영상이면 http 에러코드, 아니면 recorded
+                    result = Non_url.non_url_twitch(videoID)
+                    return result
+                else:
+                    return False
 
         elif "youtu" in url:
             if 'youtube' in url:
@@ -63,8 +63,6 @@ def split_url(url):
 
         else:
             return False
-
-        return url_code
 
     except ValueError:
         return False
