@@ -205,7 +205,9 @@ ping
 
 요청
 ```
-Query string: second=[1]&second=[2]&second=[3]&content=content1&content=content2&content=content3
+{
+    "url": "http://www.sample.sample"
+}
 ```
 응답
 ```
@@ -224,7 +226,7 @@ Query string: second=[1]&second=[2]&second=[3]&content=content1&content=content2
   }
 }
 200 OK
-400 요청 형식이 맞지 않음
+400 INVALID URL
 ```
 ### sound highlight
 [GET] /api/SNDhighlight
