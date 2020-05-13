@@ -3,10 +3,13 @@ import sys
 sys.path.append('../')
 
 from flask import Blueprint, jsonify
+from werkzeug.exceptions import BadRequest
+
+from models.chat import Keyword
 from settings.utils import api
 from download.chatlog import *
 from analyze.analysis import *
-from werkzeug.exceptions import BadRequest
+
 
 app = Blueprint('chatlog', __name__, url_prefix='/api')
 
@@ -20,8 +23,26 @@ def get_chatlog(data, db):
             raise BadRequest
     platform = data['platform']
     videoid = data['videoid']
+
+    query = db.query(Keyword).filter(
+        Keyword.platform == platform,
+        Keyword.videoid == videoid,
+    ).first()
+    if query:
+        return jsonify(query.keyword_json)
+
     log = download(platform, videoid)
 
     keyword = find_high_frequency_words(log)
 
-    return jsonify({'keyword': keyword})
+    result = {'keyword': keyword}
+
+    keyword = Keyword(
+        platform=platform,
+        videoid=videoid,
+        keyword_json=result
+    )
+    db.add(keyword)
+    db.commit()
+
+    return jsonify(result)
