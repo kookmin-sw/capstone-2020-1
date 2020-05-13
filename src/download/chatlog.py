@@ -202,8 +202,10 @@ def youtube(videoID):
 
                 # 리스트에 추출 항목들 저장 (0초 채팅기록은 저장하지 않음)
                 if de_time > 0:
-                    el = [de_time, str(chat_id), str(chat)]
-                    data.append(el)
+                    if len(chat) != 0:
+                        # 리스트에 추출 항목들 저장
+                        el = [str(de_time), str(chat_id), str(chat)]
+                        data.append(el)
 
         # next_url를 사용할 수 없게되면 while문 종료
         except:
