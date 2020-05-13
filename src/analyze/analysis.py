@@ -35,13 +35,13 @@ def print_section_hhmmss(section):
         print("{:<15}".format(section[i][1]), end='\t')
         j = 0
         while j < len(section[i][2]):
-            seconds = section[i][2][j][0]
+            seconds = int(section[i][2][j][0])
             hours = seconds // (60 * 60)
             seconds %= (60 * 60)
             minutes = seconds // 60
             seconds %= 60
             print("%02i:%02i:%02i" % (hours, minutes, seconds), end='-')
-            seconds = section[i][2][j][1]
+            seconds = int(section[i][2][j][1])
             hours = seconds // (60 * 60)
             seconds %= (60 * 60)
             minutes = seconds // 60
@@ -212,9 +212,9 @@ def find_high_frequency_words(data, n=10.0, m=10.0):
                 if count >= m:
                     end_time = time[key][j-1]
                     if key in section.keys():
-                        section[key].append([start_time, end_time])
+                        section[key].append([str(start_time), str(end_time)])
                     else:
-                        section[key] = [[start_time, end_time]]
+                        section[key] = [[str(start_time), str(end_time)]]
                 start_time = time[key][j]
                 count = 1
             else:
@@ -227,7 +227,7 @@ def find_high_frequency_words(data, n=10.0, m=10.0):
             if i == 10:
                 break
             else:
-                top_10.append([key, freq[key], section[key]])
+                top_10.append([key, str(freq[key]), section[key]])
                 i += 1
         print_section_hhmmss(top_10)
     elif m < 5:
