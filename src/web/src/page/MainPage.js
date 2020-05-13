@@ -1,5 +1,6 @@
 import { Grid, Link, Typography, Box } from "@material-ui/core";
 import React, { useState } from "react";
+import axios from "axios";
 import Navibar from "../component/Navibar";
 import Description from "../component/Description";
 import InputUrl from "../component/InputUrl";
@@ -21,13 +22,38 @@ function Copyright() {
 
 const MainPage = () => {
   const [email, setEmail] = useState();
-  const [login, togleLogin] = useState(false);
+  const [login, toggleLogin] = useState(false);
   const [input, toggleInput] = useState(false);
+  const [platform, setPlatform] = useState();
+  const [videoid, setVideoid] = useState();
   const [url, setUrl] = useState();
 
-  console.log(email);
+  const temp = localStorage.getItem("loginStorage");
+
+  const test = () => {
+    try {
+      axios
+        .get("http://localhost:8000/api/login", {
+          headers: { "Content-Type": "multipart/form-data" },
+          params: {
+            email: JSON.parse(temp).email,
+            uuid: JSON.parse(temp).uuid,
+          },
+        })
+        .then((response) => {
+          const data = response.data;
+          // console.log(data);
+          setEmail(JSON.parse(temp).email);
+          toggleLogin(true);
+        })
+        .catch();
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   return (
-    <div>
+    <div onLoad={test}>
       <Grid>
         <Navibar email={email} login={login} />
       </Grid>
@@ -41,12 +67,22 @@ const MainPage = () => {
         <InputUrl></InputUrl>
       </Grid> */}
       {login ? (
-        <InputUrl toggleInput={toggleInput} setUrl={setUrl}></InputUrl>
+        <InputUrl
+          toggleInput={toggleInput}
+          setUrl={setUrl}
+          toggleLogin={toggleLogin}
+          setPlatform={setPlatform}
+          setVideoid={setVideoid}
+        ></InputUrl>
       ) : (
-        <Login setEmail={setEmail} togleLogin={togleLogin} />
+        <Login setEmail={setEmail} toggleLogin={toggleLogin} />
       )}
 
-      {input ? <Result url={url}></Result> : <></>}
+      {input ? (
+        <Result url={url} platform={platform} videoid={videoid}></Result>
+      ) : (
+        <></>
+      )}
       <Box mt={8}>
         <Copyright />
       </Box>
