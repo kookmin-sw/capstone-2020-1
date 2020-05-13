@@ -3,7 +3,7 @@ from sqlalchemy import create_engine, MetaData
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-engine = create_engine(POSTGRESQL, connect_args={'connect_timeout': 10})
+engine = create_engine(POSTGRESQL, connect_args={'connect_timeout': 10}, client_encoding='utf8')
 Session = sessionmaker(bind=engine)
 metadata = MetaData()
 Base = declarative_base(metadata=metadata)
