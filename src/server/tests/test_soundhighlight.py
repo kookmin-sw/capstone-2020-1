@@ -1,7 +1,7 @@
 from flask import json
 
 
-def test_get_soundhighlight(client):
+def test_get_sound_highlight(client):
     data = {}
     res = client.get('/api/SNDhighlight', query_string=data)
     assert res.status_code == 400
