@@ -57,7 +57,7 @@ const SignUp = () => {
     if (!checkEmail(email)) {
       setAlertMessage("wrong email");
       setAlertOpen(true);
-    } else if (password !== check) {
+    } else if (password !== check && password !== undefined) {
       setAlertMessage("wrong checkPassword");
       setAlertOpen(true);
     } else if (isNaN(age)) {
@@ -71,7 +71,7 @@ const SignUp = () => {
         frd.append("name", name);
         frd.append("age", age);
         axios
-          .post("http://13.209.112.92:8000/api/login", frd, {
+          .post("http://localhost:8000/api/signup", frd, {
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
           })
           .then((response) => {
