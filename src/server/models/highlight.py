@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, ARRAY
+from sqlalchemy import Column, Integer, String, ARRAY, JSON
 
 from db import Base
 
@@ -8,4 +8,4 @@ class SoundHighlight(Base):
 
     id = Column(Integer, autoincrement=True, primary_key=True)
     url = Column(String, unique=True, nullable=False)
-    highlight = Column(ARRAY(String, dimensions=2), nullable=False)
+    highlight_json = Column(JSON, nullable=False)
