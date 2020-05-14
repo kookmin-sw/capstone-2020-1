@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Grid, Button } from "@material-ui/core";
 import ViewerReact from "./ViewerReact";
 import Highlight from "./Highlight";
@@ -74,6 +74,17 @@ function StyledRadio(props) {
 const Result = (props) => {
   const [posAndNeg, setPosAndNeg] = useState(false);
   const [keword, setKeyword] = useState(false);
+  const [high, setHigh] = useState(false);
+
+  useEffect(() => {
+    setPosAndNeg(false);
+    setKeyword(false);
+    if (props.url === undefined) {
+      setHigh(false);
+    } else {
+      setHigh(true);
+    }
+  }, [props]);
 
   const dashboad = (e) => {
     // console.log(e.target.value);
@@ -121,7 +132,7 @@ const Result = (props) => {
       <Grid container>
         {posAndNeg ? (
           <Grid xs={12}>
-            <ViewerReact></ViewerReact>
+            <ViewerReact url={props.url}></ViewerReact>
           </Grid>
         ) : (
           <></>
@@ -139,11 +150,15 @@ const Result = (props) => {
       </Grid>
 
       <Grid container>
-        <Highlight
-          platform={props.platform}
-          videoid={props.videoid}
-          url={props.url}
-        ></Highlight>
+        {high ? (
+          <Highlight
+            platform={props.platform}
+            videoid={props.videoid}
+            url={props.url}
+          ></Highlight>
+        ) : (
+          <></>
+        )}
       </Grid>
       <Grid>
         <h3>Audio standardization</h3>
