@@ -75,7 +75,9 @@ const Highlight = (props) => {
               }
               setRows(temprows);
             })
-            .catch();
+            .catch(function (error) {
+              setRows([]);
+            });
         })
         .catch();
     } catch (e) {
