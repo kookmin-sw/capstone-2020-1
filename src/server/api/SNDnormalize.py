@@ -1,17 +1,16 @@
+import io
 import sys
 
 sys.path.append('../')
 
 from flask import Blueprint, jsonify, request, send_file
-from werkzeug.exceptions import BadRequest, NotAcceptable, Conflict
+from werkzeug.exceptions import BadRequest, NotAcceptable, Conflict, NotFound
 
 from models.file import File
 
-from server.api.Non_url import *
 from settings.utils import api
 from download.audio import *
 from analyze.volume_extract import *
-from moviepy.editor import *
 
 app = Blueprint('SNDnormalize', __name__, url_prefix='/api')
 
@@ -37,6 +36,13 @@ def upload_image(data, db):
     db.commit()
 
 
+def download_image(data, db):
+    file = db.query(File).filter(
+        File.url == data['url']
+    ).first()
+    return file
+
+
 @app.route('/SNDnormalize', methods=['GET'])
 @api
 def get_sound_normalize(data, db):
@@ -47,6 +53,14 @@ def get_sound_normalize(data, db):
 
     url = data['url']
 
+    file = download_image(data, db)
+    if file:  # 해당 url로 저장된 파일 없음
+        return send_file(io.BytesIO(file.file),
+                         attachment_filename=file.name,
+                         as_attachment=True,
+                         mimetype='image/png',
+                         )
+
     platform, videoid = extractInfoFromURL(url)
 
     if platform == "Twitch":
@@ -56,15 +70,25 @@ def get_sound_normalize(data, db):
     elif platform == "AfreecaTV":
         isValid = non_url_afreeca(videoid)
 
-    if isValid == True:
+    if isValid:
         download(platform, videoid, url)
 
         volumesPerMinute = sound_extract(platform, videoid)
         avg = local_normalize(platform, videoid, volumesPerMinute)
 
         image = {'url': url, 'name': f"./audio/normalizeAudio/{platform}_{videoid}.png"}
-        upload_image(image, db)
 
-        return jsonify({"average": avg})
+        file = open(image['name'], 'rb')
+        img = file.read()
+        file.close()
+
+        upload_image(image, db)
+        return send_file(io.BytesIO(img),
+                         attachment_filename=image['name'],
+                         as_attachment=True,
+                         mimetype='image/png',
+                         )
+
+        # return jsonify({"average": avg})
     else:
         raise NotAcceptable  # 유효하지 않은 URL
