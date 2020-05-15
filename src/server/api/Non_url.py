@@ -10,7 +10,12 @@ def non_url_twitch(videoID):
     response = requests.get(url, params=param, headers={"Client-ID": client_id})
     # 없는 영상이면 http 에러코드, 아니면 recorded
     j = json.loads(response.text)
-    return j['status']
+
+    if j['status'] != 'recorded':
+        return False
+    else:
+        platform = 'Twitch'
+        return [platform, videoID]
 
 def non_url_afreeca(videoID):
     url = 'http://vod.afreecatv.com/PLAYER/STATION/' + videoID
