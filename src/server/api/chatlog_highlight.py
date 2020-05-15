@@ -3,10 +3,12 @@ import sys
 sys.path.append('../')
 
 from flask import Blueprint, jsonify
+from werkzeug.exceptions import BadRequest
+
+from models.highlight import ChatHighlight
 from settings.utils import api
 from download.chatlog import *
 from analyze.analysis import *
-from werkzeug.exceptions import BadRequest
 
 app = Blueprint('chatlog_highlight', __name__, url_prefix='/api')
 
@@ -24,4 +26,14 @@ def get_chatlog_highlight(data, db):
 
     point = analyze1_minute(log)
 
-    return jsonify({'highlight': point})
+    result = {'highlight': point}
+
+    point = ChatHighlight(
+        platform=platform,
+        videoid=videoid,
+        highlight_json=result
+    )
+    db.add(point)
+    db.commit()
+
+    return jsonify(result)
