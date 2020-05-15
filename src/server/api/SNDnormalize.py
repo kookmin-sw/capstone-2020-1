@@ -15,7 +15,7 @@ from analyze.volume_extract import *
 app = Blueprint('SNDnormalize', __name__, url_prefix='/api')
 
 
-def upload_image(data, db):
+def upload_image(data, db, platform, videoid):
     query = db.query(File).filter(
         File.url == data['url'],
         File.name == data['name'],
@@ -31,6 +31,7 @@ def upload_image(data, db):
         name=data['name'],
         file=img,
         url=data['url'],
+        image_url=f"{os.getcwd()}/audio/normalizeAudio/{platform}_{videoid}.png"
     )
     db.add(new_file)
     db.commit()
@@ -55,11 +56,7 @@ def get_sound_normalize(data, db):
 
     file = download_image(data, db)
     if file:  # 해당 url로 저장된 파일 없음
-        return send_file(io.BytesIO(file.file),
-                         attachment_filename=file.name,
-                         as_attachment=True,
-                         mimetype='image/png',
-                         )
+        return jsonify({'image_url': file.image_url})
 
     platform, videoid = extractInfoFromURL(url)
 
@@ -75,19 +72,15 @@ def get_sound_normalize(data, db):
 
         volumesPerMinute = sound_extract(platform, videoid)
         avg = local_normalize(platform, videoid, volumesPerMinute)
-
-        image = {'url': url, 'name': f"./audio/normalizeAudio/{platform}_{videoid}.png"}
+        import os
+        image = {'url': url, 'name': f"{os.getcwd()}/audio/normalizeAudio/{platform}_{videoid}.png"}
 
         file = open(image['name'], 'rb')
         img = file.read()
         file.close()
 
-        upload_image(image, db)
-        return send_file(io.BytesIO(img),
-                         attachment_filename=image['name'],
-                         as_attachment=True,
-                         mimetype='image/png',
-                         )
+        upload_image(image, db, platform, videoid)
+        return jsonify({'image_url': image['name']})
 
         # return jsonify({"average": avg})
     else:
