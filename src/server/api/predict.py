@@ -9,6 +9,7 @@ from werkzeug.exceptions import BadRequest
 from api.ana_url import split_url
 from download.chatlog import download
 import math
+from models.highlight import Predict
 
 app = Blueprint('predict', __name__, url_prefix='/api')
 
@@ -20,20 +21,24 @@ def get_predict(data, db):
     isURLValid = split_url(url)
     if not isURLValid:
         raise BadRequest
+    query = db.query(Predict).filter(
+        Predict.url == url,
+    ).first()
+    if query:
+        return query.highlight_json
     download(isURLValid[0], isURLValid[1])
     with open('./chatlog/{}_{}.txt'.format(isURLValid[0], isURLValid[1]), encoding='utf-8') as f:
         content = f.read().split('\n')
     second = []
     comment = []
-    for i in range(0, len(content)-1):
+    for i in range(0, len(content) - 1):
         splited_chat = content[i].split('\t')
         print(splited_chat)
         if len(splited_chat) < 3:
             continue
         second.append(splited_chat[0])
         comment.append(splited_chat[2])
-    print(second)
-    print(comment)
+
     if len(second) < 1 or len(comment) < 1:
         raise BadRequest
 
@@ -56,4 +61,11 @@ def get_predict(data, db):
         predict_per_unitsecond['pos'].append(poscnt)
         predict_per_unitsecond['neg'].append(negcnt)
         temp += x
-    return jsonify({'predict': predict_per_unitsecond})
+    result = {'predict': predict_per_unitsecond}
+    new_predict = Predict(
+        url=url,
+        highlight_json=result,
+    )
+    db.add(new_predict)
+    db.commit()
+    return jsonify(result)
