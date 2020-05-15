@@ -54,7 +54,8 @@ const InputUrl = (props) => {
         })
         .then((response) => {
           const data = response.data;
-          // console.log(data);
+          console.log(data);
+          localStorage.setItem("loginStorage", JSON.stringify(data));
           // props.toggleInput(true);
           // props.setUrl(url);
           checkUrl();
@@ -63,6 +64,7 @@ const InputUrl = (props) => {
           if (error.response.status === 401) {
             localStorage.removeItem("loginStorage");
             props.toggleLogin(false);
+            props.toggleInput(false);
             alert("please, you need sign in again.");
           }
         });
