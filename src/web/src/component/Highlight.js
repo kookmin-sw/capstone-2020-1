@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -14,20 +15,73 @@ const useStyles = makeStyles({
   },
 });
 
-function createData(number, start, end, kind) {
-  return { number, start, end, kind };
+function humanReadable(seconds) {
+  var pad = function (x) {
+    return x < 10 ? "0" + x : x;
+  };
+  return (
+    pad(parseInt(seconds / (60 * 60))) +
+    ":" +
+    pad(parseInt((seconds / 60) % 60)) +
+    ":" +
+    pad(seconds % 60)
+  );
 }
 
-const rows = [
-  createData("Highlight 1", "18:00", "19:00", "chat"),
-  createData("Highlight 2", "28:00", "29:00", "sound"),
-  createData("Highlight 3", "38:00", "39:00", "chat"),
-  createData("Highlight 4", "48:00", "49:00", "chat"),
-  createData("Highlight 5", "58:00", "59:00", "sound"),
-];
+function createData(number, point, kind) {
+  return { number, point, kind };
+}
 
-export default function Highlight() {
+const Highlight = (props) => {
   const classes = useStyles();
+  const [rows, setRows] = useState([]);
+
+  useEffect(() => {
+    try {
+      let temp = [];
+      axios
+        .get("http://localhost:8000/api/SNDhighlight", {
+          headers: { "Content-Type": "multipart/form-data" },
+          params: {
+            url: props.url,
+          },
+        })
+        .then((response) => {
+          const data = response.data.highlight;
+          console.log(data);
+          for (var i in data) {
+            temp = temp.concat([[humanReadable(data[i][0] * 60), "sound"]]);
+          }
+          axios
+            .get("http://localhost:8000/api/chatlog_highlight", {
+              headers: { "Content-Type": "multipart/form-data" },
+              params: {
+                platform: props.platform,
+                videoid: props.videoid,
+              },
+            })
+            .then((response) => {
+              const data = response.data.highlight;
+              console.log(data);
+              for (var i in data) {
+                temp = temp.concat([[humanReadable(data[i][0]), "chat"]]);
+              }
+              temp.sort();
+              let temprows = [];
+              for (var i = 0; i < 6; i++) {
+                temprows = temprows.concat(
+                  createData("Highlight" + (i + 1), temp[i][0], temp[i][1])
+                );
+              }
+              setRows(temprows);
+            })
+            .catch();
+        })
+        .catch();
+    } catch (e) {
+      console.log(e);
+    }
+  }, [props]);
 
   return (
     <TableContainer component={Paper}>
@@ -36,8 +90,7 @@ export default function Highlight() {
         <TableHead>
           <TableRow>
             <TableCell>Highlight</TableCell>
-            <TableCell align="right">Point Start</TableCell>
-            <TableCell align="right">Point End</TableCell>
+            <TableCell align="right">Point</TableCell>
             <TableCell align="right">Sound or Chat</TableCell>
           </TableRow>
         </TableHead>
@@ -47,8 +100,7 @@ export default function Highlight() {
               <TableCell component="th" scope="row">
                 {row.number}
               </TableCell>
-              <TableCell align="right">{row.start}</TableCell>
-              <TableCell align="right">{row.end}</TableCell>
+              <TableCell align="right">{row.point}</TableCell>
               <TableCell align="right">{row.kind}</TableCell>
             </TableRow>
           ))}
@@ -56,4 +108,6 @@ export default function Highlight() {
       </Table>
     </TableContainer>
   );
-}
+};
+
+export default Highlight;
