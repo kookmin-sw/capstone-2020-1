@@ -41,9 +41,10 @@ const Login = (props) => {
         })
         .then((response) => {
           const data = response.data;
-          // console.log(data);
+          console.log(data);
 
           localStorage.setItem("loginStorage", JSON.stringify(data));
+          props.setEmail(email);
           props.toggleLogin(true);
           return true;
         })
