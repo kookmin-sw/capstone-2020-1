@@ -139,7 +139,11 @@ const Result = (props) => {
       </Grid>
 
       <Grid container>
-        <Highlight></Highlight>
+        <Highlight
+          platform={props.platform}
+          videoid={props.videoid}
+          url={props.url}
+        ></Highlight>
       </Grid>
       <Grid>
         <h3>Audio standardization</h3>
