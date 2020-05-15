@@ -22,6 +22,14 @@ def get_chatlog_highlight(data, db):
             raise BadRequest
     platform = data['platform']
     videoid = data['videoid']
+
+    query = db.query(ChatHighlight).filter(
+        ChatHighlight.platform == platform,
+        ChatHighlight.videoid == videoid,
+    ).first()
+    if query:
+        return jsonify(query.highlight_json)
+
     log = download(platform, videoid)
 
     point = analyze1_minute(log)
