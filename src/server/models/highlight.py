@@ -18,3 +18,11 @@ class ChatHighlight(Base):
     platform = Column(String, nullable=False)
     videoid = Column(String, nullable=False, unique=True)
     highlight_json = Column(JSON, nullable=False)
+
+
+class Predict(Base):
+    __tablename__ = 'chat_predict'
+
+    id = Column(Integer, autoincrement=True, primary_key=True)
+    url = Column(String, unique=True, nullable=False)
+    highlight_json = Column(JSON, nullable=False)
