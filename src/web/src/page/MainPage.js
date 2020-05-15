@@ -42,11 +42,19 @@ const MainPage = () => {
         })
         .then((response) => {
           const data = response.data;
-          // console.log(data);
+          console.log(data);
+          localStorage.setItem("loginStorage", JSON.stringify(data));
           setEmail(JSON.parse(temp).email);
           toggleLogin(true);
         })
-        .catch();
+        .catch(function (error) {
+          if (error.response.status === 401) {
+            localStorage.removeItem("loginStorage");
+            toggleLogin(false);
+            toggleInput(false);
+            alert("please, you need sign in again.");
+          }
+        });
     } catch (e) {
       console.log(e);
     }
@@ -78,7 +86,7 @@ const MainPage = () => {
         <Login setEmail={setEmail} toggleLogin={toggleLogin} />
       )}
 
-      {input ? (
+      {input & login ? (
         <Result url={url} platform={platform} videoid={videoid}></Result>
       ) : (
         <></>
