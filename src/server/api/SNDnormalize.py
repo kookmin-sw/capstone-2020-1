@@ -41,6 +41,7 @@ def upload_image(data, db, platform, videoid):
     )
     db.add(new_file)
     db.commit()
+    return image_path
 
 
 def download_image(data, db):
@@ -85,8 +86,8 @@ def get_sound_normalize(data, db):
         img = file.read()
         file.close()
 
-        upload_image(image, db, platform, videoid)
-        return jsonify({'image_url': image['name']})
+        image_path = upload_image(image, db, platform, videoid)
+        return jsonify({'image_url': image_path})
 
         # return jsonify({"average": avg})
     else:
