@@ -8,7 +8,7 @@ HOST_ADDR = '127.0.0.1'  # localhost address
 SERVER_PORT = 8000  # 서버 포트
 DEBUG = False  # 디버그모드
 MODE = os.environ.get('MODE')
-
+SALT = b'$2b$12$tPrUCEr3KqxIcBEv0fx67e'
 # connect db
 USER = 'postgres'  # username
 PASSWOLRD = 'root'  # postgresql pw
