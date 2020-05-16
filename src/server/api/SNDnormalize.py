@@ -1,16 +1,18 @@
-import io
 import sys
 
 sys.path.append('../')
 
-from flask import Blueprint, jsonify, request, send_file
-from werkzeug.exceptions import BadRequest, NotAcceptable, Conflict, NotFound
+from flask import Blueprint, jsonify
+from werkzeug.exceptions import BadRequest, NotAcceptable, Conflict
 
 from models.file import File
-
+from settings.settings import MODE
 from settings.utils import api
 from download.audio import *
 from analyze.volume_extract import *
+import boto3
+
+s3 = boto3.resource('s3')
 
 app = Blueprint('SNDnormalize', __name__, url_prefix='/api')
 
@@ -26,12 +28,16 @@ def upload_image(data, db, platform, videoid):
     file = open(data['name'], 'rb')
     img = file.read()
     file.close()
-
+    image_path = f'{os.getcwd()}/audio/normalizeAudio/{platform}_{videoid}.png'
+    s3.Object('yobaimageserver', image_path).upload_file(
+        Filename=image_path)  # upload to s3
+    if MODE == 'RUN':  # use EC2 only
+        image_path = 'https://yobaimageserver.s3.ap-northeast-2.amazonaws.com/' + image_path
     new_file = File(
         name=data['name'],
         file=img,
         url=data['url'],
-        image_url=f"{os.getcwd()}/audio/normalizeAudio/{platform}_{videoid}.png"
+        image_url=image_path
     )
     db.add(new_file)
     db.commit()
