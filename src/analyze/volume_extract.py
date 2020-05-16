@@ -7,6 +7,7 @@ from moviepy.editor import *
 
 
 def save_graph(platform, videoID, volumes, avg):
+    plt.switch_backend('Agg')
     fig, ax1 = plt.subplots()  # plot
     ax1.plot(np.linspace(0, len(volumes), len(volumes)), volumes, color='b')
     plt.axhline(y=avg, color='r', linewidth=1)
