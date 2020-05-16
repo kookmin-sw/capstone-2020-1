@@ -1,5 +1,6 @@
-from db import Base
 from sqlalchemy import Column, Integer, String, Unicode
+
+from db import Base
 
 
 class UserInfo(Base):
