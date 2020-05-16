@@ -1,10 +1,9 @@
-import io
 import sys
 
 sys.path.append('../')
 
-from flask import Blueprint, jsonify, request, send_file
-from werkzeug.exceptions import BadRequest, NotAcceptable, Conflict, NotFound
+from flask import Blueprint, jsonify
+from werkzeug.exceptions import BadRequest, NotAcceptable, Conflict
 
 from models.file import File
 
