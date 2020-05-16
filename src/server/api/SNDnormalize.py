@@ -28,7 +28,9 @@ def upload_image(data, db, platform, videoid):
     file = open(data['name'], 'rb')
     img = file.read()
     file.close()
-    image_path = f'{os.getcwd()}/audio/normalizeAudio/{platform}_{videoid}.png'
+    pwd = os.getcwd()
+    pwd = pwd.replace('\\', '/')
+    image_path = f'{pwd}/audio/normalizeAudio/{platform}_{videoid}.png'
     s3.Object('yobaimageserver', image_path).upload_file(
         Filename=image_path)  # upload to s3
     if MODE == 'RUN':  # use EC2 only

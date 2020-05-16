@@ -1,11 +1,13 @@
 import datetime
 
+import bcrypt
 from flask import Blueprint, jsonify
 from werkzeug.exceptions import NotFound, BadRequest, Unauthorized
 
 from models.login_expiry import LoginExpiry
 from models.user_info import UserInfo
 from settings.serialize import serialize
+from settings.settings import SALT
 from settings.utils import api
 
 app = Blueprint('login', __name__, url_prefix='/api')
@@ -43,9 +45,11 @@ def post_login(data, db):  # 로그인
     for i in req_list:  # 필수 요소 들어있는지 검사
         if i not in data:
             raise BadRequest
+
+    password_hash = bcrypt.hashpw(data['pw'].encode(), SALT)
     user_info = db.query(UserInfo).filter(
         UserInfo.email == data['email'],
-        UserInfo.pw == data['pw'],
+        UserInfo.pw == password_hash.decode(),
     ).first()
     if not user_info:  # 검색 결과 없음
         raise NotFound
