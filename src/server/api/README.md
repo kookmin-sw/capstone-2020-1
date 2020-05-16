@@ -104,8 +104,7 @@ ping
 응답
 ```
 {
-    "average":~.~~~
-    platform_videoID.png (audio/normalizeAudio 폴더에 생성 및 db에 저장)
+    "image_url": "abs_path/image.png"
 }
 200 ok
 400 요청 형식이 맞지 않음
