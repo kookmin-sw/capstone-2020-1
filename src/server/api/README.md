@@ -200,6 +200,7 @@ ping
 ```
 
 ### Predict
+[GET] /api/predict  
 채팅 긍정부정 분류
 
 요청
@@ -221,6 +222,40 @@ ping
       0, 
       0, 
       1
+    ]
+  }
+}
+200 OK
+400 INVALID URL
+```
+[GET] /api/predict7
+요청
+```
+{
+    "url": "http://www.sample.sample"
+}
+```
+응답
+```
+{
+  "predict": {
+    "joy": [
+      1, 
+      1, 
+      0
+    ], 
+    "love": [
+      0, 
+      0, 
+      1
+    ],
+    .
+    .
+    .
+    "neutral": [
+       1,
+       2,
+       3 
     ]
   }
 }
