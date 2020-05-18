@@ -44,9 +44,9 @@ def fitting(sample_labels, sample_text):
 	return acc
 
 def predict(chat):
-	vectorizer = pickle.load(open("vectorizer.pickle", "rb"))
+	vectorizer = pickle.load(open("../sentiment7/vectorizer.pickle", "rb"))
 	chat_feat = vectorizer.transform(chat)
-	model = joblib.load('7sentiment.model')
+	model = joblib.load('../sentiment7/7sentiment.model')
 	return model.predict(chat_feat)
 
 def counting(a):
@@ -56,12 +56,12 @@ def counting(a):
 		dic[s] = a.count(s)
 	return dic
 
-sample_text = []; sample_labels = []
-for line in codecs.open('./data/chat_data.tsv', 'r', 'utf-8'):
-	label, text = line.strip().split('\t')
-	text = ' '.join(word[0] for word in okt.pos(text, norm=True))
+# sample_text = []; sample_labels = []
+# for line in codecs.open('./data/chat_data.tsv', 'r', 'utf-8'):
+# 	label, text = line.strip().split('\t')
+# 	text = ' '.join(word[0] for word in okt.pos(text, norm=True))
 
-	sample_text.append(text)
-	sample_labels.append(label)
+# 	sample_text.append(text)
+# 	sample_labels.append(label)
 
-print(len(predict(sample_text)))
+# print(len(predict(sample_text)))
