@@ -4,6 +4,7 @@ import { Grid, Button, ListItemSecondaryAction } from "@material-ui/core";
 import ViewerReact from "./ViewerReact";
 import Highlight from "./Highlight";
 import ViewerRank from "./ViewerRank";
+import Seven from "./Seven";
 import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
 import Radio from "@material-ui/core/Radio";
@@ -11,7 +12,6 @@ import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
-import ImageLoader from "react-load-image";
 
 const useStyles = makeStyles({
   root: {
@@ -78,6 +78,7 @@ const Result = (props) => {
   const [keword, setKeyword] = useState(false);
   const [high, setHigh] = useState(false);
   const [audioNorm, setAudioNrom] = useState(false);
+  const [seven, setSeven] = useState(false);
   const [image, setImage] = useState();
 
   useEffect(() => {
@@ -119,24 +120,34 @@ const Result = (props) => {
       setPosAndNeg(true);
       setKeyword(false);
       setAudioNrom(false);
+      setSeven(false);
     } else if (e.target.value === "keword") {
       setPosAndNeg(false);
       setKeyword(true);
       setAudioNrom(false);
+      setSeven(false);
     } else if (e.target.value === "audioNorm") {
       setPosAndNeg(false);
       setKeyword(false);
       setAudioNrom(true);
+      setSeven(false);
       audio();
+    } else if (e.target.value === "seven") {
+      setPosAndNeg(false);
+      setKeyword(false);
+      setAudioNrom(false);
+      setSeven(true);
     } else {
       setPosAndNeg(false);
       setKeyword(false);
       setAudioNrom(false);
+      setSeven(false);
     }
   };
 
   return (
     <div>
+
       <h3>Analysis results of {props.url}</h3>
       <FormControl component="fieldset">
         <FormLabel component="legend">Options</FormLabel>
@@ -149,6 +160,11 @@ const Result = (props) => {
             value="posAndNeg"
             control={<StyledRadio />}
             label="Positive & Negative"
+          />
+          <FormControlLabel
+            value="seven"
+            control={<StyledRadio />}
+            label="Seven Sentiment"
           />
           <FormControlLabel
             value="keword"
@@ -199,6 +215,13 @@ const Result = (props) => {
         ) : (
           <></>
         )}
+        {seven ? (
+          <Grid xs={6}>
+            <Seven></Seven>
+          </Grid>
+        ) : (
+          <></>
+        )}
         <Grid xs={3}></Grid>
       </Grid>
 
@@ -222,6 +245,7 @@ const Result = (props) => {
         )}
         <Grid xs={1}></Grid>
       </Grid>
+
     </div>
   );
 };
