@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import YobaLogo from "../yoba_logo.png";
 
 const NaviBar = (props) => {
-    console.log(props.email)
+    // console.log(props.email)
   return (
     <AppBar position="sticky" color="default">
       <Grid
@@ -37,21 +37,10 @@ const NaviBar = (props) => {
                 textTransform: "none",
                 color: "black",
                 marginLeft: 20,
-                marginRight: 20,
-              }}
-            >
-              About
-            </Typography>
-            <Typography
-              variant="h6"
-              style={{
-                textTransform: "none",
-                color: "black",
-                marginLeft: 20,
                 marginRight: 30,
               }}
             >
-              {props.login ? props.email + "님 환영합니다." : "Log In"}
+              {props.login ? props.email + "님 환영합니다." : "Sign In"}
             </Typography>
           </Grid>
         </Grid>
