@@ -6,11 +6,12 @@ from moviepy.audio.fx.all import *
 from moviepy.editor import *
 
 
-def save_graph(platform, videoID, volumes, avg):
+# volumesPerMinute 그래프 + 적정 volume level을 표시하여 저장
+def save_graph(platform, videoID, volumes, AVG_20=0.221829165):  # AVG_20 = 유튜브 하이라이트 영상 20개에 대한 평균
     plt.switch_backend('Agg')
     fig, ax1 = plt.subplots()  # plot
     ax1.plot(np.linspace(0, len(volumes), len(volumes)), volumes, color='b')
-    plt.axhline(y=avg, color='r', linewidth=1)
+    plt.axhline(y=AVG_20, color='r', linewidth=1)
     ax1.set_ylabel("Volume")  # y 축
     ax1.set_xlabel("minute")  # x 축
     plt.title("Volumes of each minute")  # 제목
@@ -31,16 +32,6 @@ def load_audio(platform, videoID):
     for filename in files:
         audio_arr.append(AudioFileClip("audio/" + filename))
     return concatenate_audioclips(audio_arr)
-
-
-# volumesPerMinute 그래프 + 적정 volume level을 표시하여 저장
-def local_normalize(platform, videoID, volumesPerMinute):
-    avg = np.mean(volumesPerMinute)  # sound_extract에서 얻은 volumesPerMinute을 평균냄
-
-    AVG_20 = 0.221829165  # 유튜브 하이라이트 영상 20개에 대한 평균
-    save_graph(platform, videoID, volumesPerMinute, AVG_20)
-
-    return avg
 
 
 def sound_extract(platform, videoID, filetype="audio"):

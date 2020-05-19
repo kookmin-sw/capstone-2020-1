@@ -74,17 +74,11 @@ def get_sound_normalize(data, db):
         download(url_result[0], url_result[1], url)
 
         volumesPerMinute = sound_extract(url_result[0], url_result[1])
-        avg = local_normalize(url_result[0], url_result[1], volumesPerMinute)
+        save_graph(url_result[0], url_result[1], volumesPerMinute)
         import os
         image = {'url': url, 'name': f"{os.getcwd()}/audio/normalizeAudio/{url_result[0]}_{url_result[1]}.png"}
 
-        file = open(image['name'], 'rb')
-        img = file.read()
-        file.close()
-
         image_path = upload_image(image, db, url_result[0], url_result[1])
         return jsonify({'image_url': image_path})
-
-        # return jsonify({"average": avg})
     else:
         raise NotAcceptable  # 유효하지 않은 URL
