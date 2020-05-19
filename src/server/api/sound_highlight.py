@@ -11,6 +11,7 @@ from settings.utils import api
 from download.audio import *
 from analyze.volume_extract import *
 from analyze.analysis import *
+from api.ana_url import split_url
 
 app = Blueprint('SNDhighlight', __name__, url_prefix='/api')
 
@@ -47,19 +48,12 @@ def get_sound_highlight(data, db):
     if query:
         return jsonify(query.highlight_json)
 
-    platform, videoid = extractInfoFromURL(url)
+    url_result = split_url(url)
 
-    if platform == "Twitch":
-        isValid = non_url_twitch(videoid)
-    elif platform == "Youtube":
-        isValid = non_url_youtube(videoid)
-    elif platform == "AfreecaTV":
-        isValid = non_url_afreeca(videoid)
+    if url_result != False:
+        download(url_result[0], url_result[1], url)
 
-    if isValid:
-        download(platform, videoid, url)
-
-        volumesPerMinute = sound_extract(platform, videoid)
+        volumesPerMinute = sound_extract(url_result[0], url_result[1])
         point = analyze1_sound(volumesPerMinute)
 
         result = {"highlight": point}

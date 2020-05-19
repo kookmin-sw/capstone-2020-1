@@ -25,7 +25,7 @@ def get_predict(data, db):
         Predict.url == url,
     ).first()
     if query:
-        return query.highlight_json
+        return query.posneg_json
     download(isURLValid[0], isURLValid[1])
     with open('./chatlog/{}_{}.txt'.format(isURLValid[0], isURLValid[1]), encoding='utf-8') as f:
         content = f.read().split('\n')
@@ -33,7 +33,6 @@ def get_predict(data, db):
     comment = []
     for i in range(0, len(content) - 1):
         splited_chat = content[i].split('\t')
-        print(splited_chat)
         if len(splited_chat) < 3:
             continue
         second.append(splited_chat[0])
@@ -64,7 +63,7 @@ def get_predict(data, db):
     result = {'predict': predict_per_unitsecond}
     new_predict = Predict(
         url=url,
-        highlight_json=result,
+        posneg_json=result,
     )
     db.add(new_predict)
     db.commit()
