@@ -28,6 +28,16 @@ function humanReadable(seconds) {
   );
 }
 
+function makeTime(str) {
+  var tmpTime = str.split(":");
+  console.log(tmpTime);
+  var temp =
+    parseInt(tmpTime[0]) * 3600 +
+    parseInt(tmpTime[1]) * 60 +
+    parseInt(tmpTime[2]);
+  return temp;
+}
+
 function createData(number, point, kind) {
   return { number, point, kind };
 }
@@ -85,6 +95,12 @@ const Highlight = (props) => {
     }
   }, [props]);
 
+  const onClick = (e) => {
+    console.log(e.point);
+    props.setTime(makeTime(e.point));
+    props.setCheck(true);
+  };
+
   return (
     <TableContainer component={Paper}>
       <h3 className="mt-5">Highlight Point</h3>
@@ -98,7 +114,12 @@ const Highlight = (props) => {
         </TableHead>
         <TableBody>
           {rows.map((row) => (
-            <TableRow key={row.number}>
+            <TableRow
+              key={row.number}
+              onClick={() => {
+                onClick(row);
+              }}
+            >
               <TableCell component="th" scope="row">
                 {row.number}
               </TableCell>

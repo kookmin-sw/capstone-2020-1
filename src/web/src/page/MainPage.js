@@ -60,6 +60,13 @@ const MainPage = () => {
     }
   };
 
+  const logout = () => {
+    localStorage.removeItem("loginStorage");
+    toggleLogin(false);
+    toggleInput(false);
+    alert("log out");
+  };
+
   return (
     <div onLoad={test}>
       <Grid>
@@ -68,12 +75,6 @@ const MainPage = () => {
       <Grid>
         <Description />
       </Grid>
-      {/* <Grid>
-        <Login setEmail={setEmail} togleLogin={togleLogin}/>
-      </Grid>
-      <Grid>
-        <InputUrl></InputUrl>
-      </Grid> */}
       {login ? (
         <InputUrl
           toggleInput={toggleInput}
