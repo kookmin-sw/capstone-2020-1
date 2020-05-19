@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { Grid, Button, ListItemSecondaryAction } from "@material-ui/core";
 import ViewerReact from "./ViewerReact";
@@ -12,6 +12,7 @@ import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
+import ReactPlayer from "react-player";
 
 const useStyles = makeStyles({
   root: {
@@ -80,6 +81,10 @@ const Result = (props) => {
   const [audioNorm, setAudioNrom] = useState(false);
   const [seven, setSeven] = useState(false);
   const [image, setImage] = useState();
+  const [check, setCheck] = useState(false);
+  const [time, setTime] = useState(0);
+
+  const player_ref = useRef();
 
   useEffect(() => {
     setPosAndNeg(false);
@@ -144,10 +149,12 @@ const Result = (props) => {
       setSeven(false);
     }
   };
-
+  const moveControl = () => {
+    player_ref.current.seekTo(time);
+    setCheck(false);
+  };
   return (
     <div>
-
       <h3>Analysis results of {props.url}</h3>
       <FormControl component="fieldset">
         <FormLabel component="legend">Options</FormLabel>
@@ -225,6 +232,8 @@ const Result = (props) => {
         <Grid xs={3}></Grid>
       </Grid>
 
+      <br></br>
+
       <Grid
         container
         alignItems="center"
@@ -238,6 +247,8 @@ const Result = (props) => {
               platform={props.platform}
               videoid={props.videoid}
               url={props.url}
+              setTime={setTime}
+              setCheck={setCheck}
             ></Highlight>
           </Grid>
         ) : (
@@ -246,6 +257,29 @@ const Result = (props) => {
         <Grid xs={1}></Grid>
       </Grid>
 
+      <br></br>
+
+      <h4 className="mt-5">
+        Click on the "Highligh Point" table to go to the click position
+      </h4>
+      <h3 className="mt-5">Video</h3>
+
+      <Grid
+        container
+        alignItems="center"
+        direction="row"
+        justify="space-between"
+      >
+        <Grid xs={1}></Grid>
+        <ReactPlayer
+          ref={player_ref}
+          playing
+          url={props.url}
+          controls
+        ></ReactPlayer>
+        <Grid xs={1}></Grid>
+      </Grid>
+      {check ? moveControl() : <></>}
     </div>
   );
 };
