@@ -13,6 +13,7 @@ from api.file import app as api_file
 from api.login import app as api_login
 from api.server import app as api_server
 from api.test import app as api_test
+from api.predict7 import app as api_predict7
 from settings.logger import after_request, error_handler
 from settings.settings import DEBUG, POSTGRESQL
 
@@ -38,6 +39,7 @@ def create_wsgi():
     app.register_blueprint(api_file)
     app.register_blueprint(api_sndhighlight)
     app.register_blueprint(api_chatlog_highlight)
+    app.register_blueprint(api_predict7)
 
     CORS(app)
     return app
