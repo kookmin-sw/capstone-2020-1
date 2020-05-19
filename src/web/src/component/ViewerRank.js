@@ -137,7 +137,7 @@ const ViewerRank = (props) => {
     } catch (e) {
       console.log(e);
     }
-  }, []);
+  }, [props]);
 
   const showAlert = (e) => {
     // console.log(e);
