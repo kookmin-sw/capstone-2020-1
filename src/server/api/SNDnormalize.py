@@ -32,7 +32,9 @@ def upload_image(data, db, platform, videoid):
     pwd = pwd.replace('\\', '/')
     image_path = f'{pwd}/audio/normalizeAudio/{platform}_{videoid}.png'
     s3.Object('yobaimageserver', image_path).upload_file(
-        Filename=image_path)  # upload to s3
+        Filename=image_path)
+    s3.Object('yobaimageserver', image_path).metadata.update({'Content-Type': 'image/png'})  # upload to s3
+
     if MODE == 'RUN':  # use EC2 only
         image_path = 'https://yobaimageserver.s3.ap-northeast-2.amazonaws.com/' + image_path
     new_file = File(
