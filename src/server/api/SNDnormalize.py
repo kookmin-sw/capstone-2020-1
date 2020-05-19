@@ -29,15 +29,13 @@ def upload_image(data, db, platform, videoid):
     file = open(data['name'], 'rb')
     img = file.read()
     file.close()
-    pwd = os.getcwd()
-    pwd = pwd.replace('\\', '/')
-    image_path = f'{pwd}/audio/normalizeAudio/{platform}_{videoid}.png'
-
+    image_path = f'./audio/normalizeAudio/{platform}_{videoid}.png'
+    file_name = image_path.split('/')[-1]
     if MODE == 'RUN':  # use EC2 only
-        s3.Object('yobaimageserver', image_path[1:]).upload_file(
-            Filename=image_path,
-            metadata={'Content-Type': 'image/png'})  # upload to s3
-        image_path = 'https://yobaimageserver.s3.ap-northeast-2.amazonaws.com/' + image_path[1:]
+        s3.meta.client.upload_file(
+            image_path, 'yobaimageserver', file_name, ExtraArgs={'ContentType': 'image/png'})  # upload to s3
+        image_path = 'https://yobaimageserver.s3.ap-northeast-2.amazonaws.com/' + file_name
+
     new_file = File(
         name=data['name'],
         file=img,
@@ -77,8 +75,7 @@ def get_sound_normalize(data, db):
 
         volumesPerMinute = sound_extract(url_result[0], url_result[1])
         save_graph(url_result[0], url_result[1], volumesPerMinute)
-        import os
-        image = {'url': url, 'name': f"{os.getcwd()}/audio/normalizeAudio/{url_result[0]}_{url_result[1]}.png"}
+        image = {'url': url, 'name': f"./audio/normalizeAudio/{url_result[0]}_{url_result[1]}.png"}
 
         image_path = upload_image(image, db, url_result[0], url_result[1])
         return jsonify({'image_url': image_path})
