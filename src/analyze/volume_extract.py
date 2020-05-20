@@ -16,8 +16,8 @@ def save_graph(platform, videoID, volumes, AVG_20=0.221829165):  # AVG_20 = 유�
     ax1.plot(x, volumes, color='b')
     plt.axhline(y=AVG_20, color='r', linewidth=1)
     ax1.set_ylabel("Volume")  # y 축
-    ax1.set_xlabel("minute")  # x 축
-    plt.title("Volumes of each minute")  # 제목
+    ax1.set_xlabel("second")  # x 축
+    plt.title("Volumes of each second")  # 제목
 
     path = "./audio/normalizeAudio/"
     if not os.path.exists(path):
