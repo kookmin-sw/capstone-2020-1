@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
-import { Grid, Button, ListItemSecondaryAction } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import ViewerReact from "./ViewerReact";
 import Highlight from "./Highlight";
 import ViewerRank from "./ViewerRank";
@@ -99,7 +99,7 @@ const Result = (props) => {
   const audio = () => {
     try {
       axios
-        .get("http://13.209.112.92:8000/api/SNDnormalize", {
+        .get("http://localhost:8000/api/SNDnormalize", {
           headers: { "Content-Type": "multipart/form-data" },
           params: {
             url: props.url,
@@ -224,7 +224,7 @@ const Result = (props) => {
         )}
         {seven ? (
           <Grid xs={6}>
-            <Seven></Seven>
+            <Seven url={props.url}></Seven>
           </Grid>
         ) : (
           <></>
@@ -271,15 +271,19 @@ const Result = (props) => {
         justify="space-between"
       >
         <Grid xs={1}></Grid>
-        <ReactPlayer
-          ref={player_ref}
-          playing
-          url={props.url}
-          controls
-        ></ReactPlayer>
+        {props.platform !== "AfreecaTV" ? (
+          <ReactPlayer
+            ref={player_ref}
+            playing
+            url={props.url}
+            controls
+          ></ReactPlayer>
+        ) : (
+          <iframe src={props.url} width="640" height="360" currentPosition="100"></iframe>
+        )}
         <Grid xs={1}></Grid>
+        {check ? moveControl() : <></>}
       </Grid>
-      {check ? moveControl() : <></>}
     </div>
   );
 };
