@@ -3,7 +3,17 @@ import React, { useState } from "react";
 import YobaLogo from "../yoba_logo.png";
 
 const NaviBar = (props) => {
-    // console.log(props.email)
+  // console.log(props.email)
+  const logout = () => {
+    if (props.login === true) {
+      localStorage.removeItem("loginStorage");
+      props.toggleLogin(false);
+      props.toggleInput(false);
+      alert("sign out");
+    } else {
+      alert("Please, sign in from the bottom page.")
+    }
+  };
   return (
     <AppBar position="sticky" color="default">
       <Grid
@@ -39,6 +49,7 @@ const NaviBar = (props) => {
                 marginLeft: 20,
                 marginRight: 30,
               }}
+              onClick={logout}
             >
               {props.login ? props.email + "님 환영합니다." : "Sign In"}
             </Typography>
