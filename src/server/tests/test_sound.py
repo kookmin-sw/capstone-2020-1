@@ -6,7 +6,7 @@ def test_get_normalize(client):
     res = client.get('/api/SNDnormalize', query_string=data)
     assert res.status_code == 400
 
-    data = {"url": "https://youtu.be/rOFRZ-zBAbs"}  # 처음 들어오는 데이터
+    data = {"url": "http://vod.afreecatv.com/PLAYER/STATION/56750207"}  # 처음 들어오는 데이터
     res = client.get('/api/SNDnormalize', query_string=data)
     assert res.status_code == 200
     assert len(json.loads(res.get_data())['image_url']) > 0
