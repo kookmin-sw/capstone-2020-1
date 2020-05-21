@@ -42,11 +42,11 @@ def get_predict7(data, db):
         raise BadRequest
 
     endSecond = int(second[-1][1:-1])
-    p = predict(comment)
-    if endSecond >= 100:
-        x = math.ceil(endSecond / 100)
+    p = [[s[1:-1] for s in second], predict(comment)]
+    if endSecond >= 100.0:
+        x = math.ceil(endSecond / 100.0)
     else:
-        x = 1
+        x = 1.0
     temp = 0
     predict_per_unitsecond = {
         'neutral': [],
@@ -58,20 +58,23 @@ def get_predict7(data, db):
         'anger': []}
     while temp < endSecond:
         neutral=0; joy=0; love=0; fear=0; surprise=0; sadness=0; anger=0
-        for i in p[temp:temp + x]:
-            if i == 'neutral':
+        loop = temp+x
+        if loop > endSecond:
+            loop = endSecond
+        for i in range(temp, loop):
+            if int(p[0][i]) <= loop and p[1][i] == 'neutral':
                 neutral += 1
-            elif i == 'joy':
+            elif int(p[0][i]) <= loop and p[1][i] == 'joy':
                 joy += 1
-            elif i == 'love':
+            elif int(p[0][i]) <= loop and p[1][i] == 'love':
                 love += 1
-            elif i == 'fear':
+            elif int(p[0][i]) <= loop and p[1][i] == 'fear':
                 fear += 1
-            elif i == 'surprise':
+            elif int(p[0][i]) <= loop and p[1][i] == 'surprise':
                 fear += 1
-            elif i == 'sadness':
+            elif int(p[0][i]) <= loop and p[1][i] == 'sadness':
                 sadness += 1
-            elif i == 'anger':
+            elif int(p[0][i]) <= loop and p[1][i] == 'anger':
                 anger += 1
         predict_per_unitsecond['neutral'].append(neutral)
         predict_per_unitsecond['joy'].append(joy)

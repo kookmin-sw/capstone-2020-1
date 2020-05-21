@@ -9,7 +9,7 @@ def test_get_predict7(client):
     res = client.get('api/predict7', query_string=data)
     assert res.status_code == 400
     data = {
-        'url': 'http://vod.afreecatv.com/PLAYER/STATION/53773494'
+        'url': 'http://vod.afreecatv.com/PLAYER/STATION/54467101'
     }
     res = client.get('api/predict7', query_string=data)
     assert res.status_code == 200
