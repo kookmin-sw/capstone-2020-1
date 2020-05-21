@@ -10,7 +10,7 @@ from api.ana_url import split_url
 from download.chatlog import download
 import math
 from models.highlight import Predict
-
+import numpy
 app = Blueprint('predict', __name__, url_prefix='/api')
 
 
@@ -18,7 +18,9 @@ app = Blueprint('predict', __name__, url_prefix='/api')
 @api
 def get_predict(data, db):
     url = data['url']
+    print(1)
     isURLValid = split_url(url)
+    print(2)
     if not isURLValid:
         raise BadRequest
     query = db.query(Predict).filter(
@@ -41,27 +43,28 @@ def get_predict(data, db):
         raise BadRequest
 
     endSecond = int(second[-1][1:-1])
+    print(3)
     predict = [[s[1:-1] for s in second], predict_pos_neg(comment)]
+    print(4)
     if endSecond >= 100.0:
-        x = math.ceil(endSecond / 100.0)
+        inc = math.floor(endSecond / 100.0)
     else:
-        x = 1.0
-    temp = 0
+        inc = 1.0
     predict_per_unitsecond = {'pos': [], 'neg': []}
-    while temp < endSecond:
-        poscnt = 0
-        negcnt = 0
-        loop = temp+x
-        if loop > endSecond:
-            loop = endSecond
-        for i in range(temp, loop):
-            if int(predict[0][i]) <= loop and predict[1][i] == 1:
-                poscnt += 1
-            elif int(predict[0][i]) <= loop and predict[1][i] == 0:
-                negcnt += 1
-        predict_per_unitsecond['pos'].append(poscnt)
-        predict_per_unitsecond['neg'].append(negcnt)
-        temp = loop
+    poscnt = 0; negcnt = 0
+    x=inc
+    for p in predict:
+        if int(p[0]) > x:
+            x+=inc
+            predict_per_unitsecond['pos'].append(poscnt)
+            predict_per_unitsecond['neg'].append(negcnt)
+            poscnt=0
+        if p[1] == 1:
+            poscnt += 1
+        elif p[1] == 0:
+            negcnt += 1
+    print(5)
+            
 
     result = {'predict': predict_per_unitsecond}
     new_predict = Predict(
@@ -70,4 +73,5 @@ def get_predict(data, db):
     )
     db.add(new_predict)
     db.commit()
+    print(6)
     return jsonify(result)
