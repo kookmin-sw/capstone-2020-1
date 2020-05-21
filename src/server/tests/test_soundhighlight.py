@@ -6,7 +6,7 @@ def test_get_sound_highlight(client):
     res = client.get('/api/SNDhighlight', query_string=data)
     assert res.status_code == 400
 
-    data = {"url": "https://youtu.be/rOFRZ-zBAbs"}
+    data = {"url": "http://vod.afreecatv.com/PLAYER/STATION/56750207"}
     res = client.get('/api/SNDhighlight', query_string=data)
     assert res.status_code == 200
 

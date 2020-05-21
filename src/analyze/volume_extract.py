@@ -10,11 +10,14 @@ from moviepy.editor import *
 def save_graph(platform, videoID, volumes, AVG_20=0.221829165):  # AVG_20 = 유튜브 하이라이트 영상 20개에 대한 평균
     plt.switch_backend('Agg')
     fig, ax1 = plt.subplots()  # plot
-    ax1.plot(np.linspace(0, len(volumes), len(volumes)), volumes, color='b')
+    x = list(range(len(volumes)))
+    for i in range(len(x)):
+        x[i] *= 30
+    ax1.plot(x, volumes, color='b')
     plt.axhline(y=AVG_20, color='r', linewidth=1)
     ax1.set_ylabel("Volume")  # y 축
-    ax1.set_xlabel("minute")  # x 축
-    plt.title("Volumes of each minute")  # 제목
+    ax1.set_xlabel("second")  # x 축
+    plt.title("Volumes of each second")  # 제목
 
     path = "./audio/normalizeAudio/"
     if not os.path.exists(path):
@@ -53,11 +56,12 @@ def sound_extract(platform, videoID, filetype="audio"):
     volume = lambda array: np.sqrt(((1.0 * array) ** 2).mean())  # 음압 -> 음량 변환하는 람다함수
     volumes = [volume(cut(i)) for i in range(0, int(audio.duration - 2))]  # audio에 대해 람다함수 실행, (1)시간 오래
     volumesPerMinute = []
-    for i in range(0, len(volumes), 60):  # 60초 단위로 쪼개서 단위 시간 내 가장 큰 값 추출, (2)시간 오래
-        if len(volumes) - i < 60:
+    time_range = 30
+    for i in range(0, len(volumes), time_range):  # time_range 초 단위로 쪼개서 단위 시간 내 가장 큰 값 추출, (2)시간 오래
+        if len(volumes) - i < time_range:
             volumesPerMinute.append(max(volumes[i:len(volumes)]))
         else:
-            volumesPerMinute.append(max(volumes[i:i + 60]))
+            volumesPerMinute.append(max(volumes[i:i + time_range]))
 
     if filetype == "video":
         video.close()
