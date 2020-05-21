@@ -11,7 +11,7 @@ function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {"Copyright © "}
-      <Link color="inherit" href="https://material-ui.com/">
+      <Link color="inherit" href="#">
         Yoba
       </Link>{" "}
       {new Date().getFullYear()}
@@ -60,17 +60,15 @@ const MainPage = () => {
     }
   };
 
-  const logout = () => {
-    localStorage.removeItem("loginStorage");
-    toggleLogin(false);
-    toggleInput(false);
-    alert("log out");
-  };
-
   return (
     <div onLoad={test}>
       <Grid>
-        <Navibar email={email} login={login} />
+        <Navibar
+          email={email}
+          login={login}
+          toggleInput={toggleInput}
+          toggleLogin={toggleLogin}
+        />
       </Grid>
       <Grid>
         <Description />
