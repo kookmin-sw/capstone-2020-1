@@ -37,29 +37,32 @@ def get_predict(data, db):
             continue
         second.append(splited_chat[0])
         comment.append(splited_chat[2])
-
     if len(second) < 1 or len(comment) < 1:
         raise BadRequest
 
     endSecond = int(second[-1][1:-1])
-    predict = predict_pos_neg(comment)
-    if endSecond >= 100:
-        x = math.ceil(endSecond / 100)
+    predict = [[s[1:-1] for s in second], predict_pos_neg(comment)]
+    if endSecond >= 100.0:
+        x = math.ceil(endSecond / 100.0)
     else:
-        x = 1
+        x = 1.0
     temp = 0
     predict_per_unitsecond = {'pos': [], 'neg': []}
     while temp < endSecond:
         poscnt = 0
         negcnt = 0
-        for i in predict[temp:temp + x]:
-            if i == 1:
+        loop = temp+x
+        if loop > endSecond:
+            loop = endSecond
+        for i in range(temp, loop):
+            if int(predict[0][i]) <= loop and predict[1][i] == 1:
                 poscnt += 1
-            else:
+            elif int(predict[0][i]) <= loop and predict[1][i] == 0:
                 negcnt += 1
         predict_per_unitsecond['pos'].append(poscnt)
         predict_per_unitsecond['neg'].append(negcnt)
-        temp += x
+        temp = loop
+
     result = {'predict': predict_per_unitsecond}
     new_predict = Predict(
         url=url,
