@@ -43,7 +43,7 @@ def fitting(sample_labels, sample_text):
 
 	return acc
 
-def predict(chat):
+def predict_7sentiment(chat):
 	vectorizer = pickle.load(open("../sentiment7/vectorizer.pickle", "rb"))
 	chat_feat = vectorizer.transform(chat)
 	model = joblib.load('../sentiment7/7sentiment.model')
