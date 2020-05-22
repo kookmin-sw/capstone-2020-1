@@ -18,19 +18,23 @@ app = Blueprint('predict', __name__, url_prefix='/api')
 @api
 def get_predict(data, db):
     url = data['url']
-    print(1)
     isURLValid = split_url(url)
-    print(2)
+
     if not isURLValid:
         raise BadRequest
+
     query = db.query(Predict).filter(
         Predict.url == url,
     ).first()
+
     if query:
         return query.posneg_json
+
     download(isURLValid[0], isURLValid[1])
+    
     with open('./chatlog/{}_{}.txt'.format(isURLValid[0], isURLValid[1]), encoding='utf-8') as f:
         content = f.read().split('\n')
+    
     second = []
     comment = []
     for i in range(0, len(content) - 1):
@@ -39,17 +43,18 @@ def get_predict(data, db):
             continue
         second.append(splited_chat[0])
         comment.append(splited_chat[2])
+    predict = numpy.transpose([[s[1:-1] for s in second], predict_pos_neg(comment)])
+    
     if len(second) < 1 or len(comment) < 1:
         raise BadRequest
 
     endSecond = int(second[-1][1:-1])
-    print(3)
-    predict = [[s[1:-1] for s in second], predict_pos_neg(comment)]
-    print(4)
+    
     if endSecond >= 100.0:
         inc = math.floor(endSecond / 100.0)
     else:
         inc = 1.0
+    
     predict_per_unitsecond = {'pos': [], 'neg': []}
     poscnt = 0; negcnt = 0
     x=inc
@@ -58,20 +63,18 @@ def get_predict(data, db):
             x+=inc
             predict_per_unitsecond['pos'].append(poscnt)
             predict_per_unitsecond['neg'].append(negcnt)
-            poscnt=0
-        if p[1] == 1:
+            poscnt=0; negcnt=0
+        if int(p[1]) == 1:
             poscnt += 1
-        elif p[1] == 0:
+        elif int(p[1]) == 0:
             negcnt += 1
-    print(5)
-            
 
     result = {'predict': predict_per_unitsecond}
+    
     new_predict = Predict(
         url=url,
         posneg_json=result,
     )
     db.add(new_predict)
     db.commit()
-    print(6)
     return jsonify(result)
