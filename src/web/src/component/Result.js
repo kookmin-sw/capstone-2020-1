@@ -107,11 +107,11 @@ const Result = (props) => {
         })
         .then((response) => {
           const data = response.data.image_url;
-          console.log(data);
+          // console.log(data);
           setImage(data);
         })
         .catch(function (error) {
-          console.log(error);
+          // console.log(error);
         });
     } catch (e) {
       console.log(e);
@@ -120,7 +120,7 @@ const Result = (props) => {
 
   const dashboad = (e) => {
     // console.log(e.target.value);
-    console.log(props);
+    // console.log(props);
     if (e.target.value === "posAndNeg") {
       setPosAndNeg(true);
       setKeyword(false);
