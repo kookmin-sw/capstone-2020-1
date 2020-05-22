@@ -1,5 +1,5 @@
 import { AppBar, Grid, Typography } from "@material-ui/core";
-import React, { useState } from "react";
+import React from "react";
 import YobaLogo from "../yoba_logo.png";
 
 const NaviBar = (props) => {

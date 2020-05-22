@@ -30,7 +30,7 @@ function humanReadable(seconds) {
 
 function makeTime(str) {
   var tmpTime = str.split(":");
-  console.log(tmpTime);
+  // console.log(tmpTime);
   var temp =
     parseInt(tmpTime[0]) * 3600 +
     parseInt(tmpTime[1]) * 60 +
@@ -58,27 +58,26 @@ const Highlight = (props) => {
         })
         .then((response) => {
           const data = response.data.highlight;
-          console.log(data);
+          // console.log(data);
           for (var i in data) {
-            temp = temp.concat([[humanReadable(data[i][0] * 60), "sound"]]);
+            temp = temp.concat([[humanReadable(data[i][0]), "sound"]]);
           }
           axios
             .get("http://localhost:8000/api/chatlog_highlight", {
               headers: { "Content-Type": "multipart/form-data" },
               params: {
-                platform: props.platform,
-                videoid: props.videoid,
+                url: props.url,
               },
             })
             .then((response) => {
               const data = response.data.highlight;
-              console.log(data);
+              // console.log(data);
               for (var i in data) {
                 temp = temp.concat([[humanReadable(data[i][0]), "chat"]]);
               }
               temp.sort();
               let temprows = [];
-              for (var i = 0; i < 6; i++) {
+              for (i = 0; i < 6; i++) {
                 temprows = temprows.concat(
                   createData("Highlight" + (i + 1), temp[i][0], temp[i][1])
                 );
@@ -96,9 +95,11 @@ const Highlight = (props) => {
   }, [props]);
 
   const onClick = (e) => {
-    console.log(e.point);
-    props.setTime(makeTime(e.point));
-    props.setCheck(true);
+    // console.log(e.point);
+    if(props.platform !== "AfreecaTV") {
+      props.setTime(makeTime(e.point));
+      props.setCheck(true);
+    }
   };
 
   return (

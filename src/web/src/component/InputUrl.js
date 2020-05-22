@@ -1,11 +1,7 @@
 import React, { useState } from "react";
 import Button from "@material-ui/core/Button";
 import axios from "axios";
-import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
-import Typography from "@material-ui/core/Typography";
-import { makeStyles } from "@material-ui/core/styles";
-import Container from "@material-ui/core/Container";
 import { Grid } from "@material-ui/core";
 
 const InputUrl = (props) => {
@@ -24,17 +20,21 @@ const InputUrl = (props) => {
         })
         .then((response) => {
           const data = response.data;
-          console.log(data);
-          props.setPlatform(data.result[0]);
-          props.setVideoid(data.result[1]);
-          props.setUrl(url);
-          props.toggleInput(true);
+          // console.log(data);
+          if(data.result === false) {
+            alert("wrong url. please, check url.");
+          } else {
+            props.setPlatform(data.result[0]);
+            props.setVideoid(data.result[1]);
+            props.setUrl(url);
+            props.toggleInput(true);
+          }
         })
         .catch(function (error) {
           if (error.response.status === 400) {
             alert("wrong url. please, check url.");
           }
-          console.log(error);
+          // console.log(error);
           
         });
     } catch (e) {
@@ -54,11 +54,19 @@ const InputUrl = (props) => {
         })
         .then((response) => {
           const data = response.data;
-          console.log(data);
+          // console.log(data);
           localStorage.setItem("loginStorage", JSON.stringify(data));
           // props.toggleInput(true);
           // props.setUrl(url);
-          checkUrl();
+          if (props.input === true) {
+            props.setPlatform();
+            props.setVideoid();
+            props.setUrl();
+            props.toggleInput(false);
+            alert("reset");
+          } else {
+            checkUrl();
+          }
         })
         .catch(function (error) {
           if (error.response.status === 401) {
