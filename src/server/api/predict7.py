@@ -20,16 +20,22 @@ app = Blueprint('predict7', __name__, url_prefix='/api')
 def get_predict7(data, db):
     url = data['url']
     isURLValid = split_url(url)
+
     if not isURLValid:
         raise BadRequest
+
     query = db.query(Predict7).filter(
         Predict7.url == url,
     ).first()
+    
     if query:
         return query.sentiment7_json
+
     download(isURLValid[0], isURLValid[1])
+
     with open('./chatlog/{}_{}.txt'.format(isURLValid[0], isURLValid[1]), encoding='utf-8') as f:
         content = f.read().split('\n')
+
     second = []
     comment = []
     for i in range(0, len(content) - 1):
@@ -38,16 +44,17 @@ def get_predict7(data, db):
             continue
         second.append(splited_chat[0])
         comment.append(splited_chat[2])
+    predict = numpy.transpose([[s[1:-1] for s in second], predict_7sentiment(comment)])
 
     if len(second) < 1 or len(comment) < 1:
         raise BadRequest
 
     endSecond = int(second[-1][1:-1])
-    predict = numpy.transpose([[s[1:-1] for s in second], predict_7sentiment(comment)])
     if endSecond >= 100.0:
         inc = math.floor(endSecond / 100.0)
     else:
         inc = 1.0
+    
     predict_per_unitsecond = {
         'neutral': [],
         'joy': [],
@@ -61,7 +68,6 @@ def get_predict7(data, db):
     neutral=0; joy=0; love=0; fear=0; surprise=0; sadness=0; anger=0
     for p in predict:
         if int(p[0]) > x:
-    
             x+=inc
             predict_per_unitsecond['neutral'].append(neutral)
             predict_per_unitsecond['joy'].append(joy)
@@ -86,9 +92,8 @@ def get_predict7(data, db):
         elif p[1] == 'anger':
             anger += 1
 
-
-
     result = {'predict': predict_per_unitsecond}
+
     new_predict = Predict7(
         url=url,
         sentiment7_json=result,
