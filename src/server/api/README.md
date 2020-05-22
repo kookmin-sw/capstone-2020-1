@@ -288,16 +288,16 @@ ping
 요청
 ```
 {
-    "platform": "AfreecaTV",
-    "videoid": "53773494"
+    "url": "http://vod.afreecatv.com/PLAYER/STATION/56825198"
 }
 ```
 응답
 ```
 {
-    "highlight": [ [1702, 12], [2896, 19], [3365, 12] ] (하이라이트 지점(초), 해당 지점의 채팅량)
-    AfreecaTV_53773494.txt (chatlog 폴더에 생성)
+    "highlight": [ [1180, 61], [2007, 68], [16757, 64] ] (하이라이트 지점(초), 해당 지점의 채팅량)
+    AfreecaTV_56825198.txt (chatlog 폴더에 생성)
 }
 200 ok
 400 요청 형식이 맞지 않음
+406 유효하지 않은 URL
 ```
