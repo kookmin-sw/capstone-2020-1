@@ -103,7 +103,7 @@ const ViewerRank = (props) => {
   };
 
   useEffect(() => {
-    console.log(props);
+    // console.log(props);
     try {
       axios
         .get("http://localhost:8000/api/chatlog", {
@@ -146,7 +146,7 @@ const ViewerRank = (props) => {
     for (var i = 0; i < timeList[e].length; i++) {
       temp += humanReadable(timeList[e][i][0]) + " ~ " + humanReadable(timeList[e][i][1]) + ',   \n';
     }
-    console.log(temp);
+    // console.log(temp);
     setAlertMessage(temp);
   };
 

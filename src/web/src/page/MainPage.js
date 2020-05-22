@@ -42,7 +42,7 @@ const MainPage = () => {
         })
         .then((response) => {
           const data = response.data;
-          console.log(data);
+          // console.log(data);
           localStorage.setItem("loginStorage", JSON.stringify(data));
           setEmail(JSON.parse(temp).email);
           toggleLogin(true);
@@ -80,6 +80,7 @@ const MainPage = () => {
           toggleLogin={toggleLogin}
           setPlatform={setPlatform}
           setVideoid={setVideoid}
+          input = {input}
         ></InputUrl>
       ) : (
         <Login setEmail={setEmail} toggleLogin={toggleLogin} />
