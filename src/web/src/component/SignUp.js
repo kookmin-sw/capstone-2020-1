@@ -89,7 +89,7 @@ const SignUp = () => {
             }
           });
       } catch (e) {
-        console.log(e.response.status);
+        console.log(e);
       }
     }
   };
