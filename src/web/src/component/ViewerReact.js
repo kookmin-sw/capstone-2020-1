@@ -115,7 +115,7 @@ const ViewerReact = (props) => {
         })
         .then((response) => {
           const data = response.data;
-          console.log(data.predict.pos);
+          // console.log(data.predict.pos);
           for (var i = 0; i < 100; i++) {
             state.dataLine.labels = state.dataLine.labels.concat(i);
             state.dataLine.datasets[0].data = state.dataLine.datasets[0].data.concat(
@@ -125,7 +125,7 @@ const ViewerReact = (props) => {
               data.predict.neg[i]
             );
           }
-          for (var i = 99; i > 0; i--) {
+          for (i = 99; i > 0; i--) {
             if (
               state.dataLine.datasets[0].data[i] === 0 &&
               state.dataLine.datasets[1].data[i] === 0
@@ -137,7 +137,7 @@ const ViewerReact = (props) => {
               break;
             }
           }
-          console.log(state.dataLine);
+          // console.log(state.dataLine);
           setTest(state.dataLine);
           setLoad(true);
         })
