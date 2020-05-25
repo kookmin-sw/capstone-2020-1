@@ -182,6 +182,29 @@ def analyze1_sound(volume):
     return point
 
 
+def analyze1_keyword(data, keyword):
+    minute = []
+
+    for i in range(len(data)): # 채팅 기록에서 특정 keyword가 포함된 채팅 시간(분) 추출
+        if keyword in data[i][2]:
+            minute.append(int(data[i][0]/60))
+
+    count = []
+    for i in range(minute[-1] + 1):
+        count.append(0)
+
+    for x in minute:
+        count[x] += 1
+
+    section = []
+    max_value = max(count)
+    for i in range(len(count)):
+        if count[i] == max_value:
+            section.append([str(i*60), str(i*60+60)])
+
+    return section
+
+
 def find_high_frequency_words(data, n=10.0, m=10.0):
     freq = {}
     time = {}
