@@ -14,8 +14,9 @@ const NaviBar = (props) => {
       alert("Please, sign in from the bottom page.")
     }
   };
+
   return (
-    <AppBar position="sticky" color="default">
+    <AppBar color="default">
       <Grid
         container
         alignItems="center"
