@@ -12,9 +12,12 @@ const useStyles = makeStyles((theme) => ({
         backgroundImage: `url(${backgroundImg})`,
         alignItems: 'center',
         color: 'white',
+        backgroundSize: 'cover',
         // color: "textPrimary",
+        justifyContent: 'center',
         textAlign: 'center',
-        height: 600,
+        height: 700,
+        width: '100%',
     },
 }));
 
