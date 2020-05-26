@@ -8,8 +8,7 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-
-
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 function humanReadable(seconds) {
   var pad = function (x) {
@@ -144,7 +143,11 @@ const ViewerRank = (props) => {
     setAlertOpen(true);
     var temp = "";
     for (var i = 0; i < timeList[e].length; i++) {
-      temp += humanReadable(timeList[e][i][0]) + " ~ " + humanReadable(timeList[e][i][1]) + ',   \n';
+      temp +=
+        humanReadable(timeList[e][i][0]) +
+        " ~ " +
+        humanReadable(timeList[e][i][1]) +
+        ",   \n";
     }
     // console.log(temp);
     setAlertMessage(temp);
@@ -172,7 +175,7 @@ const ViewerRank = (props) => {
         {load ? (
           <Pie data={test} options={{ responsive: true }}></Pie>
         ) : (
-          <div></div>
+          <CircularProgress color="secondary" />
         )}
         <h3 className="mt-5">Check Time</h3>
         {ButtonList}
