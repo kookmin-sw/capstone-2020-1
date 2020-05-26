@@ -316,7 +316,7 @@ const Seven = (props) => {
   useEffect(() => {
     try {
       axios
-        .get("http://localhost:8000/api/predict7", {
+        .get("http://13.209.112.92:8000/api/predict7", {
           headers: { "Content-Type": "multipart/form-data" },
           params: {
             url: props.url,
@@ -383,7 +383,7 @@ const Seven = (props) => {
 
   return (
     <MDBContainer>
-      <h3 className="mt-5">Seven</h3>
+      <h3 className="mt-5">Seven Sentiment</h3>
       {load ? <Line data={test} options={{ responsive: true }} /> : <></>}
     </MDBContainer>
   );

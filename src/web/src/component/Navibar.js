@@ -51,7 +51,7 @@ const NaviBar = (props) => {
               }}
               onClick={logout}
             >
-              {props.login ? props.email + "님 환영합니다." : "Sign In"}
+              {props.login ? "Welcome! " + props.email: "Sign In"}
             </Typography>
           </Grid>
         </Grid>
