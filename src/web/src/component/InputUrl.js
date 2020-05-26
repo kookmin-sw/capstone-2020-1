@@ -12,7 +12,7 @@ const InputUrl = (props) => {
   const checkUrl = () => {
     try {
       axios
-        .get("http://localhost:8000/api/analysis_url", {
+        .get("http://13.209.112.92:8000/api/analysis_url", {
           headers: { "Content-Type": "multipart/form-data" },
           params: {
             url: url,
@@ -45,7 +45,7 @@ const InputUrl = (props) => {
   const onClick = () => {
     try {
       axios
-        .get("http://localhost:8000/api/login", {
+        .get("http://13.209.112.92:8000/api/login", {
           headers: { "Content-Type": "multipart/form-data" },
           params: {
             email: JSON.parse(temp).email,
