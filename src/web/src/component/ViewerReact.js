@@ -107,7 +107,7 @@ const ViewerReact = (props) => {
   useEffect(() => {
     try {
       axios
-        .get("http://localhost:8000/api/predict", {
+        .get("http://13.209.112.92:8000/api/predict", {
           headers: { "Content-Type": "multipart/form-data" },
           params: {
             url: props.url,
@@ -148,7 +148,7 @@ const ViewerReact = (props) => {
   }, [props]);
   return (
     <MDBContainer>
-      <h3 className="mt-5">Viewer chatting react</h3>
+      <h3 className="mt-5">Positive & Negative</h3>
       {load ? <Line data={test} options={{ responsive: true }} /> : <></>}
     </MDBContainer>
   );

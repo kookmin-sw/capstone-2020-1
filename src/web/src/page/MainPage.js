@@ -33,7 +33,7 @@ const MainPage = () => {
   const test = () => {
     try {
       axios
-        .get("http://localhost:8000/api/login", {
+        .get("http://13.209.112.92:8000/api/login", {
           headers: { "Content-Type": "multipart/form-data" },
           params: {
             email: JSON.parse(temp).email,
