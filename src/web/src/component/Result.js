@@ -99,7 +99,7 @@ const Result = (props) => {
   const audio = () => {
     try {
       axios
-        .get("http://localhost:8000/api/SNDnormalize", {
+        .get("http://13.209.112.92:8000/api/SNDnormalize", {
           headers: { "Content-Type": "multipart/form-data" },
           params: {
             url: props.url,
@@ -155,6 +155,65 @@ const Result = (props) => {
   };
   return (
     <div>
+      {props.platform !== "AfreecaTV" ? (
+        <h4 className="mt-5">
+          Click on the "Highligh Point" table to go to the click position
+        </h4>
+      ) : (
+        <></>
+      )}
+      <h3 className="mt-5">Video</h3>
+
+      <Grid
+        container
+        alignItems="center"
+        direction="row"
+        justify="space-between"
+      >
+        <Grid xs={1}></Grid>
+        {props.platform !== "AfreecaTV" ? (
+          <ReactPlayer
+            ref={player_ref}
+            playing
+            url={props.url}
+            controls
+          ></ReactPlayer>
+        ) : (
+          <iframe
+            src={props.url}
+            width="640"
+            height="360"
+            currentPosition="100"
+          ></iframe>
+        )}
+        <Grid xs={1}></Grid>
+        {check ? moveControl() : <></>}
+      </Grid>
+
+      <br></br>
+      <Grid
+        container
+        alignItems="center"
+        direction="row"
+        justify="space-between"
+      >
+        <Grid xs={3}></Grid>
+        {high ? (
+          <Grid xs={6}>
+            <Highlight
+              platform={props.platform}
+              videoid={props.videoid}
+              url={props.url}
+              setTime={setTime}
+              setCheck={setCheck}
+            ></Highlight>
+          </Grid>
+        ) : (
+          <></>
+        )}
+        <Grid xs={3}></Grid>
+      </Grid>
+      <br></br>
       <h3>Analysis results of {props.url}</h3>
       <FormControl component="fieldset">
         <FormLabel component="legend">Options</FormLabel>
@@ -181,13 +240,13 @@ const Result = (props) => {
           <FormControlLabel
             value="audioNorm"
             control={<StyledRadio />}
-            label="SoundNormalization"
+            label="Volume"
           />
-          <FormControlLabel
+          {/* <FormControlLabel
             value="other"
             control={<StyledRadio />}
             label="Other"
-          />
+          /> */}
         </RadioGroup>
       </FormControl>
 
@@ -232,58 +291,6 @@ const Result = (props) => {
         <Grid xs={3}></Grid>
       </Grid>
 
-      <br></br>
-
-      <Grid
-        container
-        alignItems="center"
-        direction="row"
-        justify="space-between"
-      >
-        <Grid xs={1}></Grid>
-        {high ? (
-          <Grid xs={10}>
-            <Highlight
-              platform={props.platform}
-              videoid={props.videoid}
-              url={props.url}
-              setTime={setTime}
-              setCheck={setCheck}
-            ></Highlight>
-          </Grid>
-        ) : (
-          <></>
-        )}
-        <Grid xs={1}></Grid>
-      </Grid>
-
-      <br></br>
-
-      <h4 className="mt-5">
-        Click on the "Highligh Point" table to go to the click position
-      </h4>
-      <h3 className="mt-5">Video</h3>
-
-      <Grid
-        container
-        alignItems="center"
-        direction="row"
-        justify="space-between"
-      >
-        <Grid xs={1}></Grid>
-        {props.platform !== "AfreecaTV" ? (
-          <ReactPlayer
-            ref={player_ref}
-            playing
-            url={props.url}
-            controls
-          ></ReactPlayer>
-        ) : (
-          <iframe src={props.url} width="640" height="360" currentPosition="100"></iframe>
-        )}
-        <Grid xs={1}></Grid>
-        {check ? moveControl() : <></>}
-      </Grid>
     </div>
   );
 };
