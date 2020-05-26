@@ -8,6 +8,7 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const useStyles = makeStyles({
   table: {
@@ -45,6 +46,7 @@ function createData(number, point, kind) {
 const Highlight = (props) => {
   const classes = useStyles();
   const [rows, setRows] = useState([]);
+  const [load, setLoad] = useState(false);
 
   useEffect(() => {
     try {
@@ -83,6 +85,7 @@ const Highlight = (props) => {
                 );
               }
               setRows(temprows);
+              setLoad(true);
             })
             .catch(function (error) {
               setRows([]);
@@ -96,7 +99,7 @@ const Highlight = (props) => {
 
   const onClick = (e) => {
     // console.log(e.point);
-    if(props.platform !== "AfreecaTV") {
+    if (props.platform !== "AfreecaTV") {
       props.setTime(makeTime(e.point));
       props.setCheck(true);
     }
@@ -105,32 +108,36 @@ const Highlight = (props) => {
   return (
     <TableContainer component={Paper}>
       <h3 className="mt-5">Highlight Point</h3>
-      <Table className={classes.table} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell>Highlight</TableCell>
-            <TableCell align="right">Point</TableCell>
-            <TableCell align="right">Sound or Chat</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <TableRow
-              key={row.number}
-              onClick={() => {
-                onClick(row);
-              }}
-              hover
-            >
-              <TableCell component="th" scope="row">
-                {row.number}
-              </TableCell>
-              <TableCell align="right">{row.point}</TableCell>
-              <TableCell align="right">{row.kind}</TableCell>
+      {load ? (
+        <Table className={classes.table} aria-label="simple table">
+          <TableHead>
+            <TableRow>
+              <TableCell>Highlight</TableCell>
+              <TableCell align="right">Point</TableCell>
+              <TableCell align="right">Sound or Chat</TableCell>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
+          </TableHead>
+          <TableBody>
+            {rows.map((row) => (
+              <TableRow
+                key={row.number}
+                onClick={() => {
+                  onClick(row);
+                }}
+                hover
+              >
+                <TableCell component="th" scope="row">
+                  {row.number}
+                </TableCell>
+                <TableCell align="right">{row.point}</TableCell>
+                <TableCell align="right">{row.kind}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      ) : (
+        <CircularProgress color="secondary" />
+      )}
     </TableContainer>
   );
 };
