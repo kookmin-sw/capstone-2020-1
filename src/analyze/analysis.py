@@ -31,15 +31,16 @@ def print_section_hhmmss(section):
     for i in range(len(section)):
         print("{:<3}".format(i+1), end='\t')
         print("{:<15}".format(section[i][0]), end='\t')
+        print("{:<15}".format(section[i][1]), end='\t')
         j = 0
-        while j < len(section[i][1]):
-            seconds = section[i][1][j][0]
+        while j < len(section[i][2]):
+            seconds = int(section[i][2][j][0])
             hours = seconds // (60 * 60)
             seconds %= (60 * 60)
             minutes = seconds // 60
             seconds %= 60
             print("%02i:%02i:%02i" % (hours, minutes, seconds), end='-')
-            seconds = section[i][1][j][1]
+            seconds = int(section[i][2][j][1])
             hours = seconds // (60 * 60)
             seconds %= (60 * 60)
             minutes = seconds // 60
@@ -168,19 +169,42 @@ def analyze1_minute(data, comment=None):#분단위로 쪼개고 해당 단위시
 
 
 def analyze1_sound(volume):
-    minute = []
+    second = []
     for i in range(len(volume)):
-        minute.append((i,volume[i]))
+        second.append((i*30, volume[i]))
 
-    minute.sort(key=lambda ele: ele[1], reverse=True)
-    point = minute[0:3]
+    second.sort(key=lambda ele: ele[1], reverse=True)
+    point = second[0:3]
     point.sort(key=lambda ele: ele[0])
 
-    print_point_hhmm(point)
+    print_point_hhmmss(point)
     return point
 
 
-def find_high_frequency_words(data, n=10.0, m=10.0):
+def analyze1_keyword(data, keyword):
+    minute = []
+
+    for i in range(len(data)): # 채팅 기록에서 특정 keyword가 포함된 채팅 시간(분) 추출
+        if keyword in data[i][2]:
+            minute.append(int(data[i][0]/60))
+
+    count = []
+    for i in range(minute[-1] + 1):
+        count.append(0)
+
+    for x in minute:
+        count[x] += 1
+
+    section = []
+    max_value = max(count)
+    for i in range(len(count)):
+        if count[i] == max_value:
+            section.append([str(i*60), str(i*60+60)])
+
+    return section
+
+
+def find_high_frequency_words(data):
     okt = Okt()
     freq = {}
     time = {}
@@ -199,39 +223,45 @@ def find_high_frequency_words(data, n=10.0, m=10.0):
 
     sorted_freq = sorted(freq.items(), key=operator.itemgetter(1), reverse=True)
 
-    average = np.mean(np.array(list(zip(*sorted_freq))[1]))
-    standard_deviation = np.std(np.array(list(zip(*sorted_freq))[1]))
-
     section = {}
-    for i in range(len(sorted_freq)):
-        if sorted_freq[i][1] < average+standard_deviation:
-            break
+    for i in range(10): # 상위 10개
+        n = 10.0
+        m = 10.0
         key = sorted_freq[i][0]
-        start_time = time[key][0]
-        count = 1
-        for j in range(1, len(time[key])):
-            if time[key][j] - time[key][j-1] > n:
-                if count >= m:
-                    end_time = time[key][j-1]
-                    if key in section.keys():
-                        section[key].append([start_time, end_time])
-                    else:
-                        section[key] = [[start_time, end_time]]
-                start_time = time[key][j]
-                count = 1
-            else:
-                count += 1
+        while True:
+            start_time = time[key][0]
+            count = 1
+            for j in range(1, len(time[key])):
+                if time[key][j] - time[key][j - 1] > n:
+                    if count >= m:
+                        end_time = time[key][j - 1]
+                        if key in section.keys():
+                            section[key].append([str(start_time), str(end_time)])
+                        else:
+                            section[key] = [[str(start_time), str(end_time)]]
+                    start_time = time[key][j]
+                    count = 1
+                else:
+                    count += 1
+
+            if key in section.keys(): # 구간 추출 성공
+                break
+            else: # 구간 추출 실패
+                if n < 20.0:
+                    n += 1.0
+                    m -= 0.5
+                else:
+                    section[key] = analyze1_keyword(data, key)
+                    break
 
     top_10 = []
-    if len(section) >= 10:
-        i = 0
-        for key in section.keys():
-            if i == 10:
-                break
-            else:
-                top_10.append([key, section[key]])
-                i += 1
-        print_section_hhmmss(top_10)
-    else:
-        top_10 = find_high_frequency_words(data, n+1.0, m-0.5)
+    i = 0
+    for key in section.keys():
+        if i == 10:
+            break
+        else:
+            top_10.append([key, str(freq[key]), section[key]])
+            i += 1
+
+    print_section_hhmmss(top_10)
     return top_10
