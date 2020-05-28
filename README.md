@@ -123,13 +123,14 @@
 
 
 > https://youtu.be/BWgxucTPGgc
+> https://youtu.be/JJvN3utkdrg (2차 자문 평가 발표 동영상)
 
 <br/>
 
 ## V. 결과 영상
 
 
-> 수정 예정
+> https://youtu.be/afgA3Js0tSw (시연연상)
 
 <br/>
 
