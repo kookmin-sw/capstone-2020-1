@@ -122,9 +122,9 @@
 ## IV. 소개영상
 
 
-> https://youtu.be/BWgxucTPGgc
+> https://youtu.be/BWgxucTPGgc 
+<br/>
 > https://youtu.be/JJvN3utkdrg (2차 자문 평가 발표 동영상)
-
 <br/>
 
 ## V. 결과 영상
