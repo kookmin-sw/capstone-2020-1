@@ -73,7 +73,7 @@ const NaviBar = (props) => {
             }}
             onClick={logout}
           >
-            {props.login ? "Sing out" : "Sign in"}
+            {props.login ? "Sign out" : "Sign in"}
           </Typography>
         </Grid>
       </Grid>
