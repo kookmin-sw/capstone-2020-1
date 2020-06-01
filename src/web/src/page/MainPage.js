@@ -62,14 +62,14 @@ const MainPage = () => {
 
   return (
     <div onLoad={test}>
-      <Grid>
+
         <Navibar
           email={email}
           login={login}
           toggleInput={toggleInput}
           toggleLogin={toggleLogin}
         />
-      </Grid>
+ 
       <Grid>
         <Description />
       </Grid>

@@ -14,16 +14,22 @@ const NaviBar = (props) => {
       alert("Please, sign in from the bottom page.")
     }
   };
+  const onClick = () => {
+    if (props.login === true) {
+      alert("welcome");
+    }
+  }
+
   return (
     <AppBar position="sticky" color="default">
       <Grid
         container
         alignItems="center"
         direction="row"
-        justify="space-between"
+        justify="center"
         style={{ paddingTop: 10, paddingBottom: 10 }}
       >
-        <Grid>
+        <Grid xs={1}>
           <Typography
             variant="h6"
             style={{
@@ -36,24 +42,39 @@ const NaviBar = (props) => {
             YOBA
           </Typography>
         </Grid>
-        <Grid>
+        <Grid xs={2}></Grid>
+
+        <Grid xs={6}>
           <img alt="logo" src={YobaLogo} height="80px" />
         </Grid>
-        <Grid>
-          <Grid container direction="row">
-            <Typography
-              variant="h6"
-              style={{
-                textTransform: "none",
-                color: "black",
-                marginLeft: 20,
-                marginRight: 30,
-              }}
-              onClick={logout}
-            >
-              {props.login ? "Welcome! " + props.email: "Sign In"}
-            </Typography>
-          </Grid>
+
+        <Grid xs = {2}>
+          <Typography
+            variant="h6"
+            style={{
+              textTransform: "none",
+              color: "black",
+              marginLeft: 20,
+              marginRight: 30,
+            }}
+            onClick={onClick}
+          >
+            {props.login ? "Welcome! " + props.email : ""}
+          </Typography>
+        </Grid>
+        <Grid xs = {1}>
+          <Typography
+            variant="h6"
+            style={{
+              textTransform: "none",
+              color: "black",
+              marginLeft: 20,
+              marginRight: 30,
+            }}
+            onClick={logout}
+          >
+            {props.login ? "Sign out" : "Sign in"}
+          </Typography>
         </Grid>
       </Grid>
     </AppBar>
