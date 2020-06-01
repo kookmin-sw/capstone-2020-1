@@ -54,7 +54,13 @@ def sound_extract(platform, videoID, filetype="audio"):
     sr = audio.fps  # 샘플링 레이트
     cut = lambda x: audio.subclip(x, x + 1).to_soundarray(fps=sr)  # 1초에 해당하는 데이터를 뽑는 람다함수
     volume = lambda array: np.sqrt(((1.0 * array) ** 2).mean())  # 음압 -> 음량 변환하는 람다함수
-    volumes = [volume(cut(i)) for i in range(0, int(audio.duration - 2))]  # audio에 대해 람다함수 실행, (1)시간 오래
+
+    volumes = []
+    for i in range(0, int(audio.duration - 2)):  # audio에 대해 람다함수 실행, (1)시간 오래
+        try:
+            volumes.append(volume(cut(i)))
+        except:
+            volumes.append(0.0)
     volumesPerMinute = []
     time_range = 30
     for i in range(0, len(volumes), time_range):  # time_range 초 단위로 쪼개서 단위 시간 내 가장 큰 값 추출, (2)시간 오래

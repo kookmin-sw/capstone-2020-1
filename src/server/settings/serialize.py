@@ -30,6 +30,7 @@ def serialize(user_info, **kwargs):
 def serialize(login_expiry, **kwargs):
     result = {
         'email': login_expiry.email,
+        'name': login_expiry.name,
         'uuid': login_expiry.uuid,
         'expiry': login_expiry.expiry,
     }
