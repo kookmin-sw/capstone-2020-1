@@ -9,13 +9,12 @@ from sklearn import svm
 import time
 import joblib
 import pickle
-
+import numpy
 def fitting(sample_labels, sample_text):
 	test_start = int(len(sample_text)/5)*4
-	test_end = len(sample_text)
-	
-	test_text = sample_text[test_start:test_end]
-	test_labels = sample_labels[test_start:test_end]
+
+	test_text = sample_text[test_start:]
+	test_labels = sample_labels[test_start:]
 	train_text = sample_text[:test_start]
 	train_labels = sample_labels[:test_start]
 
@@ -28,7 +27,6 @@ def fitting(sample_labels, sample_text):
 	pickle.dump(trained_vectorizer, open("vectorizer.pickle", "wb"))
 
 	trained_clf = svm.SVC(kernel='linear').fit(train_text_feat, train_labels)
-	trained_clf.fit(train_text_feat, train_labels)
 
 	joblib.dump(trained_clf, '7sentiment.model') 
 
@@ -43,7 +41,7 @@ def fitting(sample_labels, sample_text):
 
 	return acc
 
-def predict(chat):
+def predict_7sentiment(chat):
 	vectorizer = pickle.load(open("../sentiment7/vectorizer.pickle", "rb"))
 	chat_feat = vectorizer.transform(chat)
 	model = joblib.load('../sentiment7/7sentiment.model')
@@ -55,13 +53,3 @@ def counting(a):
 	for s in sentiment:
 		dic[s] = a.count(s)
 	return dic
-
-# sample_text = []; sample_labels = []
-# for line in codecs.open('./data/chat_data.tsv', 'r', 'utf-8'):
-# 	label, text = line.strip().split('\t')
-# 	text = ' '.join(word[0] for word in okt.pos(text, norm=True))
-
-# 	sample_text.append(text)
-# 	sample_labels.append(label)
-
-# print(len(predict(sample_text)))
