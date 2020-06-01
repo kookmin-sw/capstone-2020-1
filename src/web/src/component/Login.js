@@ -45,6 +45,7 @@ const Login = (props) => {
 
           localStorage.setItem("loginStorage", JSON.stringify(data));
           props.setEmail(email);
+          // props.setName(data.name);
           props.toggleLogin(true);
           return true;
         })

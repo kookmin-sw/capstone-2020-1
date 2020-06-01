@@ -27,6 +27,7 @@ const MainPage = () => {
   const [platform, setPlatform] = useState();
   const [videoid, setVideoid] = useState();
   const [url, setUrl] = useState();
+  const [name, setName] = useState();
 
   const temp = localStorage.getItem("loginStorage");
 
@@ -45,6 +46,7 @@ const MainPage = () => {
           // console.log(data);
           localStorage.setItem("loginStorage", JSON.stringify(data));
           setEmail(JSON.parse(temp).email);
+          setName(JSON.parse(temp).name);
           toggleLogin(true);
         })
         .catch(function (error) {
@@ -65,6 +67,7 @@ const MainPage = () => {
 
         <Navibar
           email={email}
+          name={name}
           login={login}
           toggleInput={toggleInput}
           toggleLogin={toggleLogin}
