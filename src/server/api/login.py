@@ -20,6 +20,12 @@ def get_login(data, db):  # 회원정보 불러옴
     for i in req_list:  # 필수 요소 들어있는지 검사
         if i not in data:
             raise BadRequest
+    user = db.query(UserInfo).filter(
+        UserInfo.email == data['email'],
+    ).first()
+    if not user:
+        raise NotFound
+
     login_expiry = db.query(LoginExpiry).filter(
         LoginExpiry.email == data['email'],
         LoginExpiry.uuid == data['uuid'],
@@ -31,7 +37,8 @@ def get_login(data, db):  # 회원정보 불러옴
         raise Unauthorized
 
     new_login_expiry = LoginExpiry(  # 새로운 expiry를 생성
-        email=data['email']
+        email=data['email'],
+        name=user.name,
     )
     db.add(new_login_expiry)
     db.commit()
@@ -55,7 +62,8 @@ def post_login(data, db):  # 로그인
         raise NotFound
 
     login_expiry = LoginExpiry(
-        email=data['email']
+        email=data['email'],
+        name=user_info.name,
     )
     db.add(login_expiry)
     db.commit()

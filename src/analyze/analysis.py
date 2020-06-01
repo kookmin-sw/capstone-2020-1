@@ -3,7 +3,6 @@ import matplotlib.pyplot as plt
 from konlpy.tag import Okt
 import operator
 
-okt = Okt()
 
 def visualization(chatlist):
     plt.bar(range(len(chatlist)), chatlist)
@@ -182,7 +181,31 @@ def analyze1_sound(volume):
     return point
 
 
-def find_high_frequency_words(data, n=10.0, m=10.0):
+def analyze1_keyword(data, keyword):
+    minute = []
+
+    for i in range(len(data)): # 채팅 기록에서 특정 keyword가 포함된 채팅 시간(분) 추출
+        if keyword in data[i][2]:
+            minute.append(int(data[i][0]/60))
+
+    count = []
+    for i in range(minute[-1] + 1):
+        count.append(0)
+
+    for x in minute:
+        count[x] += 1
+
+    section = []
+    max_value = max(count)
+    for i in range(len(count)):
+        if count[i] == max_value:
+            section.append([str(i*60), str(i*60+60)])
+
+    return section
+
+
+def find_high_frequency_words(data):
+    okt = Okt()
     freq = {}
     time = {}
     for i in range(len(data)):
@@ -201,39 +224,44 @@ def find_high_frequency_words(data, n=10.0, m=10.0):
     sorted_freq = sorted(freq.items(), key=operator.itemgetter(1), reverse=True)
 
     section = {}
-    for i in range(len(sorted_freq)):
-        if len(section) == 10 or sorted_freq[i][1] < m:
-            break
+    for i in range(10): # 상위 10개
+        n = 10.0
+        m = 10.0
         key = sorted_freq[i][0]
-        start_time = time[key][0]
-        count = 1
-        for j in range(1, len(time[key])):
-            if time[key][j] - time[key][j-1] > n:
-                if count >= m:
-                    end_time = time[key][j-1]
-                    if key in section.keys():
-                        section[key].append([str(start_time), str(end_time)])
-                    else:
-                        section[key] = [[str(start_time), str(end_time)]]
-                start_time = time[key][j]
-                count = 1
-            else:
-                count += 1
+        while True:
+            start_time = time[key][0]
+            count = 1
+            for j in range(1, len(time[key])):
+                if time[key][j] - time[key][j - 1] > n:
+                    if count >= m:
+                        end_time = time[key][j - 1]
+                        if key in section.keys():
+                            section[key].append([str(start_time), str(end_time)])
+                        else:
+                            section[key] = [[str(start_time), str(end_time)]]
+                    start_time = time[key][j]
+                    count = 1
+                else:
+                    count += 1
+
+            if key in section.keys(): # 구간 추출 성공
+                break
+            else: # 구간 추출 실패
+                if n < 20.0:
+                    n += 1.0
+                    m -= 0.5
+                else:
+                    section[key] = analyze1_keyword(data, key)
+                    break
 
     top_10 = []
-    if len(section) == 10:
-        i = 0
-        for key in section.keys():
-            if i == 10:
-                break
-            else:
-                top_10.append([key, str(freq[key]), section[key]])
-                i += 1
-        print_section_hhmmss(top_10)
-    elif m < 5:
-        for i in range(10):
-            top_10.append([sorted_freq[i][0], sorted_freq[i][1], []])
-        print_section_hhmmss(top_10)
-    else:
-        top_10 = find_high_frequency_words(data, n+1.0, m-0.5)
+    i = 0
+    for key in section.keys():
+        if i == 10:
+            break
+        else:
+            top_10.append([key, str(freq[key]), section[key]])
+            i += 1
+
+    print_section_hhmmss(top_10)
     return top_10
