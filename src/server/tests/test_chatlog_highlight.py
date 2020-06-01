@@ -1,10 +1,12 @@
 def test_get_chatlog_highlight(client):
-    data = {
-        'videoid': '53773494'
-    }
+    data = {}
     res = client.get('api/chatlog_highlight', query_string=data)
     assert res.status_code == 400
 
-    data['platform'] = 'AfreecaTV'
+    data = {"url": "http://vod.afreecatv.com/PLAYER/STATION/56825198"}
     res = client.get('api/chatlog_highlight', query_string=data)
     assert res.status_code == 200
+
+    data = {"url": "http://vod.afreecatv.com/PLAYER/STATION/96825198"} # 유효하지 않은 url
+    res = client.get('api/chatlog_highlight', query_string=data)
+    assert res.status_code == 406
