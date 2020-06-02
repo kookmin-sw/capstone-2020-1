@@ -170,12 +170,17 @@ const ViewerRank = (props) => {
 
   return (
     <div>
+      <h3 className="mt-5">Keyword Rank</h3>
+      <div style = {{height:500}}>
       <MDBContainer>
-        <h3 className="mt-5">Keyword Rank</h3>
         {load ? (
-          <Pie data={test} options={{ responsive: true }}></Pie>
+          <div style={{  }}>
+            <Pie data={test} options={{ responsive: true }}></Pie>
+          </div>
         ) : (
-          <CircularProgress color="secondary" />
+          <div style = {{}}>
+            <CircularProgress color="secondary" />
+          </div>
         )}
         <h3 className="mt-5">Check Time</h3>
         {ButtonList}
@@ -207,6 +212,7 @@ const ViewerRank = (props) => {
       ) : (
         <></>
       )}
+      </div>
     </div>
   );
 };

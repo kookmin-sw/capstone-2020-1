@@ -59,7 +59,7 @@ const NaviBar = (props) => {
             }}
             onClick={onClick}
           >
-            {props.login ? "Welcome! " + props.email : ""}
+            {props.login ? "Welcome! " + props.name : ""}
           </Typography>
         </Grid>
         <Grid xs = {1}>
