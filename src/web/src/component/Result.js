@@ -13,7 +13,7 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
 import ReactPlayer from "react-player";
-import CircularProgress from '@material-ui/core/CircularProgress';
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const useStyles = makeStyles({
   root: {
@@ -84,7 +84,7 @@ const Result = (props) => {
   const [image, setImage] = useState();
   const [check, setCheck] = useState(false);
   const [time, setTime] = useState(0);
-  const [load, setLoad] =useState(false);
+  const [load, setLoad] = useState(false);
 
   const player_ref = useRef();
 
@@ -279,7 +279,16 @@ const Result = (props) => {
         )}
         {audioNorm ? (
           <Grid xs={6}>
-            {load ? (<img src={image} />) : (<CircularProgress color="secondary" />)}
+            <h3 className="mt-5">Volume</h3>
+            {load ? (
+              <div style={{ height: 500 }}>
+                <img src={image} />
+              </div>
+            ) : (
+              <div style={{ height: 500 }}>
+                <CircularProgress color="secondary" />
+              </div>
+            )}
           </Grid>
         ) : (
           <></>
@@ -293,7 +302,6 @@ const Result = (props) => {
         )}
         <Grid xs={3}></Grid>
       </Grid>
-
     </div>
   );
 };

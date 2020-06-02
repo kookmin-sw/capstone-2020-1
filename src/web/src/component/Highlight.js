@@ -136,7 +136,7 @@ const Highlight = (props) => {
           </TableBody>
         </Table>
       ) : (
-        <CircularProgress color="secondary" />
+        <CircularProgress color="secondary"/>
       )}
     </TableContainer>
   );

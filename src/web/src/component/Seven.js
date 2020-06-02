@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Line } from "react-chartjs-2";
 import { MDBContainer } from "mdbreact";
-import CircularProgress from '@material-ui/core/CircularProgress';
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const Seven = (props) => {
   let state = {
@@ -385,7 +385,15 @@ const Seven = (props) => {
   return (
     <MDBContainer>
       <h3 className="mt-5">Seven Sentiment</h3>
-      {load ? <Line data={test} options={{ responsive: true }} /> : <CircularProgress color="secondary" />}
+      {load ? (
+        <div style={{ height: 500 }}>
+          <Line data={test} options={{ responsive: true }} />
+        </div>
+      ) : (
+        <div style={{ height: 500 }}>
+          <CircularProgress color="secondary" />
+        </div>
+      )}
     </MDBContainer>
   );
 };
