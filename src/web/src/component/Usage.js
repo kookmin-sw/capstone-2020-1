@@ -5,46 +5,60 @@ import {
 import React from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 
-const backgroundImg = require('../Usage.png');
+const login = require('../flaticon/login.png');
+const url = require('../flaticon/url.png');
+const analysis = require('../flaticon/analysis.png');
+const edit = require('../flaticon/edit.png');
+const a= require('../flaticon/a.png');
+const b= require('../flaticon/b.png');
+const c= require('../flaticon/c.png');
+const d= require('../flaticon/d.png');
+
+const next = require('../flaticon/next.png');
+
+const img_style = {width:128,height:128}
+const arrow_style = {width:64,height:64,marginLeft:20,marginRight:20}
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        backgroundImage: `url(${backgroundImg})`,
         alignItems: 'center',
-        color: 'white',
-        backgroundSize: 'cover',
-        // color: "textPrimary",
         justifyContent: 'center',
         textAlign: 'center',
-        height: 700,
+        height: 200,
         width: '100%',
     },
 }));
 
-const Usage = (props) => {
+const Usage =()=> {
     const classes = useStyles();
 
-    if(props.login === false)
-        return null;
-
     return (
+        <div>
         <Grid container className={classes.root} spacing={3}>
-            <Grid xs={12}>
-                <Typography variant='h3' gutterBottom>
-                    Usage
-                </Typography>
-                <Typography variant='h5' gutterBottom>
-                    <br/>1. 하단 URL을 입력하는 곳에 풀영상의 URL을 입력합니다.
-                </Typography>
-                <Typography variant='h7' gutterBottom>
-                    - 지원하는 Platform : ①AfreecaTV ②Twitch ③Youtube <br/>
-                    - 해당 URL에는 반드시 채팅로그가 포함되어 있어야 합니다.
-                </Typography>
-                <Typography variant='h5' gutterBottom>
-                    <br/>2. input URL 버튼을 누르고 검사 결과를 기다립니다.
-                </Typography>
-            </Grid>
+            <img src={login} style={img_style}/>
+            <img src={next} style={arrow_style}/>
+
+            <img src={url} style={img_style}/>
+            <img src={next} style={arrow_style}/>
+
+            <img src={analysis} style={img_style}/>
+            <img src={next} style={arrow_style}/>
+
+            <img src={edit} style={img_style}/>
         </Grid>
+        <Grid container className={classes.root} spacing={3}>
+            <img src={a} style={img_style}/>
+            <img src={next} style={arrow_style}/>
+
+            <img src={b} style={img_style}/>
+            <img src={next} style={arrow_style}/>
+
+            <img src={c} style={img_style}/>
+            <img src={next} style={arrow_style}/>
+
+            <img src={d} style={img_style}/>
+        </Grid>
+        </div>
     );
 
 }

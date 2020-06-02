@@ -78,9 +78,7 @@ const MainPage = () => {
         <Description />
       </Grid>
       <Grid>
-        <Usage
-          login={login}
-        />
+        <Usage />
       </Grid>
       {login ? (
         <InputUrl
