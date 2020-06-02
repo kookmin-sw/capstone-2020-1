@@ -55,13 +55,3 @@ def counting(a):
 	for s in sentiment:
 		dic[s] = a.count(s)
 	return dic
-
-# sample_text = []; sample_labels = []
-# for line in codecs.open('./data/chat_data.tsv', 'r', 'utf-8'):
-# 	label, text = line.strip().split('\t')
-# 	text = ' '.join(word[0] for word in okt.pos(text, norm=True))
-
-# 	sample_text.append(text)
-# 	sample_labels.append(label)
-
-# print(len(predict(sample_text)))
