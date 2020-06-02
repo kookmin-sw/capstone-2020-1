@@ -6,6 +6,7 @@ import Description from "../component/Description";
 import InputUrl from "../component/InputUrl";
 import Login from "../component/Login";
 import Result from "../component/Result";
+import Usage from "../component/Usage";
 
 function Copyright() {
   return (
@@ -75,6 +76,11 @@ const MainPage = () => {
  
       <Grid>
         <Description />
+      </Grid>
+      <Grid>
+        <Usage
+          login={login}
+        />
       </Grid>
       {login ? (
         <InputUrl
