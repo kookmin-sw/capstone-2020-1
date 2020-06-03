@@ -71,13 +71,12 @@ const MainPage = () => {
         login={login}
         toggleInput={toggleInput}
         toggleLogin={toggleLogin}
+        setEmail={setEmail}
+        setName={setName}
       />
 
       <Grid>
         <Description />
-      </Grid>
-      <Grid>
-        <Usage />
       </Grid>
       {login ? (
         <InputUrl
@@ -89,7 +88,7 @@ const MainPage = () => {
           input={input}
         ></InputUrl>
       ) : (
-        <Login setEmail={setEmail} toggleLogin={toggleLogin} setName = {setName}/>
+        <></>
       )}
 
       {input & login ? (
@@ -97,6 +96,10 @@ const MainPage = () => {
       ) : (
         <></>
       )}
+      <Grid>
+        <Usage />
+      </Grid>
+
       <Box mt={8}>
         <Copyright />
       </Box>

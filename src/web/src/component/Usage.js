@@ -38,7 +38,7 @@ const Usage = () => {
 
   return (
     <div>
-      <div style = {{height:"100px"}}></div>
+      <div style = {{height:"40px"}}></div>
       <Grid container className={classes.root} spacing={3}>
         <img src={login} style={img_style} />
         <img src={next} style={arrow_style} />
