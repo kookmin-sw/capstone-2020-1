@@ -18,6 +18,7 @@ const next = require('../flaticon/next.png');
 
 const img_style = {width:128,height:128}
 const arrow_style = {width:64,height:64,marginLeft:20,marginRight:20}
+const img_info_style = {width:192,height:192,marginLeft:20,marginRight:20}
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -47,16 +48,13 @@ const Usage =()=> {
             <img src={edit} style={img_style}/>
         </Grid>
         <Grid container className={classes.root} spacing={3}>
-            <img src={a} style={img_style}/>
-            <img src={next} style={arrow_style}/>
+            <img src={a} style={img_info_style}/>
 
-            <img src={b} style={img_style}/>
-            <img src={next} style={arrow_style}/>
+            <img src={b} style={img_info_style}/>
 
-            <img src={c} style={img_style}/>
-            <img src={next} style={arrow_style}/>
+            <img src={c} style={img_info_style}/>
 
-            <img src={d} style={img_style}/>
+            <img src={d} style={img_info_style}/>
         </Grid>
         </div>
     );
