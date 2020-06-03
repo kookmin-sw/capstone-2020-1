@@ -1,20 +1,23 @@
-import numpy
-from models.highlight import Predict
+import json
 import math
-from download.chatlog import download
-from api.ana_url import split_url
-from werkzeug.exceptions import BadRequest
-from chatsentiment.pos_neg_spm import predict_pos_neg
-from sentiment7.sentiment7 import predict_7sentiment
-from settings.utils import api
-from flask import Blueprint, jsonify
 import multiprocessing
 import sys
-import json
+
+import numpy
+from flask import Blueprint, jsonify
+from werkzeug.exceptions import BadRequest
+
+from api.ana_url import split_url
+from chatsentiment.pos_neg_spm import predict_pos_neg
+from download.chatlog import download
+from models.highlight import Predict
+from sentiment7.sentiment7 import predict_7sentiment
+from settings.utils import api
 
 sys.path.append('../')
 
 app = Blueprint('predict', __name__, url_prefix='/api')
+
 
 def posneg(comment, second, inc, url, returnDict):
     predict = numpy.transpose(
@@ -35,6 +38,7 @@ def posneg(comment, second, inc, url, returnDict):
         elif int(p[1]) == 0:
             negcnt += 1
     returnDict['posneg'] = predict_per_unitsecond
+
 
 def sentiment7(comment, second, inc, url, returnDict):
     predict = numpy.transpose(
@@ -90,6 +94,7 @@ def sentiment7(comment, second, inc, url, returnDict):
 
     returnDict['sentiment7'] = predict_per_unitsecond
 
+
 @app.route('/predict', methods=['GET'])
 @api
 def get_predict(data, db):
@@ -102,12 +107,12 @@ def get_predict(data, db):
         raise BadRequest
 
     query = db.query(Predict).filter(
-    Predict.url == url,
+        Predict.url == url,
     ).first()
 
     if query:
         return query.predict_json
-    
+
     download(isURLValid[0], isURLValid[1])
 
     with open('./chatlog/{}_{}.txt'.format(isURLValid[0], isURLValid[1]), encoding='utf-8') as f:
@@ -121,7 +126,6 @@ def get_predict(data, db):
             continue
         second.append(splited_chat[0])
         comment.append(splited_chat[2])
-    
 
     if len(second) < 1 or len(comment) < 1:
         raise BadRequest
@@ -139,13 +143,12 @@ def get_predict(data, db):
     p1.join()
     p2.join()
 
-
-    returnDict['bin']=inc
+    returnDict['bin'] = inc
     rst = json.dumps(returnDict.copy())
     new_predict = Predict(
-    url=url,
-    predict_json=rst,
+        url=url,
+        predict_json=rst,
     )
     db.add(new_predict)
     db.commit()
-    return rst
+    return jsonify(rst)
