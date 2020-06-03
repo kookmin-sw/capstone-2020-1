@@ -65,15 +65,14 @@ const MainPage = () => {
 
   return (
     <div onLoad={test}>
+      <Navibar
+        email={email}
+        name={name}
+        login={login}
+        toggleInput={toggleInput}
+        toggleLogin={toggleLogin}
+      />
 
-        <Navibar
-          email={email}
-          name={name}
-          login={login}
-          toggleInput={toggleInput}
-          toggleLogin={toggleLogin}
-        />
- 
       <Grid>
         <Description />
       </Grid>
@@ -87,10 +86,10 @@ const MainPage = () => {
           toggleLogin={toggleLogin}
           setPlatform={setPlatform}
           setVideoid={setVideoid}
-          input = {input}
+          input={input}
         ></InputUrl>
       ) : (
-        <Login setEmail={setEmail} toggleLogin={toggleLogin} />
+        <Login setEmail={setEmail} toggleLogin={toggleLogin} setName = {setName}/>
       )}
 
       {input & login ? (

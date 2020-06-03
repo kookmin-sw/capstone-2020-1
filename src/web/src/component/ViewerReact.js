@@ -152,7 +152,8 @@ const ViewerReact = (props) => {
       <h3 className="mt-5">Positive & Negative</h3>
       {load ? (
         <div style = {{ height: 500 }}>
-        <Line data={test} options={{ responsive: true }}/>
+          <Line data={test} options={{ responsive: true }}/>
+          
         </div>
       ) : (
         <div style = {{ height: 500 }}>
