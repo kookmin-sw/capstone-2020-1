@@ -25,4 +25,4 @@ class Predict(Base):
 
     id = Column(Integer, autoincrement=True, primary_key=True)
     url = Column(String, unique=True, nullable=False)
-    predict_json = Column(JSON, nullable=False)
+    predict_json = Column(JSON, nullable=True)
