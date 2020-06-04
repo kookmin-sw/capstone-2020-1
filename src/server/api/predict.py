@@ -86,8 +86,8 @@ def get_predict(data, db):
     
     new_predict = Predict(
         url=url,
-        predict_json=rst,
+        posneg_json=result,
     )
     db.add(new_predict)
     db.commit()
-    return jsonify(rst)
+    return jsonify(result)
