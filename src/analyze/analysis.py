@@ -168,10 +168,10 @@ def analyze1_minute(data, comment=None):#분단위로 쪼개고 해당 단위시
     return point
 
 
-def analyze1_sound(volume):
+def analyze1_sound(volume, time_range=30):
     second = []
     for i in range(len(volume)):
-        second.append((i*30, volume[i]))
+        second.append((i*time_range, volume[i]))
 
     second.sort(key=lambda ele: ele[1], reverse=True)
     point = second[0:3]
