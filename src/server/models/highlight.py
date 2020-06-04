@@ -25,4 +25,11 @@ class Predict(Base):
 
     id = Column(Integer, autoincrement=True, primary_key=True)
     url = Column(String, unique=True, nullable=False)
-    predict_json = Column(JSON, nullable=True)
+    posneg_json = Column(JSON, nullable=True)
+
+class Predict7(Base):	
+    __tablename__ = 'chat_predict7'	
+
+    id = Column(Integer, autoincrement=True, primary_key=True)	
+    url = Column(String, unique=True, nullable=False)	
+    sentiment7_json = Column(JSON, nullable=False) 
