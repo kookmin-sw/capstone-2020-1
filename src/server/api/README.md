@@ -201,7 +201,7 @@ ping
 
 ### Predict
 [GET] /api/predict  
-채팅 감정 분석
+채팅 긍정부정 분류
 
 요청
 ```
@@ -212,27 +212,28 @@ ping
 응답
 ```
 { 
-    "sentiment7": 
-    { 
-        "neutral": [ 2, 15, 22], 
-        "joy": [ 1, 2, 0], 
-        "love": [ 0, 0, 0], 
-        "fear": [ 0, 0, 0], 
-        "surprise": [ 0, 0, 0], 
-        "sadness": [ 0, 0, 0], 
-        "anger": [ 0, 0, 0] 
-    }, 
-    "posneg": 
-    { 
-        "pos": [ 3, 15, 19], 
-        "neg": [ 0, 2, 3] 
-    }, 
-    "bin": 41 
+    "bin: {
+        10
+    },
+    "predict": {
+        "neg": [
+            1,
+            1,
+            0
+        ],
+        "pos": [
+            0,
+            0,
+            1
+        ]
+    }
 }
 200 OK
 400 INVALID URL
 ```
 [GET] /api/predict7
+채팅 7감정 분류
+
 요청
 ```
 {
