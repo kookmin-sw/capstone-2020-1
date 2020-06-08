@@ -121,18 +121,19 @@
 
 ## IV. 소개영상
 
+[![Thumbnail2](https://user-images.githubusercontent.com/22051174/84065174-da735400-a9fe-11ea-956e-82cbde249329.png)](https://youtu.be/BWgxucTPGgc)
 
-> https://youtu.be/BWgxucTPGgc 
-<br/>
-> https://youtu.be/JJvN3utkdrg (2차 자문 평가 발표 동영상)
-<br/>
+## V. 최종평가 영상
 
-## V. 결과 영상
+[![Thumbnail](https://user-images.githubusercontent.com/22051174/84063688-66d04780-a9fc-11ea-9737-c7b1fd87dc92.png)](https://youtu.be/g81-78VEz78)
 
+1차 중간평가 발표 영상 : 추가예정
 
-> https://youtu.be/afgA3Js0tSw (시연연상)
+2차 중간평가 발표 영상 : https://youtu.be/JJvN3utkdrg
 
-<br/>
+시연 영상 : https://youtu.be/E2ISR4IkLZg
+
+홍보 영상 : 
 
 ## VI. 사용법
 ### 1. 회원가입
