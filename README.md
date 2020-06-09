@@ -119,7 +119,7 @@
 
 <br/>
 
-## IV. 소개영상
+## IV. 소개 - 계획서 발표 영상
 
 [![Thumbnail2](https://user-images.githubusercontent.com/22051174/84065174-da735400-a9fe-11ea-956e-82cbde249329.png)](https://youtu.be/BWgxucTPGgc)
 
@@ -127,13 +127,13 @@
 
 [![Thumbnail](https://user-images.githubusercontent.com/22051174/84063688-66d04780-a9fc-11ea-9737-c7b1fd87dc92.png)](https://youtu.be/g81-78VEz78)
 
-1차 중간평가 발표 영상 : <a href="https://youtu.be/bHWFnUcuxfA"><img src="https://user-images.githubusercontent.com/22051174/84095753-14624b80-aa3b-11ea-9d36-668ee885d87d.png" width="64" height="64"></a>
+1차 중간평가 발표 영상 : <a href="https://youtu.be/bHWFnUcuxfA"><img src="https://user-images.githubusercontent.com/22051174/84095753-14624b80-aa3b-11ea-9d36-668ee885d87d.png" width="32" height="32"></a>
 
-2차 중간평가 발표 영상 : <a href="https://youtu.be/JJvN3utkdrg"><img src="https://user-images.githubusercontent.com/22051174/84095753-14624b80-aa3b-11ea-9d36-668ee885d87d.png" width="64" height="64"></a>
+2차 중간평가 발표 영상 : <a href="https://youtu.be/JJvN3utkdrg"><img src="https://user-images.githubusercontent.com/22051174/84095753-14624b80-aa3b-11ea-9d36-668ee885d87d.png" width="32" height="32"></a>
 
-시연 영상 : <a href="https://youtu.be/E2ISR4IkLZg"><img src="https://user-images.githubusercontent.com/22051174/84095753-14624b80-aa3b-11ea-9d36-668ee885d87d.png" width="64" height="64"></a>
+시연 영상 : <a href="https://youtu.be/E2ISR4IkLZg"><img src="https://user-images.githubusercontent.com/22051174/84095753-14624b80-aa3b-11ea-9d36-668ee885d87d.png" width="32" height="32"></a>
 
-홍보 영상 : <a href="https://youtu.be/ruqKgvnGg8I"><img src="https://user-images.githubusercontent.com/22051174/84095753-14624b80-aa3b-11ea-9d36-668ee885d87d.png" width="64" height="64"></a>
+홍보 영상 : <a href="https://youtu.be/ruqKgvnGg8I"><img src="https://user-images.githubusercontent.com/22051174/84095753-14624b80-aa3b-11ea-9d36-668ee885d87d.png" width="32" height="32"></a>
 
 ## VI. 사용법
 ### 1. 회원가입
@@ -188,7 +188,10 @@ email은 중복되지 않는 새로운 계정이어야 하며, password check는
 ```
 <br/>
 
-## VII. 기타
+## VII. 시스템 설계도
 
+![시스템 설계도](https://user-images.githubusercontent.com/22051174/84097008-4de88600-aa3e-11ea-8ae5-cf4eabbe3b93.png)
 
-> 수정 예정
+## VIII. 데이터 흐름도
+
+![데이터 흐름도](https://user-images.githubusercontent.com/22051174/84097001-4aed9580-aa3e-11ea-8a9f-078a43d384f1.png)
