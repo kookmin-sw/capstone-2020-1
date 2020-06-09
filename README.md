@@ -125,15 +125,18 @@
 
 ## V. 최종평가 영상
 
+### 발표 영상
 [![Thumbnail](https://user-images.githubusercontent.com/22051174/84063688-66d04780-a9fc-11ea-9737-c7b1fd87dc92.png)](https://youtu.be/g81-78VEz78)
+
+### 시연 영상
+[![thumbnail](https://user-images.githubusercontent.com/22051174/84097597-0a8f1700-aa40-11ea-97e9-098cd637a606.jpg)](https://youtu.be/E2ISR4IkLZg)
+
+### 홍보 영상
+[![thumbnail](https://user-images.githubusercontent.com/22051174/84097503-c26ff480-aa3f-11ea-8225-85125fd6b3b7.jpg)](https://youtu.be/ruqKgvnGg8I)
 
 1차 중간평가 발표 영상 : <a href="https://youtu.be/bHWFnUcuxfA"><img src="https://user-images.githubusercontent.com/22051174/84095753-14624b80-aa3b-11ea-9d36-668ee885d87d.png" width="32" height="32"></a>
 
 2차 중간평가 발표 영상 : <a href="https://youtu.be/JJvN3utkdrg"><img src="https://user-images.githubusercontent.com/22051174/84095753-14624b80-aa3b-11ea-9d36-668ee885d87d.png" width="32" height="32"></a>
-
-시연 영상 : <a href="https://youtu.be/E2ISR4IkLZg"><img src="https://user-images.githubusercontent.com/22051174/84095753-14624b80-aa3b-11ea-9d36-668ee885d87d.png" width="32" height="32"></a>
-
-홍보 영상 : <a href="https://youtu.be/ruqKgvnGg8I"><img src="https://user-images.githubusercontent.com/22051174/84095753-14624b80-aa3b-11ea-9d36-668ee885d87d.png" width="32" height="32"></a>
 
 ## VI. 사용법
 ### 1. 회원가입
