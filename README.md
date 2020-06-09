@@ -127,13 +127,13 @@
 
 [![Thumbnail](https://user-images.githubusercontent.com/22051174/84063688-66d04780-a9fc-11ea-9737-c7b1fd87dc92.png)](https://youtu.be/g81-78VEz78)
 
-1차 중간평가 발표 영상 : 추가예정
+1차 중간평가 발표 영상 : <a href="https://youtu.be/bHWFnUcuxfA"><img src="https://user-images.githubusercontent.com/22051174/84095753-14624b80-aa3b-11ea-9d36-668ee885d87d.png" width="64" height="64"></a>
 
-2차 중간평가 발표 영상 : https://youtu.be/JJvN3utkdrg
+2차 중간평가 발표 영상 : <a href="https://youtu.be/JJvN3utkdrg"><img src="https://user-images.githubusercontent.com/22051174/84095753-14624b80-aa3b-11ea-9d36-668ee885d87d.png" width="64" height="64"></a>
 
-시연 영상 : https://youtu.be/E2ISR4IkLZg
+시연 영상 : <a href="https://youtu.be/E2ISR4IkLZg"><img src="https://user-images.githubusercontent.com/22051174/84095753-14624b80-aa3b-11ea-9d36-668ee885d87d.png" width="64" height="64"></a>
 
-홍보 영상 : 
+홍보 영상 : <a href="https://youtu.be/ruqKgvnGg8I"><img src="https://user-images.githubusercontent.com/22051174/84095753-14624b80-aa3b-11ea-9d36-668ee885d87d.png" width="64" height="64"></a>
 
 ## VI. 사용법
 ### 1. 회원가입
