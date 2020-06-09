@@ -1,22 +1,25 @@
+import json
+import math
+import multiprocessing
 import sys
+import numpy
+from flask import Blueprint, jsonify
+from werkzeug.exceptions import BadRequest
+from api.ana_url import split_url
+from chatsentiment.pos_neg_spm import predict_pos_neg
+from download.chatlog import download
+from models.highlight import Predict
+from settings.utils import api
 
 sys.path.append('../')
 
-from flask import Blueprint, jsonify
-from settings.utils import api
-from chatsentiment.pos_neg_spm import predict_pos_neg
-from werkzeug.exceptions import BadRequest
-from api.ana_url import split_url
-from download.chatlog import download
-import math
-from models.highlight import Predict
-import numpy
 app = Blueprint('predict', __name__, url_prefix='/api')
-
 
 @app.route('/predict', methods=['GET'])
 @api
 def get_predict(data, db):
+    manager = multiprocessing.Manager()
+    returnDict = manager.dict()
     url = data['url']
     isURLValid = split_url(url)
 
@@ -28,13 +31,13 @@ def get_predict(data, db):
     ).first()
 
     if query:
-        return query.posneg_json
+        return query.predict_json
 
     download(isURLValid[0], isURLValid[1])
-    
+
     with open('./chatlog/{}_{}.txt'.format(isURLValid[0], isURLValid[1]), encoding='utf-8') as f:
         content = f.read().split('\n')
-    
+
     second = []
     comment = []
     for i in range(0, len(content) - 1):
@@ -43,33 +46,43 @@ def get_predict(data, db):
             continue
         second.append(splited_chat[0])
         comment.append(splited_chat[2])
-    predict = numpy.transpose([[s[1:-1] for s in second], predict_pos_neg(comment)])
-    
+
+    predict = numpy.transpose(
+        [[s[1:-1] for s in second], predict_pos_neg(comment)])
+
     if len(second) < 1 or len(comment) < 1:
         raise BadRequest
 
     endSecond = int(second[-1][1:-1])
-    
+
     if endSecond >= 100.0:
         inc = math.floor(endSecond / 100.0)
     else:
         inc = 1.0
-    
-    predict_per_unitsecond = {'pos': [], 'neg': []}
-    poscnt = 0; negcnt = 0
-    x=inc
+
+    predict_per_unitsecond = {
+        'pos': [],
+        'neg': []
+    }
+    x = inc
+    pos = 0
+    neg = 0
     for p in predict:
         if int(p[0]) > x:
-            x+=inc
-            predict_per_unitsecond['pos'].append(poscnt)
-            predict_per_unitsecond['neg'].append(negcnt)
-            poscnt=0; negcnt=0
+            x += inc
+            predict_per_unitsecond['pos'].append(pos)
+            predict_per_unitsecond['neg'].append(neg)
+            pos = 0
+            neg = 0
         if int(p[1]) == 1:
-            poscnt += 1
+            pos += 1
         elif int(p[1]) == 0:
-            negcnt += 1
+            neg += 1
 
-    result = {'predict': predict_per_unitsecond}
+    result = {
+        'bin': inc,
+        'predict': predict_per_unitsecond
+    }
     
     new_predict = Predict(
         url=url,

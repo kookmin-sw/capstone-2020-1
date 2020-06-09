@@ -14,7 +14,7 @@ def test_get_predict7(client):
     res = client.get('api/predict7', query_string=data)
     assert res.status_code == 200
 
-    with Database() as db:
+    with Database() as db: 
         query = db.query(Predict7).filter(
             Predict7.url == data['url']
         ).first()
