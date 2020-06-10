@@ -128,7 +128,7 @@
 [![Thumbnail](https://user-images.githubusercontent.com/22051174/84063688-66d04780-a9fc-11ea-9737-c7b1fd87dc92.png)](https://youtu.be/g81-78VEz78)
 
 ### 시연 영상
-[![thumbnail](https://user-images.githubusercontent.com/22051174/84097597-0a8f1700-aa40-11ea-97e9-098cd637a606.jpg)](https://youtu.be/E2ISR4IkLZg)
+[![thumbnail](https://user-images.githubusercontent.com/22051174/84265007-16243000-ab5d-11ea-8e9f-a5c20072b6bc.jpg)](https://youtu.be/TgIRFlKCTfY)
 
 ### 홍보 영상
 [![thumbnail](https://user-images.githubusercontent.com/22051174/84097503-c26ff480-aa3f-11ea-8225-85125fd6b3b7.jpg)](https://youtu.be/ruqKgvnGg8I)
