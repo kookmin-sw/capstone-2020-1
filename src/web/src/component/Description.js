@@ -5,7 +5,7 @@ import {
 import React from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 
-const backgroundImg = require('../backgroundImage.jpg');
+const backgroundImg = require('../backgroundImage.png');
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
         // color: "textPrimary",
         justifyContent: 'center',
         textAlign: 'center',
-        height: 700,
+        height: 400,
         width: '100%',
     },
 }));
@@ -26,11 +26,11 @@ const Description =()=> {
     return (
         <Grid container className={classes.root} spacing={3}>
             <Grid xs={12}>
-                <Typography variant='h1' gutterBottom>
+                <Typography variant='h2' gutterBottom>
                     YOBA
                 </Typography>
-                <Typography variant='h2' gutterBottom>
-                    Highlihgt editing assistant tool for Creator
+                <Typography variant='h3' gutterBottom>
+                    Highlight editing assist tool for Creator
                 </Typography>
             </Grid>
         </Grid>

@@ -88,9 +88,9 @@ const InputUrl = (props) => {
         alignItems="center"
         direction="row"
         justify="center"
-        style={{ paddingTop: 10, paddingBottom: 10 }}
+        style={{ paddingTop: 40, paddingBottom: 10 }}
       >
-        <Grid xs={2}>
+        <Grid xs={2} style={{marginRight: 20}}>
           <TextField
             variant="outlined"
             margin="normal"
@@ -105,6 +105,7 @@ const InputUrl = (props) => {
             }}
           />
         </Grid>
+        
         <Grid>
           <Button variant="contained" color="secondary" onClick={onClick}>
             Input URL
