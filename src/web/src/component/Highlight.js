@@ -106,39 +106,44 @@ const Highlight = (props) => {
   };
 
   return (
-    <TableContainer component={Paper}>
-      <h3 className="mt-5">Highlight Point</h3>
+    <div>
       {load ? (
-        <Table className={classes.table} aria-label="simple table">
-          <TableHead>
-            <TableRow>
-              <TableCell>Highlight</TableCell>
-              <TableCell align="right">Point</TableCell>
-              <TableCell align="right">Sound or Chat</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {rows.map((row) => (
-              <TableRow
-                key={row.number}
-                onClick={() => {
-                  onClick(row);
-                }}
-                hover
-              >
-                <TableCell component="th" scope="row">
-                  {row.number}
-                </TableCell>
-                <TableCell align="right">{row.point}</TableCell>
-                <TableCell align="right">{row.kind}</TableCell>
+        <TableContainer component={Paper}>
+          <h3 className="mt-5">Highlight Point</h3>
+          <Table className={classes.table} aria-label="simple table">
+            <TableHead>
+              <TableRow>
+                <TableCell>Highlight</TableCell>
+                <TableCell align="right">Point</TableCell>
+                <TableCell align="right">Sound or Chat</TableCell>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
+            </TableHead>
+            <TableBody>
+              {rows.map((row) => (
+                <TableRow
+                  key={row.number}
+                  onClick={() => {
+                    onClick(row);
+                  }}
+                  hover
+                >
+                  <TableCell component="th" scope="row">
+                    {row.number}
+                  </TableCell>
+                  <TableCell align="right">{row.point}</TableCell>
+                  <TableCell align="right">{row.kind}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
       ) : (
-        <CircularProgress color="secondary"/>
+        <div>
+          <h3 className="mt-5">Highlight Point</h3>
+          <CircularProgress color="secondary" />
+        </div>
       )}
-    </TableContainer>
+    </div>
   );
 };
 

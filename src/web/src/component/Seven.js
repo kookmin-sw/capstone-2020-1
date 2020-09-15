@@ -4,6 +4,19 @@ import { Line } from "react-chartjs-2";
 import { MDBContainer } from "mdbreact";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
+function humanReadable(seconds) {
+  var pad = function (x) {
+    return x < 10 ? "0" + x : x;
+  };
+  return (
+    pad(parseInt(seconds / (60 * 60))) +
+    ":" +
+    pad(parseInt((seconds / 60) % 60)) +
+    ":" +
+    pad(seconds % 60)
+  );
+}
+
 const Seven = (props) => {
   let state = {
     dataLine: {
@@ -313,6 +326,15 @@ const Seven = (props) => {
   });
 
   const [load, setLoad] = useState(false);
+  const [bin, setBin] = useState();
+  const [time, setTime] = useState();
+  const [realtime, setRealtime] = useState("00:00:00");
+
+  const onlyClick = (e) => {
+    if(e.length > 0) {
+      setRealtime(humanReadable(e[0]._index * bin));
+    }
+  };
 
   useEffect(() => {
     try {
@@ -374,6 +396,7 @@ const Seven = (props) => {
           }
           // console.log(state.dataLine);
           setTest(state.dataLine);
+          setBin(data.bin);
           setLoad(true);
         })
         .catch();
@@ -386,11 +409,20 @@ const Seven = (props) => {
     <MDBContainer>
       <h3 className="mt-5">Seven Sentiment</h3>
       {load ? (
-        <div style={{ height: 500 }}>
-          <Line data={test} options={{ responsive: true }} />
+        <div style={{ height: 580 }}>
+          <Line
+            data={test}
+            options={{ responsive: true }}
+            onElementsClick={(e) => {
+              onlyClick(e);
+            }}
+          />
+          <sub>chats / {bin} sec</sub>
+          <br></br>
+          position is {realtime}
         </div>
       ) : (
-        <div style={{ height: 500 }}>
+        <div style={{ height: 580 }}>
           <CircularProgress color="secondary" />
         </div>
       )}

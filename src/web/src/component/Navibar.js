@@ -1,6 +1,7 @@
 import { AppBar, Grid, Typography } from "@material-ui/core";
 import React from "react";
 import YobaLogo from "../yoba_logo.png";
+import Login from "./Login.js"
 
 const NaviBar = (props) => {
   // console.log(props.email)
@@ -11,14 +12,14 @@ const NaviBar = (props) => {
       props.toggleInput(false);
       alert("sign out");
     } else {
-      alert("Please, sign in from the bottom page.")
+      alert("Please, sign in from the bottom page.");
     }
   };
   const onClick = () => {
     if (props.login === true) {
       alert("welcome");
     }
-  }
+  };
 
   return (
     <AppBar position="sticky" color="default">
@@ -27,7 +28,7 @@ const NaviBar = (props) => {
         alignItems="center"
         direction="row"
         justify="center"
-        style={{ paddingTop: 10, paddingBottom: 10 }}
+        style={{ paddingTop: 3, paddingBottom: 3 }}
       >
         <Grid xs={1}>
           <Typography
@@ -45,10 +46,10 @@ const NaviBar = (props) => {
         <Grid xs={2}></Grid>
 
         <Grid xs={6}>
-          <img alt="logo" src={YobaLogo} height="80px" />
+          <img alt="logo" src={YobaLogo} height="70px" />
         </Grid>
 
-        <Grid xs = {2}>
+        <Grid xs={2}>
           <Typography
             variant="h6"
             style={{
@@ -62,19 +63,23 @@ const NaviBar = (props) => {
             {props.login ? "Welcome! " + props.name : ""}
           </Typography>
         </Grid>
-        <Grid xs = {1}>
-          <Typography
-            variant="h6"
-            style={{
-              textTransform: "none",
-              color: "black",
-              marginLeft: 20,
-              marginRight: 30,
-            }}
-            onClick={logout}
-          >
-            {props.login ? "Sign out" : "Sign in"}
-          </Typography>
+        <Grid xs={1}>
+          {props.login ? (
+            <Typography
+              variant="h6"
+              style={{
+                textTransform: "none",
+                color: "black",
+                marginLeft: 20,
+                marginRight: 30,
+              }}
+              onClick={logout}
+            >
+              Sign out
+            </Typography>
+          ) : (
+            <Login setEmail = {props.setEmail} toggleLogin = {props.toggleLogin} setName = {props.setName}></Login>
+          )}
         </Grid>
       </Grid>
     </AppBar>

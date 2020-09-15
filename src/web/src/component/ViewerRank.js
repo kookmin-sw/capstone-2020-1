@@ -171,14 +171,15 @@ const ViewerRank = (props) => {
   return (
     <div>
       <h3 className="mt-5">Keyword Rank</h3>
-      <div style = {{height:500}}>
+      <div style = {{height:580}}>
       <MDBContainer>
         {load ? (
-          <div style={{  }}>
+          <div>
             <Pie data={test} options={{ responsive: true }}></Pie>
+            
           </div>
         ) : (
-          <div style = {{}}>
+          <div>
             <CircularProgress color="secondary" />
           </div>
         )}
