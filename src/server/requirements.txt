@@ -18,7 +18,7 @@ cycler==0.10.0
 decorator==4.4.2
 docutils==0.15.2
 Flask==1.1.2
-Flask-Cors==3.0.8
+Flask-Cors==3.0.9
 gast==0.3.3
 gevent==20.5.0
 google-auth==1.15.0
